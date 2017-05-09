@@ -21,18 +21,6 @@ class VATUSAConnection
     }
 
     /**
-     * @param $cid
-     * @return mixed
-     */
-    public function getController($cid)
-    {
-        $client = new Client;
-        $url = $this->baseUrl.'controller/'.$cid;
-        $result = $client->get($url)->getBody();
-        return json_decode($result);
-    }
-
-    /**
      * @param $endpoint
      * @param $data
      * @return mixed

@@ -5,6 +5,9 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Run;
 
 class Handler extends ExceptionHandler
 {
@@ -14,12 +17,12 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        \Illuminate\Auth\AuthenticationException::class,
-        \Illuminate\Auth\Access\AuthorizationException::class,
-        \Symfony\Component\HttpKernel\Exception\HttpException::class,
-        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
-        \Illuminate\Session\TokenMismatchException::class,
-        \Illuminate\Validation\ValidationException::class,
+//        \Illuminate\Auth\AuthenticationException::class,
+//        \Illuminate\Auth\Access\AuthorizationException::class,
+//        \Symfony\Component\HttpKernel\Exception\HttpException::class,
+//        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+//        \Illuminate\Session\TokenMismatchException::class,
+//        \Illuminate\Validation\ValidationException::class,
     ];
 
     /**
@@ -40,11 +43,34 @@ class Handler extends ExceptionHandler
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function render($request, Exception $exception)
     {
+        if (config('app.debug'))
+        {
+            return $this->renderExceptionWithWhoops($exception);
+        }
+
         return parent::render($request, $exception);
+    }
+
+    /**
+     * Render an exception using Whoops.
+     *
+     * @param  \Exception $e
+     * @return Response
+     */
+    protected function renderExceptionWithWhoops(Exception $e)
+    {
+        $whoops = new Run;
+        $whoops->pushHandler(new PrettyPageHandler());
+
+        return new Response(
+            $whoops->handleException($e),
+            $e->getStatusCode(),
+            $e->getHeaders()
+        );
     }
 
     /**
@@ -52,7 +78,7 @@ class Handler extends ExceptionHandler
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Illuminate\Auth\AuthenticationException  $exception
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {

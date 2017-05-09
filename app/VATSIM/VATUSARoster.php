@@ -54,7 +54,7 @@ class VATUSARoster
      */
     public function getController($cid)
     {
-        return $this->vatusa->getController($cid);
+        return $this->vatusa->get('controller/'.$cid);
     }
 
     /**

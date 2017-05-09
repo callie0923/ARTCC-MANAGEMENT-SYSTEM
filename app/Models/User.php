@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\ZJX\UserCerts;
+use App\Models\ZJX\UserCert;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -29,6 +29,6 @@ class User extends Authenticatable
     }
 
     public function certs() {
-        return $this->hasOne(UserCerts::class, 'user_id', 'id');
+        return $this->hasOne(UserCert::class, 'user_id', 'id');
     }
 }
