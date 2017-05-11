@@ -5,10 +5,12 @@
 
     <div class="row">
         <div class="col-sm-4 form-group">
-            <input type="text" id="depIcao" class="form-control" placeholder="Departure ICAO">
+            <input type="text" id="depIcaoSearch" class="form-control" placeholder="Departure ICAO">
+            <input type="hidden" id="depIcao">
         </div>
         <div class="col-sm-4 form-group">
-            <input type="text" id="arrIcao" class="form-control" placeholder="Arrival ICAO">
+            <input type="text" id="arrIcaoSearch" class="form-control" placeholder="Arrival ICAO">
+            <input type="hidden" id="arrIcao">
         </div>
         <div class="col-sm-4 form-group">
             <button type="button" class="btn btn-primary btn-block" id="processBtn" disabled>Process</button>
@@ -34,5 +36,6 @@
 
     <script src="{{asset('/assets/js/pilots/routes.js')}}"></script>
     <div style="display: none;" id="routeGenUrl" data-url="{{ route('pilots.routes.load') }}"></div>
+    <div style="display: none;" id="airportSearchUrl" data-url="{{ route('api.airport') }}"></div>
 
 @endsection

@@ -20,6 +20,9 @@
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/pixeladmin.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/widgets.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/plugins/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/plugins/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/plugins/jquery-ui.theme.css" rel="stylesheet" type="text/css">
 
     <script src="https://use.fontawesome.com/dd15402ec0.js"></script>
 
@@ -28,9 +31,11 @@
     <link href="/assets/css/master.css" rel="stylesheet" type="text/css">
 
     <script src="/assets/pace/pace.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/pixeladmin.min.js"></script>
+    <script src="/assets/js/plugins/select2.full.min.js"></script>
+    <script src="/assets/js/plugins/jquery-ui.min.js"></script>
     <script type="text/javascript">
         $.ajaxSetup({
             headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }

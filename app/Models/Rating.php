@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\BaseModel;
 
-class Rating extends Model
+class Rating extends BaseModel
 {
     public $table = 'ratings';
     public $timestamps = false;
