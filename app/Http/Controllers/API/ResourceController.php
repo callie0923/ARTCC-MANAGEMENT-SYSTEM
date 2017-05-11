@@ -12,7 +12,7 @@ class ResourceController extends Controller
     {
         $query = $request->query('query');
 
-        $airports = Airport::select('name','icao')
+        $airports = Airport::select('name','iata','icao')
             ->where('icao', 'LIKE', '%' .$query . '%')
             ->orWhere('iata', 'LIKE', '%' . $query . '%')
             ->orWhere('name', 'LIKE', '%' . $query . '%')

@@ -42,14 +42,23 @@ $(document).ready(function() {
         })
     });
 
+    $('#depIcaoSearch').click(function() {
+        $(this).val('');
+        $('#depIcao').val('');
+    });
+    $('#arrIcaoSearch').click(function() {
+        $(this).val('');
+        $('#arrIcao').val('');
+    });
+
     $(function () {
         $('#depIcaoSearch').autocomplete({
             source: function (request, response) {
                 $.getJSON(airport_url + "?query=" + request.term, function (data) {
                     response($.map(data, function (value, key) {
                         return {
-                            label: value.name,
-                            value: value.name,
+                            label: value.name+' ('+value.iata+'/'+value.icao+')',
+                            value: value.name+' ('+value.iata+'/'+value.icao+')',
                             icao: value.icao
                         };
                     }));
@@ -68,8 +77,8 @@ $(document).ready(function() {
                 $.getJSON(airport_url + "?query=" + request.term, function (data) {
                     response($.map(data, function (value, key) {
                         return {
-                            label: value.name,
-                            value: value.name,
+                            label: value.name+' ('+value.iata+'/'+value.icao+')',
+                            value: value.name+' ('+value.iata+'/'+value.icao+')',
                             icao: value.icao
                         };
                     }));
