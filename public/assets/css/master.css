@@ -27,3 +27,7 @@
 .dataAlert {
     color: red;
 }
+.widget-activity-item {
+    position: relative !important;
+    padding: 12px 12px 12px 20px !important;
+}

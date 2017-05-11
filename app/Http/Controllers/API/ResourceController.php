@@ -15,7 +15,6 @@ class ResourceController extends Controller
         $airports = Airport::select('name','iata','icao')
             ->where('icao', 'LIKE', '%' .$query . '%')
             ->orWhere('iata', 'LIKE', '%' . $query . '%')
-            ->orWhere('name', 'LIKE', '%' . $query . '%')
             ->orderBy('name', 'ASC')
             ->get()
             ->toJson();

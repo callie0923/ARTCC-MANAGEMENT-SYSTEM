@@ -77,7 +77,12 @@
 <!-- Your scripts -->
 <script>
     $(document).ready(function() {
-        $('.px-nav').pxNav('expand');
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            $('.px-nav').pxNav('collapse');
+        } else {
+            $('.px-nav').pxNav('expand');
+        }
+
         setTimeout(function() {
             $('.alertrow').fadeOut("fast");
         }, 5000);
