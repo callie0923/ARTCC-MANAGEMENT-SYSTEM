@@ -11,7 +11,14 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    public function login()
+    {
+        Auth::loginUsingId(1240411);
+        return redirect()->back()->with('alert-success', 'You have been logged in!');
+    }
+
+
+    public function loginULS(Request $request)
     {
         if (Auth::check()) {
             return redirect()->back()->with('alert-warning', 'Already Logged In');
@@ -19,9 +26,8 @@ class AuthController extends Controller
 
         $salt = "OMNa5DAWCHr63ujg";
 
-        if (!Auth::check() && !isset($request->query('token'))){
-            header("Location: http://login.vatusa.net/uls/login?fac=ZJX");
-            exit;
+        if (!Auth::check() && $request->query('token')){
+            return redirect('http://login.vatusa.net/uls/login?fac=ZJX');
         }
 
         $token = $request->query('token');
@@ -54,5 +60,15 @@ class AuthController extends Controller
 
         return redirect()->back()->with('alert-success', 'You have been logged in!');
 
+    }
+
+    public function logout()
+    {
+        if(Auth::check()) {
+            Auth::logout();
+            return redirect()->route('index')->with('alert-success', 'Logged Out.');
+        } else {
+            return redirect()->route('index')->with('alert-warning', 'Already Logged Out.');
+        }
     }
 }

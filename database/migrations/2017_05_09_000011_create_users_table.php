@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('visitor');
             $table->string('visitor_from');
             $table->integer('status');
+            $table->text('remember_token');
             $table->timestamps();
         });
     }

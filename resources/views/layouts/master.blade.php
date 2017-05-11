@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="_token" content="{!! csrf_token() !!}"/>
 
     @if($pageTitle)
         <title>vZJX | {{ $pageTitle }}</title>
@@ -26,8 +27,16 @@
     <link href="/assets/css/themes/clean.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/master.css" rel="stylesheet" type="text/css">
 
-    <!-- Pace.js -->
     <script src="/assets/pace/pace.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/pixeladmin.min.js"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+        });
+    </script>
+
 </head>
 <body>
 <!-- Nav -->
@@ -45,8 +54,13 @@
         <h1>{{ $pageTitle or 'ZJX ARTCC' }}</h1>
     </div>
 
-    <div>
-        @yield('content')
+    @include('layouts.alert')
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            @yield('content')
+        </div>
     </div>
 </div>
 
@@ -55,24 +69,15 @@
     Copyright © {{ date('Y') }} Virtual Jacksonville ARTCC.
 </footer>
 
-<!-- ==============================================================================
-|
-|  SCRIPTS
-|
-=============================================================================== -->
-
-<!-- Load jQuery -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-<!-- Core scripts -->
-<script src="/assets/js/bootstrap.min.js"></script>
-<script src="/assets/js/pixeladmin.min.js"></script>
-
 <!-- Your scripts -->
 <script>
     $(document).ready(function() {
         $('.px-nav').pxNav('expand');
+        setTimeout(function() {
+            $('.alertrow').fadeOut("fast");
+        }, 5000);
     });
+
 </script>
 
 

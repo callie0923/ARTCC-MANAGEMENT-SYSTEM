@@ -8,7 +8,11 @@
             @if($i == $count)
                 <li class="active">{{ $breadcrumb['title'] }}</li>
             @else
-                <li><a href="{{ route($breadcrumb['route']) }}">{{ $breadcrumb['title'] }}</a></li>
+                @if(isset($breadcrumb['route']))
+                    <li><a href="{{ route($breadcrumb['route']) }}">{{ $breadcrumb['title'] }}</a></li>
+                @else
+                    <li><a href="#">{{ $breadcrumb['title'] }}</a></li>
+                @endif
             @endif
             @php $i++; @endphp
         @endforeach

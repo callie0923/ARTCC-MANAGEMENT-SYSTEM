@@ -1,3 +1,29 @@
 .px-nav-active {
     background-color: #b5b5b5;
 }
+.px-nav-active a {
+    color: #e6eaeb;
+}
+.mainHeader {
+    background-color: #3d4a5d;
+    color: #fafafa;
+}
+.secondaryHeader {
+    background-color: #5b687b;
+    color: #fafafa;
+}
+.row2 {
+    background-color: #f3f3f3;
+    text-align: left;
+    color: #000;
+    font-size: 12px;
+}
+.row1 {
+    background-color: #fafafa;
+    text-align: left;
+    color: #000;
+    font-size: 12px;
+}
+.dataAlert {
+    color: red;
+}
