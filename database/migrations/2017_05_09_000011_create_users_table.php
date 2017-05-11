@@ -19,11 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('email');
             $table->integer('rating_id');
-            $table->integer('can_train');
+            $table->integer('can_train')->default(1);
             $table->integer('visitor');
-            $table->string('visitor_from');
-            $table->integer('status');
-            $table->text('remember_token');
+            $table->string('visitor_from')->nullable();
+            $table->integer('status')->default(0);
+            $table->text('remember_token')->nullable();
             $table->timestamps();
         });
     }

@@ -15,16 +15,16 @@ class CreateUserCertsTable extends Migration
     {
         Schema::create('users_certs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('min_del');
-            $table->integer('min_gnd');
-            $table->integer('min_twr');
-            $table->integer('min_app');
-            $table->integer('f11_del');
-            $table->integer('f11_gnd');
-            $table->integer('f11_twr');
-            $table->integer('f11_app');
-            $table->integer('zjx');
+            $table->integer('user_id')->default(0);
+            $table->integer('min_del')->default(0);
+            $table->integer('min_gnd')->default(0);
+            $table->integer('min_twr')->default(0);
+            $table->integer('min_app')->default(0);
+            $table->integer('f11_del')->default(0);
+            $table->integer('f11_gnd')->default(0);
+            $table->integer('f11_twr')->default(0);
+            $table->integer('f11_app')->default(0);
+            $table->integer('zjx')->default(0);
             $table->timestamps();
         });
     }
