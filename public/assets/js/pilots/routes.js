@@ -68,7 +68,7 @@ $(document).ready(function() {
                 $('#depIcao').val(value.item.icao);
 
             },
-            minLength: 1
+            minLength: 2
         });
     });
     $(function () {
@@ -88,7 +88,7 @@ $(document).ready(function() {
                 $('#arrIcao').val(value.item.icao);
 
             },
-            minLength: 1
+            minLength: 2
         });
     });
 });
