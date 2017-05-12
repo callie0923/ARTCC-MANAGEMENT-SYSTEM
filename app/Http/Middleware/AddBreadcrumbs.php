@@ -6,6 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
+require base_path('routes/breadcrumbs.php');
+
 class AddBreadcrumbs
 {
     /**
@@ -17,12 +19,7 @@ class AddBreadcrumbs
     {
         $activeRoute = $this->getCurrentRoute($request);
 
-        $breadcrumbs[] = ['title' => 'ZJX ARTCC', 'route' => 'index'];
-
-        if($activeRoute == 'pilots.routes.index') {
-            $breadcrumbs[] = ['title' => 'Pilots'];
-            $breadcrumbs[] = ['title' => 'Routes Analyzer'];
-        }
+        $breadcrumbs = generateBreadcrumbs($activeRoute);
 
         View::share('breadcrumbs', $breadcrumbs);
         return $next($request);
