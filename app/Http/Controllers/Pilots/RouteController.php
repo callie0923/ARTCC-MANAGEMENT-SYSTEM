@@ -37,6 +37,7 @@ class RouteController extends Controller
         $html = '<table class="table prettyTable fullWidth" id="resultsTable">'.$second_step[0].'</table>';
         $html = str_replace("\t", '', $html);
         $html = str_replace("\n", '', $html);
+        dd($html);
         return response()->json(['html' => $html]);
     }
 }

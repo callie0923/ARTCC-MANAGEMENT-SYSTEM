@@ -67,7 +67,7 @@
             </ul>
         </li>
         <li class="px-nav-item px-nav-dropdown {{ active(['admin.*', 'not:admin.training.*'], 'px-open') }}">
-            <a href="#"><i class="px-nav-icon fa fa-lock"></i><span class="px-nav-label">ZJX Administration</span></a>
+            <a href="#"><i class="px-nav-icon fa fa-lock"></i><span class="px-nav-label">{{ env('ARTCC') }} Administration</span></a>
             <ul class="px-nav-dropdown-menu">
                 <li class="px-nav-item {{ active('admin.roster.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Roster</span></a></li>
                 <li class="px-nav-item {{ active('admin.events.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Events</span></a></li>

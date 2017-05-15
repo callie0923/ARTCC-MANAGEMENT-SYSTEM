@@ -13,14 +13,15 @@ class AirportController extends Controller
         return view('pilots.airport.index');
     }
 
-    /**
-     * @param Airport $airport
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function airport(Airport $airport)
     {
-        $airport->loadCharts();
         return view('pilots.airport.airport', compact('airport'));
+    }
+
+    public function charts(Airport $airport)
+    {
+        $airport->loadCharts();
+        return view('pilots.airport._partials.charts', compact('airport'))->render();
     }
 
 }
