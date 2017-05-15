@@ -26,10 +26,9 @@
         <li class="px-nav-item px-nav-dropdown {{ active('pilots.*', 'px-open') }}">
             <a href="#"><i class="px-nav-icon fa fa-plane"></i><span class="px-nav-label">Pilots</span></a>
             <ul class="px-nav-dropdown-menu">
-                <li class="px-nav-item"><a href="#"><span class="px-nav-label">Charts</span></a></li>
-                <li class="px-nav-item"><a href="#"><span class="px-nav-label">ZJX Airports</span></a></li>
-                <li class="px-nav-item"><a href="#"><span class="px-nav-label">Weather</span></a></li>
-                <li class="px-nav-item {{ active('pilots.routes.index', 'px-nav-active') }}"><a href="{{ route('pilots.routes.index') }}"><span class="px-nav-label">Route Finder</span></a></li>
+                <li class="px-nav-item {{ active('pilots.airport.*', 'px-nav-active') }}"><a href="{{ route('pilots.airport.index') }}"><span class="px-nav-label">ZJX Airports</span></a></li>
+                <li class="px-nav-item {{ active('pilots.weather.index', 'px-nav-active') }}"><a href="{{ route('pilots.weather.index') }}"><span class="px-nav-label">Weather</span></a></li>
+                <li class="px-nav-item {{ active('pilots.routes.*', 'px-nav-active') }}"><a href="{{ route('pilots.routes.index') }}"><span class="px-nav-label">Route Finder</span></a></li>
             </ul>
         </li>
         <li class="px-nav-item px-nav-dropdown">

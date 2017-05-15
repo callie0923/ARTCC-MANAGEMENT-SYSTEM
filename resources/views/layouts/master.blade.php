@@ -53,7 +53,7 @@
 <!-- Content -->
 <div class="px-content">
 
-    @include('layouts.breadcrumbs')
+    {!! Breadcrumbs::renderIfExists() !!}
 
     <div class="page-header">
         <h1>{{ $pageTitle or 'ZJX ARTCC' }}</h1>

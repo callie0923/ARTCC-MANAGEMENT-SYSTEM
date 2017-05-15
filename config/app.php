@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Watson\Active\ActiveServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
 
     ],
 
@@ -230,6 +231,7 @@ return [
 
         'Active' => Watson\Active\Facades\Active::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
 
     ],
 
