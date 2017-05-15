@@ -16,31 +16,14 @@ class Airport extends BaseModel
     public function loadCharts()
     {
         $client = new Client;
-        $response = $client->request('GET', 'https://api.aircharts.org/Airport/'.$this->icao.'.json',
+        $response = $client->request('GET', 'https://api.aircharts.org/v2/Airport/'.$this->icao,
             [
                 'verify' => false
             ]);
         $aircharts_info = json_decode($response->getBody(), true);
-        dd($aircharts_info);
-        $aircharts_info = $aircharts_info[$this->icao];
-        $this->charts = $aircharts_info['charts'];
-
-        $this->airport_diagram = array_first($this->charts, function($i, $chart) {
-            return $chart['type'] == 'General' && $chart['name'] == 'AIRPORT DIAGRAM';
-        }, null);
-        $this->general = array_filter($this->charts, function($chart){
-            return $chart['type'] == 'General';
-        });
-        $this->departures = array_filter($this->charts, function($chart){
-            return $chart['type'] == 'Departure';
-        });
-        $this->arrivals = array_filter($this->charts, function($chart){
-            return $chart['type'] == 'Arrival';
-        });
-        $this->approaches = array_filter($this->charts, function($chart){
-            return $chart['type'] == 'Approach';
-        });
-
-        dd($this);
+        if(isset($aircharts_info[$this->icao]['charts'])) {
+            $this->charts = $aircharts_info[$this->icao]['charts'];
+        }
+        return $this;
     }
 }
