@@ -15,4 +15,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('logout', ['uses' => 'AuthController@logout', 'as' => 'auth.logout']);
     });
 
+    require base_path('routes/forum.php');
+    require base_path('routes/ids.php');
+
 });
