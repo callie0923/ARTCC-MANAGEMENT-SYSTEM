@@ -1,17 +1,16 @@
-@extends('layouts.master', ['pageTitle' => 'Jacksonville Airports'])
+@extends('layouts.master', ['pageTitle' => 'Airports'])
 
 
 @section('content')
 
     <div class="row">
-        <div class="col-sm-12">
-            {{ dump(new \Illuminate\Database\Eloquent\Collection()) }}
+        <div class="col-sm-4 form-group">
+            <input type="text" id="airportSearch" class="form-control" placeholder="ICAO/IATA">
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <a href="{{ route('pilots.airport.airport', 'kmco') }}" class="btn btn-success">VIEW AIRPORT</a>
-        </div>
-    </div>
+
+    <script src="{{asset('/assets/js/pilots/airports.js')}}"></script>
+    <div style="display: none;" id="airportSearchUrl" data-url="{{ route('api.airport') }}"></div>
+    <div style="display: none;" id="airportUrl" data-url="{{ route('pilots.airport.airport', '') }}"></div>
 
 @endsection

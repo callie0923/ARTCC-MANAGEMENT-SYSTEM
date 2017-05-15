@@ -21,12 +21,12 @@ Breadcrumbs::register('pilots.weather.index', function($breadcrumbs) {
 Breadcrumbs::register('pilots.airport.index', function($breadcrumbs) {
     $breadcrumbs->push('ZJX ARTCC', route('index'));
     $breadcrumbs->push('Pilots');
-    $breadcrumbs->push('ZJX Airports');
+    $breadcrumbs->push('Airports');
 });
 
 Breadcrumbs::register('pilots.airport.airport', function($breadcrumbs, $airport) {
     $breadcrumbs->push('ZJX ARTCC', route('index'));
     $breadcrumbs->push('Pilots');
-    $breadcrumbs->push('ZJX Airports', route('pilots.airport.index'));
+    $breadcrumbs->push('Airports', route('pilots.airport.index'));
     $breadcrumbs->push($airport->iata);
 });

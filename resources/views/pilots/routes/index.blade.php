@@ -5,11 +5,11 @@
 
     <div class="row">
         <div class="col-sm-4 form-group">
-            <input type="text" id="depIcaoSearch" class="form-control" placeholder="Departure ICAO">
+            <input type="text" id="depIcaoSearch" class="form-control" placeholder="Departure ICAO/IATA">
             <input type="hidden" id="depIcao">
         </div>
         <div class="col-sm-4 form-group">
-            <input type="text" id="arrIcaoSearch" class="form-control" placeholder="Arrival ICAO">
+            <input type="text" id="arrIcaoSearch" class="form-control" placeholder="Arrival ICAO/IATA">
             <input type="hidden" id="arrIcao">
         </div>
         <div class="col-sm-4 form-group">
