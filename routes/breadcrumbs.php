@@ -28,3 +28,12 @@ Breadcrumbs::register('pilots.airport.airport', function($breadcrumbs, $airport)
     $breadcrumbs->push('Airports', route('pilots.airport.index'));
     $breadcrumbs->push($airport->iata);
 });
+
+
+
+
+Breadcrumbs::register('system.roles.index', function($breadcrumbs) {
+    $breadcrumbs->push(env('ARTCC').' ARTCC', route('index'));
+    $breadcrumbs->push('System');
+    $breadcrumbs->push('Roles');
+});

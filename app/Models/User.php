@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 use App\Models\ZJX\UserCert;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    use EntrustUserTrait;
+
     /**
      * The attributes that are mass assignable.
      *

@@ -17,5 +17,6 @@ Route::group(['middleware' => 'web'], function () {
 
     require base_path('routes/forum.php');
     require base_path('routes/ids.php');
+    require base_path('routes/system.php');
 
 });

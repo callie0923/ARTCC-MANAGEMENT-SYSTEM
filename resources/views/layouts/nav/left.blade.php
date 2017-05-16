@@ -83,6 +83,12 @@
                 </li>
             </ul>
         </li>
+        <li class="px-nav-item px-nav-dropdown {{ active('system.*', 'px-open') }}">
+            <a href="#"><i class="px-nav-icon fa fa-lock"></i><span class="px-nav-label">System Administration</span></a>
+            <ul class="px-nav-dropdown-menu">
+                <li class="px-nav-item {{ active('system.roles.*', 'px-nav-active') }}"><a href="{{ route('system.roles.index') }}"><span class="px-nav-label">Roles</span></a></li>
+            </ul>
+        </li>
         @endif
     </ul>
 </nav>
