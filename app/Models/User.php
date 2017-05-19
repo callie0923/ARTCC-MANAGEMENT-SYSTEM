@@ -34,4 +34,12 @@ class User extends Authenticatable
     public function certs() {
         return $this->hasOne(UserCert::class, 'user_id', 'id');
     }
+
+    public function getFullNameAttribute() {
+        return $this->first_name.' '.$this->last_name;
+    }
+
+    public function getBackwardsNameAttribute() {
+        return $this->last_name.' '.$this->first_name;
+    }
 }

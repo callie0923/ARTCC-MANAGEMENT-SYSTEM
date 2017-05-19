@@ -7,9 +7,10 @@ Route::group(['namespace' => 'Auth'], function () {
 
 
 require base_path('routes/pilots.php');
+require base_path('routes/artcc.php');
 
 
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => ['web','ulsauth']], function () {
 
     Route::group(['namespace' => 'Auth'], function () {
         Route::get('logout', ['uses' => 'AuthController@logout', 'as' => 'auth.logout']);
@@ -17,6 +18,9 @@ Route::group(['middleware' => 'web'], function () {
 
     require base_path('routes/forum.php');
     require base_path('routes/ids.php');
-    require base_path('routes/system.php');
+
+    Route::group(['middleware' => ['web','ulsauth','role:atm|datm']], function () {
+        require base_path('routes/system.php');
+    });
 
 });

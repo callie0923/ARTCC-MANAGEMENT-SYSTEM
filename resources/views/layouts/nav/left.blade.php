@@ -34,7 +34,7 @@
         <li class="px-nav-item px-nav-dropdown {{ active('artcc.*', 'px-open') }}">
             <a href="#"><i class="px-nav-icon fa fa-users"></i><span class="px-nav-label">ARTCC</span></a>
             <ul class="px-nav-dropdown-menu">
-                <li class="px-nav-item {{ active('artcc.management', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Management</span></a></li>
+                <li class="px-nav-item {{ active('artcc.management.index', 'px-nav-active') }}"><a href="{{ route('artcc.management.index') }}"><span class="px-nav-label">Management</span></a></li>
                 <li class="px-nav-item {{ active('artcc.roster.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Roster</span></a></li>
                 <li class="px-nav-item {{ active('artcc.documents.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Documents & Files</span></a></li>
                 <li class="px-nav-item {{ active('artcc.stats', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Controller Stats</span></a></li>
@@ -67,9 +67,10 @@
             </ul>
         </li>
         <li class="px-nav-item px-nav-dropdown {{ active(['admin.*', 'not:admin.training.*'], 'px-open') }}">
-            <a href="#"><i class="px-nav-icon fa fa-lock"></i><span class="px-nav-label">{{ env('ARTCC') }} Administration</span></a>
+            <a href="#"><i class="px-nav-icon fa fa-lock"></i><span class="px-nav-label">{{ $settings->artcc_code }} Administration</span></a>
             <ul class="px-nav-dropdown-menu">
                 <li class="px-nav-item {{ active('admin.roster.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Roster</span></a></li>
+                <li class="px-nav-item {{ active('admin.staff.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Staff</span></a></li>
                 <li class="px-nav-item {{ active('admin.events.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Events</span></a></li>
                 <li class="px-nav-item {{ active('admin.documents.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Documents & Files</span></a></li>
                 <li class="px-nav-item px-nav-dropdown {{ active('admin.admin.*', 'px-open') }}">
@@ -86,7 +87,9 @@
         <li class="px-nav-item px-nav-dropdown {{ active('system.*', 'px-open') }}">
             <a href="#"><i class="px-nav-icon fa fa-lock"></i><span class="px-nav-label">System Administration</span></a>
             <ul class="px-nav-dropdown-menu">
+                <li class="px-nav-item {{ active('system.settings.*', 'px-nav-active') }}"><a href="{{ route('system.settings.index') }}"><span class="px-nav-label">Settings</span></a></li>
                 <li class="px-nav-item {{ active('system.roles.*', 'px-nav-active') }}"><a href="{{ route('system.roles.index') }}"><span class="px-nav-label">Roles</span></a></li>
+                <li class="px-nav-item {{ active('system.airports.*', 'px-nav-active') }}"><a href="{{ route('system.airports.index') }}"><span class="px-nav-label">Airports</span></a></li>
             </ul>
         </li>
         @endif

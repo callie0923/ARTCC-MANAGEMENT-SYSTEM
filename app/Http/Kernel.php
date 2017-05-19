@@ -6,6 +6,7 @@ use App\Http\Middleware\AddBreadcrumbs;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\TrimStrings;
+use App\Http\Middleware\ULSAuth;
 use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
@@ -78,5 +79,6 @@ class Kernel extends HttpKernel
         'role' => EntrustRole::class,
         'permission' => EntrustPermission::class,
         'ability' => EntrustAbility::class,
+        'ulsauth' => ULSAuth::class,
     ];
 }

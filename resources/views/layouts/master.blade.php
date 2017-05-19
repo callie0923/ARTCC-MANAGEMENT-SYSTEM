@@ -7,10 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="_token" content="{!! csrf_token() !!}"/>
 
+    @php
+        $settings = \App\Models\Settings::find(1);
+    @endphp
+
     @if($pageTitle)
-        <title>vZJX | {{ $pageTitle }}</title>
+        <title>{{$settings->artcc_long}} ARTCC | {{ $pageTitle }}</title>
     @else
-        <title>vZJX</title>
+        <title>{{$settings->artcc_long}} ARTCC</title>
     @endif
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">

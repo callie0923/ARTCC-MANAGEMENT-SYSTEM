@@ -2,6 +2,7 @@
 
 use App\Models\Rating;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AirportSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class AirportSeeder extends Seeder
      */
     public function run()
     {
-        dump("RUN AIRPORTS SQL IN STORAGE/SQL");
+        DB::unprepared(file_get_contents(storage_path('sql/airports.sql')));
     }
 }

@@ -11,7 +11,7 @@ class Airport extends BaseModel
     protected $primaryKey = 'icao';
     public $incrementing = false;
     public $timestamps = false;
-    public $fillable = ['name','iata','icao','lat','lon','elev','country','municipality','is_zjx'];
+    public $fillable = ['name','iata','icao','lat','lon','elev','country','municipality','is_artcc'];
 
     public function loadCharts()
     {

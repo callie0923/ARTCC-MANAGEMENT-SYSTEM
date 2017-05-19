@@ -1,39 +1,36 @@
 <?php
 
-Breadcrumbs::register('index', function($breadcrumbs) {
-    $breadcrumbs->push(env('ARTCC').' ARTCC', route('index'));
+use App\Models\Settings;
+use Illuminate\Support\Facades\Schema;
+
+if(Schema::hasTable('system_settings')) {
+    if(Settings::find(1)) {
+        $settings = Settings::find(1);
+    } else {
+        $settings = new Settings;
+        $settings->artcc_code = '';
+        $settings->save();
+    }
+} else {
+    $settings = [];
+}
+
+
+Breadcrumbs::register('index', function($breadcrumbs) use ($settings) {
+    $breadcrumbs->push($settings->artcc_code.' ARTCC', route('index'));
 });
 
-Breadcrumbs::register('pilots.routes.index', function($breadcrumbs) {
-    $breadcrumbs->push(env('ARTCC').' ARTCC', route('index'));
-    $breadcrumbs->push('Pilots');
-    $breadcrumbs->push('Routes Analyzer');
-});
+//pilots breadcrumbs
+require base_path('routes/_breadcrumbs/pilots.php');
 
-Breadcrumbs::register('pilots.weather.index', function($breadcrumbs) {
-    $breadcrumbs->push(env('ARTCC').' ARTCC', route('index'));
-    $breadcrumbs->push('Pilots');
-    $breadcrumbs->push('Weather');
-});
+//artcc breadcrumbs
+require base_path('routes/_breadcrumbs/artcc.php');
 
-Breadcrumbs::register('pilots.airport.index', function($breadcrumbs) {
-    $breadcrumbs->push(env('ARTCC').' ARTCC', route('index'));
-    $breadcrumbs->push('Pilots');
-    $breadcrumbs->push('Airports');
-});
+//training breadcrumbs
+require base_path('routes/_breadcrumbs/training.php');
 
-Breadcrumbs::register('pilots.airport.airport', function($breadcrumbs, $airport) {
-    $breadcrumbs->push(env('ARTCC').' ARTCC', route('index'));
-    $breadcrumbs->push('Pilots');
-    $breadcrumbs->push('Airports', route('pilots.airport.index'));
-    $breadcrumbs->push($airport->iata);
-});
+//admin breadcrumbs
+require base_path('routes/_breadcrumbs/admin.php');
 
-
-
-
-Breadcrumbs::register('system.roles.index', function($breadcrumbs) {
-    $breadcrumbs->push(env('ARTCC').' ARTCC', route('index'));
-    $breadcrumbs->push('System');
-    $breadcrumbs->push('Roles');
-});
+//system breadcrumbs
+require base_path('routes/_breadcrumbs/system.php');

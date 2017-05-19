@@ -23,7 +23,7 @@ class CreateAirportsTable extends Migration
             $table->string('elev')->nullable();
             $table->string('country')->nullable();
             $table->string('municipality')->nullable();
-            $table->boolean('is_zjx');
+            $table->boolean('is_artcc');
         });
     }
 
