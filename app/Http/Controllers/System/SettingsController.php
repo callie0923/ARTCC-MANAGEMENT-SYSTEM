@@ -24,4 +24,13 @@ class SettingsController extends Controller
 
         return response()->json(['success' => true]);
     }
+
+    public function logo(Request $request)
+    {
+        $file = $request->file('artcc_logo');
+        $destination = public_path('assets/images');
+        $filename = 'logo.png';
+        $file->move($destination, $filename);
+        return redirect()->back()->with('alert-success', 'Logo has been updated!');
+    }
 }

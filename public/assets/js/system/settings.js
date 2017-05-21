@@ -20,4 +20,14 @@ $(document).ready(function() {
         });
 
     });
+
+    var customFile = $('.custom-file');
+    customFile.pxFile();
+    setInterval(function() {
+        if(customFile.hasClass('px-file-has-value')) {
+            $('#fileUploadBtn').show();
+        } else {
+            $('#fileUploadBtn').hide();
+        }
+    }, 100);
 });

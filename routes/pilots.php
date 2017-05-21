@@ -10,7 +10,8 @@ Route::group(['namespace' => 'Pilots'], function() {
 
         Route::get('airport', ['uses' => 'AirportController@index', 'as' => 'pilots.airport.index']);
         Route::get('airport/{airport}', ['uses' => 'AirportController@airport', 'as' => 'pilots.airport.airport']);
-        Route::get('charts/{airport}', ['uses' => 'AirportController@charts', 'as' => 'pilots.airport.charts']);
+        Route::get('airport/{airport}/charts', ['uses' => 'AirportController@charts', 'as' => 'pilots.airport.charts']);
+        Route::get('airport/{airport}/weather', ['uses' => 'AirportController@weather', 'as' => 'pilots.airport.weather']);
 
     });
 });

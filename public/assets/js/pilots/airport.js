@@ -8,4 +8,15 @@ $(document).ready(function() {
             chartDiv.html(data);
         }
     });
+
+    var weatherUrl = $('#loadWeatherUrl').attr('data-url');
+    var weatherDiv = $('#weatherDiv');
+    $.ajax({
+        type: 'get',
+        url: weatherUrl,
+        success: function(data) {
+            weatherDiv.html(data);
+            $('#mapDiv').show();
+        }
+    });
 });

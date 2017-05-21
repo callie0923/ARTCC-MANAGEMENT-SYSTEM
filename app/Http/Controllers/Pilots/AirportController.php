@@ -24,4 +24,10 @@ class AirportController extends Controller
         return view('pilots.airport._partials.charts', compact('airport'))->render();
     }
 
+    public function weather(Airport $airport)
+    {
+        $airport->loadWeather();
+        return view('pilots.airport._partials.weather', compact('airport'))->render();
+    }
+
 }

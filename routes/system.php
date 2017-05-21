@@ -9,6 +9,7 @@ Route::group(['namespace' => 'System'], function() {
 
         Route::get('settings', ['uses' => 'SettingsController@index', 'as' => 'system.settings.index']);
         Route::post('settings', ['uses' => 'SettingsController@update', 'as' => 'system.settings.update']);
+        Route::post('logo', ['uses' => 'SettingsController@logo', 'as' => 'system.settings.logo']);
 
         Route::get('airports', ['uses' => 'AirportController@index', 'as' => 'system.airports.index']);
         Route::post('airports', ['uses' => 'AirportController@update', 'as' => 'system.airports.update']);

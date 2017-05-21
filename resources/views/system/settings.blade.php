@@ -60,6 +60,25 @@
                 <button class="btn btn-primary" id="btnSave">Save Data</button>
             </div>
         </div>
+        <div class="col-sm-6">
+            <form action="{{ route('system.settings.logo') }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label for="upload_logo">ARTCC Logo</label>
+                    <label class="custom-file px-file">
+                        <input type="file" class="custom-file-input" name="artcc_logo">
+                        <span class="custom-file-control form-control">Choose file...</span>
+                        <div class="px-file-buttons">
+                            <button type="button" class="btn px-file-clear">Clear</button>
+                            <button type="button" class="btn btn-primary px-file-browse">Browse</button>
+                        </div>
+                    </label>
+                </div>
+                <div class="form-group" id="fileUploadBtn" style="display: none;">
+                    <button class="btn btn-primary">Upload</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="{{asset('/assets/js/system/settings.js')}}"></script>
