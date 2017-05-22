@@ -107,8 +107,8 @@ class Airport extends BaseModel
         $clouds = [];
         if(strpos((string)$metar->raw_text, 'CAVOK') !== false) {
             $newCloud = new StdClass;
-                if(isset($cloud['sky_cover'])) $newCloud->cover = 'CLR';
-                array_push($clouds, $newCloud);
+            $newCloud->cover = 'CLR';
+            array_push($clouds, $newCloud);
         } else if(isset($metar->sky_condition)) {
             foreach($metar->sky_condition as $cloud) {
                 $newCloud = new StdClass;
