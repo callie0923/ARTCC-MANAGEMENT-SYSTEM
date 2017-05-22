@@ -13,27 +13,17 @@
         @if(isset($airport->weather->visbility)) <a class="list-group-item">VIS <span class="pull-right">{{$airport->weather->visbility}} SM</span></a> @endif
         @if(isset($airport->weather->altim_in_hg)) <a class="list-group-item">ALTIMITER <span class="pull-right">{{$airport->weather->altim_in_hg}}</span></a> @endif
         @if(isset($airport->weather->sea_level_pressure_mb)) <a class="list-group-item">QNH <span class="pull-right">{{$airport->weather->sea_level_pressure_mb}}</span></a> @endif
-
         @if(isset($airport->weather->clouds))
-
             @if($airport->weather->clouds[0]->cover == 'CLR')
-
                 <a class="list-group-item">NO CLOUD OBSERVED</a>
-
             @else
-
                 <a class="list-group-item">CLOUD</a>
                 @foreach($airport->weather->clouds as $cloud)
                     <a class="list-group-item">> <span class="pull-right">{{$cloud->cover.'@'.$cloud->level}}</span></a>
                 @endforeach
-
             @endif
-
         @else
-
             <a class="list-group-item">NO CLOUD OBSERVED</a>
-
         @endif
-
     </div>
 </div>

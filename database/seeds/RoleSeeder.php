@@ -28,7 +28,7 @@ class RoleSeeder extends Seeder
         $datm->description  = 'ARTCC Deputy Air Traffic Manager';
         $datm->training_role  = 0;
         $datm->active = 1;
-        $atm->save();
+        $datm->save();
 
         $ta = new Role;
         $ta->name         = 'ta';

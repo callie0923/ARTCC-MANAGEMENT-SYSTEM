@@ -46,6 +46,11 @@
         });
     </script>
 
+    @if(isset($dataTables))
+        <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+        <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    @endif
+
 </head>
 <body>
 <!-- Nav -->
@@ -71,7 +76,11 @@
             @yield('content')
         </div>
     </div>
+
 </div>
+
+<br>
+<br>
 
 <!-- Footer -->
 <footer class="px-footer px-footer-bottom">

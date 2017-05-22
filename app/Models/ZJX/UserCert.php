@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserCert extends Model
 {
-    public $table = 'user_certs';
+    public $table = 'users_certs';
     public $primaryKey = 'id';
     public $fillable = ['user_id','min_del','min_gnd','min_twr','min_app','f11_del','f11_gnd','f11_twr','f11_app','zjx'];
 

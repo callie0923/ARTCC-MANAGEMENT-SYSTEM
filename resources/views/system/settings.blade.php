@@ -53,8 +53,12 @@
                 <input type="text" class="form-control" name="uls_key" id="uls_key" value="{{ ($settings->vatusa_uls_key) }}">
             </div>
             <div class="form-group">
-                <label for="api_key">ARTCC Code</label>
+                <label for="api_key">VATUSA API Code</label>
                 <input type="text" class="form-control" name="api_key" id="api_key" value="{{ ($settings->vatusa_api_key) }}">
+            </div>
+            <div class="form-group" id="ipdiv" style="display: none;">
+                <label for="api_key">Update IP in VATUSA</label>
+                <input type="text" class="form-control" id="ip" disabled>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" id="btnSave">Save Data</button>

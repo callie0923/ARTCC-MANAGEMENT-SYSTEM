@@ -16,13 +16,13 @@ class CreateAirportsTable extends Migration
         Schema::create('airports', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
-            $table->string('iata')->nullable();
-            $table->string('icao')->nullable();
             $table->string('lat')->nullable();
             $table->string('lon')->nullable();
             $table->string('elev')->nullable();
             $table->string('country')->nullable();
             $table->string('municipality')->nullable();
+            $table->string('icao')->nullable();
+            $table->string('iata')->nullable();
             $table->boolean('is_artcc');
         });
     }

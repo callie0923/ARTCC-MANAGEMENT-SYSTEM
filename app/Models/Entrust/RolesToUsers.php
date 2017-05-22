@@ -9,6 +9,7 @@ class RolesToUsers extends Model
 {
     public $timestamps = false;
     protected $table = 'entrust_roles_to_user';
+    public $fillable = ['user_id', 'role_id'];
 
     public function user()
     {

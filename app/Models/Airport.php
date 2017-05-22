@@ -88,7 +88,16 @@ class Airport extends BaseModel
 
         // altim_in_hg
         if(isset($metar->altim_in_hg)) {
-            $weather->altim_in_hg = substr((string)$metar->altim_in_hg, 0, 5);
+            $altim = substr((string)$metar->altim_in_hg, 0, 6);
+
+            if((int)substr($altim, -1) > 4) {
+                $altim = substr($altim, 0, 5);;
+                $last = substr($altim, -1)+1;
+                $altim = substr($altim, 0, 4);
+                $weather->altim_in_hg = $altim.$last;
+            } else {
+                $weather->altim_in_hg = substr($altim, 0, 5);
+            }
         }
 
 

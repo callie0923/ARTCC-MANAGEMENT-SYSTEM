@@ -15,6 +15,8 @@
                     <img src="https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center={!! $airport->lat !!},{!! $airport->lon !!}&zoom=13&size=1000x450&key=AIzaSyDd_Y91P1tO0ccZQQ9FCjLfJUI9RUdAMkg" style="width: 100%;">
                 </div>
             </div>
+            <br>
+            <br>
         </div>
         <div class="col-sm-6">
             <div class="row">

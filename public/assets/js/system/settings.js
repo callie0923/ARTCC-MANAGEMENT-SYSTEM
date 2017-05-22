@@ -1,4 +1,18 @@
 $(document).ready(function() {
+
+    if($('#api_key').val().length > 0) {
+        $.ajax({
+            url: 'https://api.vatusa.net/'+$('#api_key').val()+'/roster',
+            type: 'get',
+            error: function(data) {
+                var json = $.parseJSON(data.responseText);
+                $('#ip').val(json.ip);
+                $('#ipdiv').show();
+            }
+        });
+    }
+
+
     var postUrl = $('#postDataUrl').data('url');
     var btn = $('#btnSave');
 
