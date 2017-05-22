@@ -78,7 +78,7 @@ class Airport extends BaseModel
 
         // visibility_statute_mi
         if(isset($metar->visibility_statute_mi)) {
-            if(strpos((string)$metar->raw_text, '9999') !== false) {
+            if(strpos((string)$metar->raw_text, '9999') !== false || strpos((string)$metar->raw_text, 'CAVOK') !== false) {
                 $weather->visbility = '10.0';
             } else {
                 $weather->visbility = (string)$metar->visibility_statute_mi;
