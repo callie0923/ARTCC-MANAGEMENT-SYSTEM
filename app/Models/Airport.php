@@ -96,8 +96,8 @@ class Airport extends BaseModel
         if(isset($metar->sea_level_pressure_mb)) {
             $weather->sea_level_pressure_mb = explode('.', $metar->sea_level_pressure_mb)[0];
         }else if(preg_match("/(Q)[0-9]{4}/",(string)$metar->raw_text, $qnh_array)) {
-            $qnh = $qnh_array[0];
-            dd($qnh);
+            $qnh = str_replace('Q', '', $qnh_array[0]);
+            $weather->sea_level_pressure_mb = $qnh;
         }
 
         // flight_cat
