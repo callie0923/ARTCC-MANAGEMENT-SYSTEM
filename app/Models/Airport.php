@@ -104,16 +104,20 @@ class Airport extends BaseModel
 
 
         // clouds
-        if(isset($metar->sky_condition)) {
-            $clouds = [];
+        $clouds = [];
+        if(strpos((string)$metar->raw_text, 'CAVOK') !== false) {
+            $newCloud = new StdClass;
+                if(isset($cloud['sky_cover'])) $newCloud->cover = 'CLR';
+                array_push($clouds, $newCloud);
+        } else if(isset($metar->sky_condition)) {
             foreach($metar->sky_condition as $cloud) {
                 $newCloud = new StdClass;
                 if(isset($cloud['sky_cover'])) $newCloud->cover = (string)$cloud['sky_cover'];
                 if(isset($cloud['cloud_base_ft_agl'])) $newCloud->level = (string)$cloud['cloud_base_ft_agl'];
                 array_push($clouds, $newCloud);
             }
-            $weather->clouds = $clouds;
         }
+        $weather->clouds = $clouds;
 
         $this->weather = $weather;
         return $this;
