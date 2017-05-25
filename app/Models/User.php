@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\ARTCC\UserNotifications;
+use App\Models\System\Rating;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
-use App\Models\ZJX\UserCert;
+use App\Models\ARTCC\UserCert;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -27,6 +29,14 @@ class User extends Authenticatable
         'status' // 0 (active) or 1 (inactive) or 2 (loa)
     ];
 
+    public function getFullNameAttribute() {
+        return $this->first_name.' '.$this->last_name;
+    }
+
+    public function getBackwardsNameAttribute() {
+        return $this->last_name.' '.$this->first_name;
+    }
+
     public function rating() {
         return $this->hasOne(Rating::class, 'id', 'rating_id');
     }
@@ -35,11 +45,11 @@ class User extends Authenticatable
         return $this->hasOne(UserCert::class, 'user_id', 'id');
     }
 
-    public function getFullNameAttribute() {
-        return $this->first_name.' '.$this->last_name;
+    public function notifications() {
+        return $this->hasMany(UserNotifications::class, 'user_id', 'id');
     }
 
-    public function getBackwardsNameAttribute() {
-        return $this->last_name.' '.$this->first_name;
+    public function unreadNotifications() {
+        return $this->hasMany(UserNotifications::class, 'user_id', 'id')->where('read_status', 0)->orderBy('id', 'desc');
     }
 }

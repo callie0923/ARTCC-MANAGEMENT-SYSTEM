@@ -8,7 +8,7 @@
     <meta name="_token" content="{!! csrf_token() !!}"/>
 
     @php
-        $settings = \App\Models\Settings::find(1);
+        $settings = App\Models\System\Settings::find(1);
     @endphp
 
     @if($pageTitle)

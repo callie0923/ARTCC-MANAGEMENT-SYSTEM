@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Models;
+namespace App\Models\System;
 
 use App\BaseModel;
 use GuzzleHttp\Client;

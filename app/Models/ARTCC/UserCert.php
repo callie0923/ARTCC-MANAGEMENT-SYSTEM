@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\ZJX;
+namespace App\Models\ARTCC;
 
 use Illuminate\Database\Eloquent\Model;
 

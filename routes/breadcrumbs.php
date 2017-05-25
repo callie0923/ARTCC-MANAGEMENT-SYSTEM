@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Settings;
+use App\Models\System\Settings;
 use Illuminate\Support\Facades\Schema;
 
 if(Schema::hasTable('system_settings')) {

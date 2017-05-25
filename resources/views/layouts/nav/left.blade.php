@@ -13,6 +13,17 @@
                     <a href="#" class="btn btn-xs btn-primary btn-outline"><i class="fa fa-user"></i></a>
                     <a href="{{ route('auth.logout') }}" class="btn btn-xs btn-danger btn-outline"><i class="fa fa-power-off"></i></a>
                 </div>
+                <br>
+                <div class="btn-group" style="margin-top: 4px;">
+                    @php $countUnread = count(Auth::user()->unreadNotifications); @endphp
+                    @if($countUnread == 0)
+                        <a href="#" class="btn btn-xs btn-success btn-outline">{{ $countUnread }} Unread Notifications</a>
+                    @elseif($countUnread > 5)
+                        <a href="#" class="btn btn-xs btn-danger btn-outline">{{ $countUnread }} Unread Notifications</a>
+                    @else
+                        <a href="#" class="btn btn-xs btn-warning btn-outline">{{ $countUnread }} Unread Notifications</a>
+                    @endif
+                </div>
             </li>
         @else
             <li class="px-nav-item">
