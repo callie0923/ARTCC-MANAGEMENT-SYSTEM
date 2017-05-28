@@ -13,7 +13,7 @@
         <div class="col-sm-12">
             <form action="/system/airports" method="get">
                 <div class="input-group">
-                    <input type="text" name="query" class="form-control" placeholder="Search Query">
+                    <input type="text" name="query" class="form-control" placeholder="Search Query" value="{{ Request::get('query')  }}">
                     <div class="input-group-btn">
                         <button class="btn btn-success" type="submit">Search</button>
                     </div>

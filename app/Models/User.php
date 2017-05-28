@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\ARTCC\UserNotifications;
+use App\Models\System\UserNotifications;
 use App\Models\System\Rating;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use App\Models\ARTCC\UserCert;

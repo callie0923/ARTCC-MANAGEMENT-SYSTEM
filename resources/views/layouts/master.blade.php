@@ -10,6 +10,12 @@
     @php
         $settings = App\Models\System\Settings::find(1);
     @endphp
+    @if(Auth::check())
+        @php
+            $unreadNotification = Auth::user()->unreadNotifications;
+            $countUnreadNotifications = count($unreadNotification);
+        @endphp
+    @endif
 
     @if($pageTitle)
         <title>{{$settings->artcc_long}} ARTCC | {{ $pageTitle }}</title>
@@ -40,6 +46,7 @@
     <script src="/assets/js/pixeladmin.min.js"></script>
     <script src="/assets/js/plugins/select2.full.min.js"></script>
     <script src="/assets/js/plugins/jquery-ui.min.js"></script>
+    <script src="/assets/js/artcc_system.js"></script>
     <script type="text/javascript">
         $.ajaxSetup({
             headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
@@ -53,6 +60,13 @@
 
 </head>
 <body>
+
+@if(Auth::check())
+    <div id="authStatus" data-status="auth"></div>
+@else
+    <div id="authStatus" data-status="noauth"></div>
+@endif
+
 <!-- Nav -->
 @include('layouts.nav.left')
 
@@ -102,6 +116,20 @@
     });
 
 </script>
+
+<div class="modal fade" id="notificationModal" tabindex="-1" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title">Unread Notifications</h4>
+            </div>
+            <div class="modal-body" id="notificationModalBody">
+                {{-- content in here --}}
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </body>

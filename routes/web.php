@@ -6,6 +6,8 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 
+require base_path('routes/notifications.php');
+
 require base_path('routes/pilots.php');
 require base_path('routes/artcc.php');
 

@@ -15,13 +15,12 @@
                 </div>
                 <br>
                 <div class="btn-group" style="margin-top: 4px;">
-                    @php $countUnread = count(Auth::user()->unreadNotifications); @endphp
-                    @if($countUnread == 0)
-                        <a href="#" class="btn btn-xs btn-success btn-outline">{{ $countUnread }} Unread Notifications</a>
-                    @elseif($countUnread > 5)
-                        <a href="#" class="btn btn-xs btn-danger btn-outline">{{ $countUnread }} Unread Notifications</a>
+                    @if($countUnreadNotifications == 0)
+                        <button type="button" class="btn btn-xs btn-success btn-outline notificationButton" style="background: #6fb952; border-color: transparent!important; color: #fff!important;">{{ $countUnreadNotifications }} Unread Notifications</button>
+                    @elseif($countUnreadNotifications > 0 && $countUnreadNotifications < 6)
+                        <button type="button" class="btn btn-xs btn-warning btn-outline notificationButton" style="background: #db9839; border-color: transparent!important; color: #fff!important;">{{ $countUnreadNotifications }} Unread Notifications</button>
                     @else
-                        <a href="#" class="btn btn-xs btn-warning btn-outline">{{ $countUnread }} Unread Notifications</a>
+                        <button type="button" class="btn btn-xs btn-danger btn-outline notificationButton" style="background: #e25443; border-color: transparent!important; color: #fff!important;">{{ $countUnreadNotifications }} Unread Notifications</button>
                     @endif
                 </div>
             </li>
