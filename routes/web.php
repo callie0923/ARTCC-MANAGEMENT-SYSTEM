@@ -5,9 +5,6 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::get('login', ['uses' => 'AuthController@login', 'as' => 'auth.login']);
 });
 
-
-require base_path('routes/notifications.php');
-
 require base_path('routes/pilots.php');
 require base_path('routes/artcc.php');
 
@@ -20,6 +17,7 @@ Route::group(['middleware' => ['web','ulsauth']], function () {
 
     require base_path('routes/forum.php');
     require base_path('routes/ids.php');
+    require base_path('routes/notifications.php');
 
     Route::group(['middleware' => ['web','ulsauth','role:atm|datm']], function () {
         require base_path('routes/system.php');
