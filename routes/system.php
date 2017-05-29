@@ -13,6 +13,7 @@ Route::group(['namespace' => 'System'], function() {
 
         Route::get('airports', ['uses' => 'AirportController@index', 'as' => 'system.airports.index']);
         Route::post('airports', ['uses' => 'AirportController@update', 'as' => 'system.airports.update']);
+        Route::post('airports/home', ['uses' => 'AirportController@updateHome', 'as' => 'system.airports.updatehome']);
 
     });
 });

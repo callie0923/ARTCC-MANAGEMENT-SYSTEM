@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Models\Airport;
+use App\Models\System\Airport;
 use Illuminate\Http\Request;
 
 class ResourceController extends Controller

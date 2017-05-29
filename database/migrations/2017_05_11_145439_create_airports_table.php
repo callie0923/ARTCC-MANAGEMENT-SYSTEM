@@ -24,6 +24,7 @@ class CreateAirportsTable extends Migration
             $table->string('icao')->nullable();
             $table->string('iata')->nullable();
             $table->boolean('is_artcc');
+            $table->boolean('is_home');
         });
     }
 

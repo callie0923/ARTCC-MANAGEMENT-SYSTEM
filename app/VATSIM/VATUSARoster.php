@@ -2,6 +2,8 @@
 
 namespace App\VATSIM;
 
+use App\Models\System\Settings;
+
 class VATUSARoster
 {
     private $vatusa;
@@ -20,7 +22,8 @@ class VATUSARoster
      */
     public function getRoster()
     {
-        return $this->vatusa->get('roster');
+        $settings = Settings::find(1);
+        return $this->vatusa->get($settings->vatusa_api_key, 'roster');
     }
 
     /**
@@ -28,7 +31,8 @@ class VATUSARoster
      */
     public function getTransfers()
     {
-        return $this->vatusa->get('transfer');
+        $settings = Settings::find(1);
+        return $this->vatusa->get($settings->vatusa_api_key, 'transfer');
     }
 
     /**
@@ -40,12 +44,13 @@ class VATUSARoster
      */
     public function processTransfer($id, $action, $staff, $reason = null)
     {
+        $settings = Settings::find(1);
         if($action == 'accept') {
             $data = ['action' => $action, 'by' => $staff];
         } else {
             $data = ['action' => $action, 'by' => $staff, 'reason' => $reason];
         }
-        return $this->vatusa->post('transfer/'.$id, $data);
+        return $this->vatusa->post($settings->vatusa_api_key, 'transfer/'.$id, $data);
     }
 
     /**
@@ -54,7 +59,8 @@ class VATUSARoster
      */
     public function getController($cid)
     {
-        return $this->vatusa->get('controller/'.$cid);
+        $settings = Settings::find(1);
+        return $this->vatusa->get($settings->vatusa_api_key, 'controller/'.$cid);
     }
 
     /**
@@ -65,8 +71,9 @@ class VATUSARoster
      */
     public function removeController($cid, $staff, $reason)
     {
+        $settings = Settings::find(1);
         $data = ['by' => $staff, 'msg' => $reason];
-        return $this->vatusa->deleteRoster($cid, $data);
+        return $this->vatusa->deleteRoster($settings->vatusa_api_key, $cid, $data);
     }
 
     /**
@@ -77,8 +84,9 @@ class VATUSARoster
      */
     public function processSoloCert($cid, $position, $expiry)
     {
+        $settings = Settings::find(1);
         $data = ['expiry' => $expiry];
-        return $this->vatusa->post('solo/'.$cid.'/'.$position, $data);
+        return $this->vatusa->post($settings->vatusa_api_key, 'solo/'.$cid.'/'.$position, $data);
     }
 
     /**
@@ -88,7 +96,8 @@ class VATUSARoster
      */
     public function removeSoloCert($cid, $position)
     {
-        return $this->vatusa->deleteSoloCert($cid, $position);
+        $settings = Settings::find(1);
+        return $this->vatusa->deleteSoloCert($settings->vatusa_api_key, $cid, $position);
     }
 
 }

@@ -18,6 +18,10 @@ class CreateSystemSettingsTable extends Migration
             $table->string('artcc_code')->nullable();
             $table->string('vatusa_uls_key')->nullable();
             $table->string('vatusa_api_key')->nullable();
+            $table->text('wx_nex_gen_radar')->nullable();
+            $table->text('wx_vis_radar')->nullable();
+            $table->text('wx_infrared_radar')->nullable();
+            $table->text('wx_wind_surface_data')->nullable();
         });
     }
 

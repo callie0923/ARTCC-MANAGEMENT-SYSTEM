@@ -7,6 +7,7 @@ Route::group(['namespace' => 'Pilots'], function() {
         Route::post('genroute', ['uses' => 'RouteController@loadRoutes', 'as' => 'pilots.routes.load']);
 
         Route::get('weather', ['uses' => 'WeatherController@index', 'as' => 'pilots.weather.index']);
+        Route::get('weather/metars', ['uses' => 'WeatherController@metars', 'as' => 'pilots.weather.metars']);
 
         Route::get('airport', ['uses' => 'AirportController@index', 'as' => 'pilots.airport.index']);
         Route::get('airport/{airport}', ['uses' => 'AirportController@airport', 'as' => 'pilots.airport.airport']);

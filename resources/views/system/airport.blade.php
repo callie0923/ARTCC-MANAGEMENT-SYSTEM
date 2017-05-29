@@ -33,7 +33,7 @@
                     <th>Name</th>
                     <th>Country</th>
                     <th>Municipality</th>
-                    <th>Is ARTCC Airport</th>
+                    <th>Is ARTCC Airport/Is Home Page</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,6 +47,7 @@
                         <td>{{$airport->municipality}}</td>
                         <td>
                             <input type="checkbox" {{($airport->is_artcc == 1) ? 'checked':''}} value="1" data-toggle="toggle" data-style="ios" data-on="Yes" data-off="No" data-size="mini" class="airportupdateswitch" data-airportid="{{$airport->id}}">
+                            <input type="checkbox" {{($airport->is_home == 1) ? 'checked':''}} value="1" data-toggle="toggle" data-style="ios" data-on="Yes" data-off="No" data-size="mini" class="airportupdatehomeswitch" data-airportid="{{$airport->id}}">
                         </td>
                     </tr>
                 @empty
@@ -67,5 +68,6 @@
 
     <script src="{{asset('/assets/js/system/airports.js')}}"></script>
     <div style="display: none;" id="postDataUrl" data-url="{{ route('system.airports.update') }}"></div>
+    <div style="display: none;" id="postDataHomeUrl" data-url="{{ route('system.airports.updatehome') }}"></div>
 
 @endsection

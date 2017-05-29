@@ -2,12 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Models\ARTCC\UserCert;
 use App\Models\Entrust\Role;
 use App\Models\Entrust\RolesToUsers;
-use App\Models\Rating;
-use App\Models\Settings;
+use App\Models\System\Rating;
+use App\Models\System\Settings;
 use App\Models\User;
-use App\Models\ZJX\UserCert;
 use Illuminate\Console\Command;
 
 class InitialSetup extends Command
@@ -55,6 +55,12 @@ class InitialSetup extends Command
         $settings->artcc_code = $artccCode;
         $settings->vatusa_uls_key = $this->ask('Please Enter your VATUSA ULS Key..');
         $settings->vatusa_api_key = $this->ask('Please Enter your VATUSA API Key..');
+
+        $settings->wx_nex_gen_radar = 'http://www.weather.unisys.com/radar/wrad_se.gif';
+        $settings->wx_vis_radar = 'http://www.weather.unisys.com/satellite/sat_vis_se_loop-12.gif';
+        $settings->wx_infrared_radar = 'http://www.weather.unisys.com/satellite/sat_ir_enh_se_loop-12.gif';
+        $settings->wx_wind_surface_data = 'http://weather.unisys.com/surface/sfc_se.gif';
+
         $settings->save();
 
         $this->info('Settings complete, now time to setup the inital user...');
@@ -72,7 +78,7 @@ class InitialSetup extends Command
         $user->status = 0;
         $user->save();
         UserCert::create([
-            'user_id' => $user->id
+            'user_id' => $cid
         ]);
 
         $this->info('Time to set your role on the site...');

@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Console\Commands\BuildInitialRoster;
+use App\Console\Commands\GetAirportWeather;
 use App\Console\Commands\InitialSetup;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -15,6 +17,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         InitialSetup::class,
+        GetAirportWeather::class,
+        BuildInitialRoster::class,
     ];
 
     /**

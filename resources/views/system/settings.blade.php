@@ -57,8 +57,24 @@
                 <input type="text" class="form-control" name="api_key" id="api_key" value="{{ ($settings->vatusa_api_key) }}">
             </div>
             <div class="form-group" id="ipdiv" style="display: none;">
-                <label for="api_key">Update IP in VATUSA</label>
+                <label for="ip">Update IP in VATUSA</label>
                 <input type="text" class="form-control" id="ip" disabled>
+            </div>
+            <div class="form-group">
+                <label for="wx_nex_gen_radar">WX Next Gen Radar</label>
+                <input type="text" class="form-control" name="wx_nex_gen_radar" id="wx_nex_gen_radar" value="{{ ($settings->wx_nex_gen_radar) }}">
+            </div>
+            <div class="form-group">
+                <label for="wx_vis_radar">WX Visible Radar</label>
+                <input type="text" class="form-control" name="wx_vis_radar" id="wx_vis_radar" value="{{ ($settings->wx_vis_radar) }}">
+            </div>
+            <div class="form-group">
+                <label for="wx_infrared_radar">WX Infrared Radar</label>
+                <input type="text" class="form-control" name="wx_infrared_radar" id="wx_infrared_radar" value="{{ ($settings->wx_infrared_radar) }}">
+            </div>
+            <div class="form-group">
+                <label for="wx_wind_surface_data">WX Wind Surface Data</label>
+                <input type="text" class="form-control" name="wx_wind_surface_data" id="wx_wind_surface_data" value="{{ ($settings->wx_wind_surface_data) }}">
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" id="btnSave">Save Data</button>

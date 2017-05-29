@@ -26,4 +26,14 @@ class AirportController extends Controller
         $airport->is_artcc = $request->get('status');
         $airport->save();
     }
+
+    public function updateHome(Request $request)
+    {
+        $airport = Airport::where('id', $request->get('airport_id'))->first();
+        $airport->is_home = $request->get('status');
+        if($request->get('status') == 1) {
+            $airport->is_artcc = 1;
+        }
+        $airport->save();
+    }
 }

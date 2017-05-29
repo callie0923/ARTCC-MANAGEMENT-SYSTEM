@@ -17,6 +17,7 @@ class EntrustSetupTables extends Migration
             $table->string('name')->unique();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
+            $table->string('email')->nullable();
             $table->text('role_desc')->nullable();
             $table->tinyInteger('training_role')->nullable();
             $table->tinyInteger('active')->nullable();

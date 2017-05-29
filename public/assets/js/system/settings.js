@@ -20,8 +20,13 @@ $(document).ready(function() {
         var artcc_code = $('#artcc_code option:selected').val();
         var uls_key = $('#uls_key').val();
         var api_key = $('#api_key').val();
+        var wx_nex_gen_radar = $('#wx_nex_gen_radar').val();
+        var wx_vis_radar = $('#wx_vis_radar').val();
+        var wx_infrared_radar = $('#wx_infrared_radar').val();
+        var wx_wind_surface_data = $('#wx_wind_surface_data').val();
+
         btn.addClass('btn-loading');
-        var data = {'artcc_code':artcc_code, 'uls_key':uls_key, 'api_key':api_key};
+        var data = {'artcc_code':artcc_code, 'uls_key':uls_key, 'api_key':api_key, 'wx_nex_gen_radar':wx_nex_gen_radar, 'wx_vis_radar':wx_vis_radar, 'wx_infrared_radar':wx_infrared_radar, 'wx_wind_surface_data':wx_wind_surface_data};
 
         $.ajax({
             url: postUrl,

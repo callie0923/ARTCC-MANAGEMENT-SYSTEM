@@ -16,6 +16,11 @@ class Airport extends BaseModel
     public $fillable = ['name','iata','icao','lat','lon','elev','country','municipality','is_artcc'];
     protected $metarSource = "https://www.aviationweather.gov/adds/dataserver_current/httpparam?dataSource=metars&requestType=retrieve&format=xml&hoursBeforeNow=2&mostRecentForEachStation=true&stationString=%s";
 
+    public function weather()
+    {
+        return $this->hasOne(Weather::class, 'airport_id', 'id');
+    }
+
     public function loadCharts()
     {
         $client = new Client;

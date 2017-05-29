@@ -8,7 +8,7 @@ class Role extends EntrustRole
 {
     public static function getActive()
     {
-        return self::where('active', 1)->get();
+        return self::where('active', 1)->where('training_role', 0)->get();
     }
 
     public function staff()
