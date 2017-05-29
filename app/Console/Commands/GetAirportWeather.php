@@ -66,6 +66,22 @@ class GetAirportWeather extends Command
 
             $flight_cat = (string)$metar->flight_category;
 
+            if(strpos((string)$metar->wind_dir_degrees, 'VRB') !== false) {
+                $wind_dir = 'VRB';
+            }elseif($metar->wind_dir_degrees < 100 && $metar->wind_dir_degrees > 1) {
+                $wind_dir = '0'.$metar->wind_dir_degrees;
+            } else {
+                $wind_dir = (string)$metar->wind_dir_degrees;
+            }
+
+            if($metar->wind_speed_kt < 10 && $metar->wind_speed_kt > 1) {
+                $wind_speed = '0'.$metar->wind_speed_kt;
+            } else {
+                $wind_speed = (string)$metar->wind_speed_kt;
+            }
+
+            $wind = $wind_dir.'@'.$wind_speed;
+
 
             Weather::updateOrCreate([
                 'airport_id' => $airport->id
@@ -74,6 +90,7 @@ class GetAirportWeather extends Command
                 'metar' => $raw,
                 'flight_cat' => $flight_cat,
                 'altim_in_hg' => $altim_in_hg,
+                'wind' => $wind
             ]);
 
         }
