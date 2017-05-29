@@ -35,9 +35,11 @@ class RolesController extends Controller
     {
         $roleId = $request->get('roleId');
         $desc = $request->get('desc');
+        $email = $request->get('email');
 
         $role = Role::where('id', $roleId)->first();
         $role->role_desc = $desc;
+        $role->email = $email;
         $role->save();
 
         return response()->json(['success' => 'true']);

@@ -20,11 +20,11 @@ class CreateUserCertsTable extends Migration
             $table->integer('min_gnd')->default(0);
             $table->integer('min_twr')->default(0);
             $table->integer('min_app')->default(0);
-            $table->integer('f11_del')->default(0);
-            $table->integer('f11_gnd')->default(0);
-            $table->integer('f11_twr')->default(0);
-            $table->integer('f11_app')->default(0);
-            $table->integer('zjx')->default(0);
+            $table->integer('maj_del')->default(0);
+            $table->integer('maj_gnd')->default(0);
+            $table->integer('maj_twr')->default(0);
+            $table->integer('maj_app')->default(0);
+            $table->integer('enroute')->default(0);
             $table->timestamps();
         });
     }

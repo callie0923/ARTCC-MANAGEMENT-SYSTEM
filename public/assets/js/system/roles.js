@@ -15,12 +15,13 @@ $(document).ready(function() {
     $('.saverole').click(function() {
         var btn = $(this);
         var roleId = btn.data('roleid');
-        var input = btn.parent().siblings('td.descriptiontd').find('.description').val();
+        var desc = btn.parent().siblings('td.descriptiontd').find('.description').val();
+        var email = btn.parent().siblings('td.descriptiontd').find('.email').val();
         btn.addClass('btn-loading');
         $.ajax({
             url: descurl,
             type: 'post',
-            data: {roleId: roleId, desc: input},
+            data: {roleId:roleId, desc:desc, email:email},
             success: function(data) {
                 btn.removeClass('btn-loading');
             }

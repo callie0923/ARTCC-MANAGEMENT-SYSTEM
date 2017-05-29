@@ -13,6 +13,8 @@ class ManagementController extends Controller
         $roleCollection = Role::getActive();
         $instructorCollection = RolesToUsers::where('role_id', 10)->get();
         $mentorCollection = RolesToUsers::where('role_id', 11)->get();
-        return view('artcc.management.index', compact('roleCollection', 'instructorCollection', 'mentorCollection'));
+        $instructorRole = Role::find(10);
+        $mentorRole = Role::find(11);
+        return view('artcc.management.index', compact('roleCollection', 'instructorCollection', 'mentorCollection','instructorRole','mentorRole'));
     }
 }

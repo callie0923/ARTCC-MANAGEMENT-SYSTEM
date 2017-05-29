@@ -29,7 +29,10 @@
                         <td>{{ $role->id }}</td>
                         <td>{{ $role->display_name }}</td>
                         <td>{{ $role->description }}</td>
-                        <td class="descriptiontd"><input type="text" class="form-control description" data-role="{{$role->id}}" value="{{$role->role_desc}}"></td>
+                        <td class="descriptiontd">
+                            <input type="text" class="form-control description" value="{{$role->role_desc}}" placeholder="Description">
+                            <input type="text" class="form-control email" value="{{$role->email}}" placeholder="Email">
+                        </td>
                         <td><button class="btn btn-success btn-sm saverole" data-roleid="{{$role->id}}"><i class="fa fa-check"></i></button></td>
                         <td>
                             @if(!in_array($role->name, ['atm','datm','ta','ec','fe','wm','ins','mtr']))
