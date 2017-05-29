@@ -64,7 +64,7 @@ class Airport extends BaseModel
 
         // wind direction
         if(isset($metar->wind_dir_degrees)) {
-            if(strpos((string)$metar->wind_dir_degrees, 'VRB') !== false) {
+            if(strpos((string)$metar->raw_text, 'VRB') !== false) {
                 $weather->wind_dir = 'VRB';
             }elseif($metar->wind_dir_degrees < 100 && $metar->wind_dir_degrees > 1) {
                 $weather->wind_dir = '0'.$metar->wind_dir_degrees;
