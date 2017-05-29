@@ -45,7 +45,7 @@ class RoleSeeder extends Seeder
         $ec->name = 'ec';
         $ec->display_name = 'Events Coordinator';
         $ec->description = 'ARTCC Events Coordinator';
-        $fe->role_desc = 'The Events Coordinator is responsible to the Deputy Air Traffic Manager for the coordination, planning, dissemination and creation of events to neighboring facilities, virtual airlines, VATUSA and VATSIM.';
+        $ec->role_desc = 'The Events Coordinator is responsible to the Deputy Air Traffic Manager for the coordination, planning, dissemination and creation of events to neighboring facilities, virtual airlines, VATUSA and VATSIM.';
         $ec->training_role = 0;
         $ec->active = 1;
         $ec->save();
