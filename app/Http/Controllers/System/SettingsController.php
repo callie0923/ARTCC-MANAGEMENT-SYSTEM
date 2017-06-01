@@ -38,4 +38,14 @@ class SettingsController extends Controller
         $file->move($destination, $filename);
         return redirect()->back()->with('alert-success', 'Logo has been updated!');
     }
+
+    public function welcomeText(Request $request)
+    {
+        $welcome = $request->get('welcome_msg');
+        $settings = Settings::find(1);
+        $settings->welcome_text = $welcome;
+        $settings->save();
+
+        return redirect()->back()->with('alert-success', 'Welcome Message Succesfully Updated');
+    }
 }

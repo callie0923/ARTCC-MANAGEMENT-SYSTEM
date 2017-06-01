@@ -1,5 +1,15 @@
 $(document).ready(function() {
 
+    var welcome_msg = $('#welcomeText').html();
+    $('#welcome_msg').summernote({
+        height: 300,
+        toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['bold', 'italic', 'underline']],
+            ['fontsize', ['fontsize']]
+        ],
+    });
+
     if($('#api_key').val().length > 0) {
         $.ajax({
             url: 'https://api.vatusa.net/'+$('#api_key').val()+'/roster',

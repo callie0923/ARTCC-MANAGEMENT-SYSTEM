@@ -32,7 +32,13 @@ class User extends Authenticatable
     public static function homeMembers() {
         return self::where('visitor', 0)->where(function($q) {
             $q->where('status', 0)->orWhere('status', 2);
-        })->get();
+        })->orderBy('last_name', 'asc')->get();
+    }
+
+    public static function visitorMembers() {
+        return self::where('visitor', 1)->where(function($q) {
+            $q->where('status', 0)->orWhere('status', 2);
+        })->orderBy('last_name', 'asc')->get();
     }
 
     public function getFullNameAttribute() {
@@ -40,7 +46,18 @@ class User extends Authenticatable
     }
 
     public function getBackwardsNameAttribute() {
-        return $this->last_name.' '.$this->first_name;
+        return $this->last_name.', '.$this->first_name;
+    }
+
+    public function getStatusTextAttribute() {
+        switch($this->status) {
+            case 0:
+                return 'Active';
+                break;
+            case 2:
+                return 'LOA';
+                break;
+        }
     }
 
     public function rating() {

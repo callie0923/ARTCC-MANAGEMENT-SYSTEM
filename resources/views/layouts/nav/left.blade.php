@@ -45,7 +45,7 @@
             <a href="#"><i class="px-nav-icon fa fa-users"></i><span class="px-nav-label">ARTCC</span></a>
             <ul class="px-nav-dropdown-menu">
                 <li class="px-nav-item {{ active('artcc.management.index', 'px-nav-active') }}"><a href="{{ route('artcc.management.index') }}"><span class="px-nav-label">Management</span></a></li>
-                <li class="px-nav-item {{ active('artcc.roster.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Roster</span></a></li>
+                <li class="px-nav-item {{ active('artcc.roster.*', 'px-nav-active') }}"><a href="{{ route('artcc.roster.index') }}"><span class="px-nav-label">Roster</span></a></li>
                 <li class="px-nav-item {{ active('artcc.documents.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Documents & Files</span></a></li>
                 <li class="px-nav-item {{ active('artcc.stats', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Controller Stats</span></a></li>
             </ul>
@@ -118,6 +118,7 @@
                         <li class="px-nav-item {{ active('system.roles.*', 'px-nav-active') }}"><a href="{{ route('system.roles.index') }}"><span class="px-nav-label">Roles</span></a></li>
                         <li class="px-nav-item {{ active('system.airports.*', 'px-nav-active') }}"><a href="{{ route('system.airports.index') }}"><span class="px-nav-label">Airports</span></a></li>
                         <li class="px-nav-item {{ active('system.forum.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Forum Admin</span></a></li>
+                        <li class="px-nav-item {{ active('system.email.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Email Admin</span></a></li>
                     </ul>
                 </li>
             @endif

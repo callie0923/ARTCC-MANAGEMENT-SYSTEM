@@ -1,4 +1,4 @@
-@extends('layouts.master', ['pageTitle' => 'System Settings'])
+@extends('layouts.master', ['pageTitle' => 'System Settings', 'summernote' => true])
 
 @section('content')
 
@@ -96,6 +96,18 @@
                 </div>
                 <div class="form-group" id="fileUploadBtn" style="display: none;">
                     <button class="btn btn-primary">Upload</button>
+                </div>
+            </form>
+            <hr>
+            <form action="{{ route('system.settings.welcomemsg') }}" method="post">
+                {{ csrf_field() }}
+                <div style="display:none" id="welcomeText">{!! $settings->welcome_text !!}</div>
+                <div class="form-group">
+                    <label for="welcome_msg">Welcome Message</label>
+                    <textarea name="welcome_msg" id="welcome_msg" cols="30" rows="10">{!! $settings->welcome_text !!}</textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Save Welcome Message</button>
                 </div>
             </form>
         </div>

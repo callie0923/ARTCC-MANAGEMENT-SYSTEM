@@ -17,7 +17,7 @@
         @endphp
     @endif
 
-    @if($pageTitle)
+    @if(isset($pageTitle))
         <title>{{$settings->artcc_long}} ARTCC | {{ $pageTitle }}</title>
     @else
         <title>{{$settings->artcc_long}} ARTCC</title>
@@ -58,6 +58,11 @@
         <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     @endif
 
+    @if(isset($summernote))
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+    @endif
+
 </head>
 <body>
 
@@ -78,9 +83,11 @@
 
     {!! Breadcrumbs::renderIfExists() !!}
 
+    @if(isset($pageTitle))
     <div class="page-header">
-        <h1>{{ $pageTitle or 'ZJX ARTCC' }}</h1>
+        <h1>{{ $pageTitle }}</h1>
     </div>
+    @endif
 
     @include('layouts.alert')
 
