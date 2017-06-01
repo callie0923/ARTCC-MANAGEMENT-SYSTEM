@@ -34,7 +34,7 @@
     <link href="/assets/css/plugins/jquery-ui.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/plugins/jquery-ui.theme.css" rel="stylesheet" type="text/css">
 
-    <script src="https://use.fontawesome.com/dd15402ec0.js"></script>
+    <script src="http://use.fontawesome.com/dd15402ec0.js"></script>
 
     <!-- Theme -->
     <link href="/assets/css/themes/clean.min.css" rel="stylesheet" type="text/css">

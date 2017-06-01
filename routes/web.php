@@ -19,6 +19,8 @@ Route::group(['middleware' => ['web','ulsauth']], function () {
     require base_path('routes/ids.php');
     require base_path('routes/notifications.php');
 
+    require base_path('routes/admin.php');
+
     Route::group(['middleware' => ['web','ulsauth','role:atm|datm']], function () {
         require base_path('routes/system.php');
     });

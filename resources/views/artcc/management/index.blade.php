@@ -32,7 +32,7 @@
     @endforeach
 
     <hr style="margin: 10px">
-    <h2 style="margin:0;">Instructors - <a href="mailto:{{$instructorRole->email}}"><i class="fa fa-envelope"></i></a></h2>
+    <h2 style="margin:0 0 5px 0;">Instructors - <a href="mailto:{{$instructorRole->email}}"><i class="fa fa-envelope"></i></a></h2>
     <h4 style="margin:0 0 10px 0;">{{ $instructorRole->role_desc }}</h4>
     @forelse($instructorCollection->chunk(4) as $instructors)
         <div class="row">
@@ -58,9 +58,10 @@
     @endforelse
 
     <hr style="margin: 10px">
-    <h2 style="margin:0;">Mentors - <a href="mailto:{{$mentorRole->email}}"><i class="fa fa-envelope"></i></a></h2>
+    <h2 style="margin:0 0 5px 0;">Mentors - <a href="mailto:{{$mentorRole->email}}"><i class="fa fa-envelope"></i></a></h2>
     <h4 style="margin:0 0 10px 0;">{{ $mentorRole->role_desc }}</h4>
     @forelse($mentorCollection->chunk(4) as $mentors)
+        <div class="row">
         @foreach($mentors as $mentor)
             <div class="col-sm-3">
                 <div class="panel box">
@@ -73,6 +74,7 @@
                 </div>
             </div>
         @endforeach
+        </div>
     @empty
         <div class="row">
             <div class="col-sm-12">

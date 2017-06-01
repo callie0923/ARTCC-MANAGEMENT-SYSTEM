@@ -88,7 +88,7 @@
                             <li class="px-nav-item {{ active('admin.roster.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Roster</span></a></li>
                         @endif
                         @if(Auth::user()->hasRole(['atm','datm','ta','wm']))
-                            <li class="px-nav-item {{ active('admin.staff.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Staff</span></a></li>
+                            <li class="px-nav-item {{ active('admin.staff.*', 'px-nav-active') }}"><a href="{{ route('admin.staff.index') }}"><span class="px-nav-label">Staff</span></a></li>
                         @endif
                         @if(Auth::user()->hasRole(['atm','datm','ec','aec','wm']))
                             <li class="px-nav-item {{ active('admin.events.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Events</span></a></li>

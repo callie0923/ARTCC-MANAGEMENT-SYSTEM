@@ -7,4 +7,6 @@ Route::group(['namespace' => 'API'], function () {
     Route::get('/vatsim/{cid}', ['APIController@vatsimController', 'as' => 'api.getvatsim']);
 
     Route::get('airport', ['uses' => 'ResourceController@airport', 'as' => 'api.airport']);
+
+    Route::get('members', ['uses' => 'ResourceController@members', 'as' => 'api.members']);
 });

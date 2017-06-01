@@ -29,6 +29,12 @@ class User extends Authenticatable
         'status' // 0 (active) or 1 (inactive) or 2 (loa)
     ];
 
+    public static function homeMembers() {
+        return self::where('visitor', 0)->where(function($q) {
+            $q->where('status', 0)->orWhere('status', 2);
+        })->get();
+    }
+
     public function getFullNameAttribute() {
         return $this->first_name.' '.$this->last_name;
     }
