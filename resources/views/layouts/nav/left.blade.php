@@ -53,10 +53,10 @@
         <li class="px-nav-item {{ active('feedback.*', 'px-nav-active') }}">
             <a href="#"><i class="px-nav-icon fa fa-comment"></i><span class="px-nav-label">Feedback</span></a>
         </li>
+        <li class="px-nav-item {{ active('forum.*', 'px-nav-active') }}">
+            <a href="{{ route('forum.index') }}"><i class="px-nav-icon fa fa-forumbee"></i><span class="px-nav-label">Forum</span></a>
+        </li>
         @if(Auth::check())
-            <li class="px-nav-item {{ active('forum.*', 'px-nav-active') }}">
-                <a href="#"><i class="px-nav-icon fa fa-forumbee"></i><span class="px-nav-label">Forum</span></a>
-            </li>
             <li class="px-nav-item {{ active('ids.*', 'px-nav-active') }}">
                 <a href="#"><i class="px-nav-icon fa fa-microchip"></i><span class="px-nav-label">IDS</span></a>
             </li>

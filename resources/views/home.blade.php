@@ -25,9 +25,9 @@
                     </tr>
                 </thead>
                 <tbody id="atcTableBody">
-                <tr>
-                    <td colspan="4"><center><i class="fa fa-refresh fa-spin fa-2x"></i></center></td>
-                </tr>
+                    <tr>
+                        <td colspan="4"><center><i class="fa fa-refresh fa-spin fa-2x"></i></center></td>
+                    </tr>
                 </tbody>
             </table>
         </div>

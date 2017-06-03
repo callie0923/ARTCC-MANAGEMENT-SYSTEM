@@ -34,3 +34,6 @@ require base_path('routes/_breadcrumbs/admin.php');
 
 //system breadcrumbs
 require base_path('routes/_breadcrumbs/system.php');
+
+//forum breadcrumbs
+require base_path('routes/_breadcrumbs/forum.php');

@@ -1,12 +1,14 @@
 <?php
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
+Route::get('/noaccess', ['uses' => 'HomeController@noaccess', 'as' => 'noaccess']);
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('login', ['uses' => 'AuthController@login', 'as' => 'auth.login']);
 });
 
 require base_path('routes/pilots.php');
 require base_path('routes/artcc.php');
+require base_path('routes/forum.php');
 
 
 Route::group(['middleware' => ['web','ulsauth']], function () {
@@ -15,7 +17,6 @@ Route::group(['middleware' => ['web','ulsauth']], function () {
         Route::get('logout', ['uses' => 'AuthController@logout', 'as' => 'auth.logout']);
     });
 
-    require base_path('routes/forum.php');
     require base_path('routes/ids.php');
     require base_path('routes/notifications.php');
 

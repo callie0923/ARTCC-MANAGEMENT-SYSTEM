@@ -33,6 +33,7 @@
     <link href="/assets/css/plugins/select2.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/plugins/jquery-ui.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/plugins/jquery-ui.theme.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/plugins/simple-tooltip.css" rel="stylesheet" type="text/css">
 
     <script src="http://use.fontawesome.com/dd15402ec0.js"></script>
 
@@ -46,7 +47,9 @@
     <script src="/assets/js/pixeladmin.min.js"></script>
     <script src="/assets/js/plugins/select2.full.min.js"></script>
     <script src="/assets/js/plugins/jquery-ui.min.js"></script>
+    <script src="/assets/js/plugins/simple-tooltip.js"></script>
     <script src="/assets/js/artcc_system.js"></script>
+
     <script type="text/javascript">
         $.ajaxSetup({
             headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
@@ -120,6 +123,8 @@
         setTimeout(function() {
             $('.alertrow').fadeOut("fast");
         }, 5000);
+
+        Tipped.create('.simple-tooltip');
     });
 
 </script>

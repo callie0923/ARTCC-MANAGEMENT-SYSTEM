@@ -15,7 +15,7 @@ class CreateUserCertsTable extends Migration
     {
         Schema::create('users_certs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->default(0);
+            $table->integer('user_id');
             $table->integer('min_del')->default(0);
             $table->integer('min_gnd')->default(0);
             $table->integer('min_twr')->default(0);
@@ -26,6 +26,9 @@ class CreateUserCertsTable extends Migration
             $table->integer('maj_app')->default(0);
             $table->integer('enroute')->default(0);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
