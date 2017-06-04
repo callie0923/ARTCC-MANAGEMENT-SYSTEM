@@ -12,8 +12,10 @@
                         <div class="box-row">
                             <div class="box-cell col-md-7 col-lg-8 col-xl-9 p-r-4">
                                 <div class="page-forum-topics-title font-size-14">
-                                    <a href="#" class="font-weight-semibold">{{ $thread->name }}</a>
-                                    &nbsp;&nbsp;
+                                    @if($thread->isUnread())
+                                        <i class="fa fa-power-off simple-tooltip" title="Unread" style="color:blue"></i>
+                                    @endif
+                                    <a href="#" class="font-weight-semibold">{{ $thread->name }}</a>&nbsp;
                                     <span class="text-muted">
                                         @if($thread->locked == 1)
                                             <i class="fa fa-lock simple-tooltip" title="Locked"></i>

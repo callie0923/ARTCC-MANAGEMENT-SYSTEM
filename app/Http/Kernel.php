@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\AddBreadcrumbs;
 use App\Http\Middleware\EncryptCookies;
+use App\Http\Middleware\ForumAccessMiddleware;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\TrimStrings;
 use App\Http\Middleware\ULSAuth;

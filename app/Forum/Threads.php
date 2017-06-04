@@ -4,6 +4,7 @@ namespace App\Forum;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Threads extends Model
 {
@@ -32,5 +33,13 @@ class Threads extends Model
             $user = $reply->owner->full_name;
         }
         return $user;
+    }
+
+    public function isUnread() {
+        $read = ForumReadThreads::where('user_id', Auth::id())->where('thread_id', $this->id)->first();
+        if(!$read) {
+            return true;
+        }
+        return false;
     }
 }

@@ -18,7 +18,7 @@
                                 <div class="page-forums-list-item box panel p-y-2 p-x-3">
                                     <div class="box-row">
                                         <div class="page-forums-list-title box-cell col-md-7 col-lg-8 col-xl-9 p-r-4">
-                                            <a href="{{ route('forum.board', [$category, $board]) }}" class="font-size-15 font-weight-bold">{{ $board->name }}</a>
+                                            <i class="fa fa-power-off" style="color: grey;"></i>   <a href="{{ route('forum.board', [$category, $board]) }}" class="font-size-15 font-weight-bold">{{ $board->name }}</a>
                                             <div>
                                                 {{ $board->description }}
                                             </div>
@@ -60,7 +60,7 @@
                                 <div class="page-forums-list-item box panel p-y-2 p-x-3">
                                     <div class="box-row">
                                         <div class="page-forums-list-title box-cell col-md-7 col-lg-8 col-xl-9 p-r-4">
-                                            <a href="{{ route('forum.board', [$category, $board]) }}" class="font-size-15 font-weight-bold">{{ $board->name }}</a>
+                                            <i class="fa fa-power-off" style="color: grey;"></i>   <a href="{{ route('forum.board', [$category, $board]) }}" class="font-size-15 font-weight-bold">{{ $board->name }}</a>
                                             <div>
                                                 {{ $board->description }}
                                             </div>

@@ -40,9 +40,9 @@ class CreateForumTables extends Migration
             $table->integer('user_id')->unsigned();
             $table->text('name');
             $table->text('message');
-            $table->integer('views');
-            $table->integer('locked');
-            $table->integer('sticky');
+            $table->integer('views')->default(0);
+            $table->integer('locked')->default(0);
+            $table->integer('sticky')->default(0);
             $table->timestamps();
 
             $table->foreign('board_id')->references('id')->on('forum_boards')
@@ -57,6 +57,17 @@ class CreateForumTables extends Migration
             $table->integer('user_id')->unsigned();
             $table->text('message');
             $table->timestamps();
+
+            $table->foreign('thread_id')->references('id')->on('forum_boards')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');
+        });
+
+        Schema::create('forum_read_threads', function(Blueprint $table) {
+            $table->increments('id');
+            $table->integer('thread_id')->unsigned();
+            $table->integer('user_id')->unsigned();
 
             $table->foreign('thread_id')->references('id')->on('forum_boards')
                 ->onUpdate('cascade')->onDelete('cascade');

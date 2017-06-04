@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('visitor_from')->nullable();
             $table->integer('status')->default(0);
             $table->text('remember_token')->nullable();
+            $table->timestamp('forum_access_time')->nullable();
             $table->timestamps();
         });
     }

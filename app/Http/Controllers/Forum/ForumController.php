@@ -28,6 +28,9 @@ class ForumController extends Controller
         if($category->need_auth == 1 && !Auth::check()) {
             return redirect()->route('noaccess');
         }
+        if($board->category_id != $category->id) {
+            abort(404, 'This Board doesn\'t exist in the Category');
+        }
         return view('forum.board', compact('category','board'));
     }
 }

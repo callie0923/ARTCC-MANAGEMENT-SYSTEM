@@ -84,7 +84,9 @@
 <!-- Content -->
 <div class="px-content">
 
+    @if(!isset($errorPage))
     {!! Breadcrumbs::renderIfExists() !!}
+    @endif
 
     @if(isset($pageTitle))
     <div class="page-header">

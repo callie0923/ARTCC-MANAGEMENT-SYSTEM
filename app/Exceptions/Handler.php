@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 
@@ -50,6 +51,12 @@ class Handler extends ExceptionHandler
         if (config('app.debug'))
         {
             return $this->renderExceptionWithWhoops($exception);
+        }
+
+        if($exception instanceof NotFoundHttpException) {
+            $errorPage = 1;
+            $message = $exception->getMessage();
+            return response()->view('errors.404', compact('message', 'errorPage'));
         }
 
         return parent::render($request, $exception);
