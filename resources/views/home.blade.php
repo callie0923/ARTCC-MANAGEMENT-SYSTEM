@@ -24,7 +24,7 @@
                         <td>Altimiter</td>
                     </tr>
                 </thead>
-                <tbody id="atcTableBody">
+                <tbody id="wxTableBody">
                     <tr>
                         <td colspan="4"><center><i class="fa fa-refresh fa-spin fa-2x"></i></center></td>
                     </tr>
@@ -148,6 +148,10 @@
             </div>
         </div>
     </div>
+
+    <div style="display:none;" id="wxRoute" data-url="{{ route('index.weather') }}"></div>
+    <div style="display:none;" id="atcRoute" data-url="{{ route('index.atc') }}"></div>
+    <script src="{{ asset('assets/js/home.js') }}"></script>
 
 
 @endsection

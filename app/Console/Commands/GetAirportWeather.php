@@ -51,23 +51,22 @@ class GetAirportWeather extends Command
             $root = new SimpleXMLElement($response->getBody());
             $metar = $root->data->METAR;
 
-
             $raw = (string)$metar->raw_text;
 
-            $altim = substr((string)$metar->altim_in_hg, 0, 6);
-            if((int)substr($altim, -1) > 4) {
-                $altim = substr($altim, 0, 5);;
-                $last = substr($altim, -1)+1;
-                $altim = substr($altim, 0, 4);
-                $altim_in_hg = $altim.$last;
-            } else {
-                $altim_in_hg = substr($altim, 0, 5);
+            if($raw == '') {
+                continue;
+            }
+
+            if (preg_match('/\b([AQ])([0-9]{4})\b/',(string)$metar->raw_text, $matches)) {
+                $altim_in_hg = substr($matches[2], 0, 2).'.'.substr($matches[2], -2);
             }
 
             $flight_cat = (string)$metar->flight_category;
 
-            if(strpos((string)$metar->wind_dir_degrees, 'VRB') !== false) {
+            if(strpos((string)$metar->raw_text, 'VRB') !== false) {
                 $wind_dir = 'VRB';
+            }else if(strpos((string)$metar->raw_text, '00000KT') !== false) {
+                $wind_dir = 'CALM';
             }elseif($metar->wind_dir_degrees < 100 && $metar->wind_dir_degrees > 1) {
                 $wind_dir = '0'.$metar->wind_dir_degrees;
             } else {
@@ -80,7 +79,11 @@ class GetAirportWeather extends Command
                 $wind_speed = (string)$metar->wind_speed_kt;
             }
 
-            $wind = $wind_dir.'@'.$wind_speed;
+            if($wind_dir == 'CALM') {
+                $wind = 'CALM';
+            } else {
+                $wind = $wind_dir.'@'.$wind_speed;
+            }
 
 
             Weather::updateOrCreate([

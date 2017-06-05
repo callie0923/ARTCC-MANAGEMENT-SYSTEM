@@ -1,6 +1,10 @@
 <?php
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
+
+Route::get('/index/weather', ['uses' => 'HomeController@weatherPanel', 'as' => 'index.weather']);
+Route::get('/index/atc', ['uses' => 'HomeController@atcPanel', 'as' => 'index.atc']);
+
 Route::get('/noaccess', ['uses' => 'HomeController@noaccess', 'as' => 'noaccess']);
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('login', ['uses' => 'AuthController@login', 'as' => 'auth.login']);

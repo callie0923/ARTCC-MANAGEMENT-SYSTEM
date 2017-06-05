@@ -66,4 +66,13 @@ class Boards extends Model
         }
         return $roles;
     }
+
+    public function hasUnreadPosts() {
+        foreach($this->threads as $thread) {
+            if($thread->isUnread()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

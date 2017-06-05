@@ -1,8 +1,7 @@
 @php $i = 1; @endphp
 <div class="panel-group" id="wx-accordion">
     @foreach($airports as $airport)
-        @if($airport->weather->metar == '')
-        @else
+        @if($airport->weather)
         <div class="panel">
             <div class="panel-heading">
                 <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#wx-accordion" href="#collapse{{$i}}" aria-expanded="false">

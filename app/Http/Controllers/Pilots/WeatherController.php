@@ -16,7 +16,7 @@ class WeatherController extends Controller
 
     public function metars()
     {
-        $airports = Airport::with('weather')->where('is_artcc', 1)->get();
+        $airports = Airport::with('weather')->where('is_artcc', 1)->orderBy('icao')->get();
         return view('pilots.weather.metars', compact('airports'))->render();
     }
 }

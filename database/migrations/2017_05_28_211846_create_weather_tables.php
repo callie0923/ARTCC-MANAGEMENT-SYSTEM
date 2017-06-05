@@ -18,6 +18,7 @@ class CreateWeatherTables extends Migration
             $table->integer('airport_id')->unsigned();
             $table->text('metar');
             $table->string('flight_cat');
+            $table->string('wind');
             $table->string('altim_in_hg');
             $table->timestamps();
 
