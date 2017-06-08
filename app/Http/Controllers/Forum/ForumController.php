@@ -17,7 +17,7 @@ class ForumController extends Controller
 
     public function category(Categories $category)
     {
-        if($category->need_auth == 1 && !Auth::check()) {
+        if(!$category->UserCanView()) {
             return redirect()->route('noaccess');
         }
         return view('forum.category', compact('category'));
@@ -25,12 +25,26 @@ class ForumController extends Controller
 
     public function board(Categories $category, Boards $board)
     {
-        if($category->need_auth == 1 && !Auth::check()) {
+        if(!$category->UserCanView()) {
+            return redirect()->route('noaccess');
+        }
+        if(!$board->UserCanView()) {
             return redirect()->route('noaccess');
         }
         if($board->category_id != $category->id) {
             abort(404, 'This Board doesn\'t exist in the Category');
         }
         return view('forum.board', compact('category','board'));
+    }
+
+    public function newPost(Categories $category, Boards $board)
+    {
+        if(!$board->UserCanPost()) {
+            return redirect()->route('noaccess');
+        }
+        if($board->category_id != $category->id) {
+            abort(404, 'This Board doesn\'t exist in the Category');
+        }
+        return view('forum.new', compact('category', 'board'));
     }
 }

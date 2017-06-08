@@ -3,6 +3,15 @@
 
 @section('content')
 
+    @if($board->UserCanPost())
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="{{ route('forum.board.new', [$category, $board]) }}" class="btn btn-info btn-sm">New Topic</a>
+        </div>
+    </div>
+    <br>
+    @endif
+
     @if(count($board->stickyThreads) > 0)
         <div class="row">
             <div class="col-sm-12">
@@ -57,7 +66,7 @@
     @endif
 
     @if(count($board->stickyThreads) > 0 && count($board->threads) > 0)
-    <hr class="page-wide-block m-t-0">
+        <hr class="page-wide-block m-t-0">
     @endif
 
     @if(count($board->threads) > 0)
@@ -106,6 +115,16 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+        </div>
+    @endif
+
+    @if(count($board->allthreads) == 0)
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="bg-warning" style="padding: 12px">
+                    No Messages..
+                </div>
             </div>
         </div>
     @endif

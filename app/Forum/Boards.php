@@ -4,6 +4,7 @@ namespace App\Forum;
 
 use Illuminate\Database\Eloquent\Model;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 class Boards extends Model
 {
@@ -67,6 +68,18 @@ class Boards extends Model
         return $roles;
     }
 
+    public function postPermissions() {
+        return $this->hasMany(BoardPostPermissions::class, 'board_id', 'id');
+    }
+
+    public function writePermissions() {
+        $roles = [];
+        foreach($this->postPermissions as $postPermission) {
+            $roles[] = $postPermission->role;
+        }
+        return $roles;
+    }
+
     public function hasUnreadPosts() {
         foreach($this->threads as $thread) {
             if($thread->isUnread()) {
@@ -74,5 +87,30 @@ class Boards extends Model
             }
         }
         return false;
+    }
+
+    public function UserCanPost()
+    {
+        if(Auth::check()) {
+            if(count($this->writePermissions()) > 0) {
+                foreach($this->writePermissions() as $permission) {
+                    if(Auth::user()->hasRole($permission)) return true;
+                }
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public function UserCanView() {
+        if(count($this->permissions()) > 0) {
+            foreach($this->permissions() as $permission) {
+                if(Auth::user()->hasRole($permission)) return true;
+            }
+            return false;
+        } else {
+            return true;
+        }
     }
 }

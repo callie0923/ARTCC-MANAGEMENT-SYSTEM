@@ -1,7 +1,10 @@
 <?php
 
+use App\Forum\BoardPostPermissions;
 use App\Forum\Boards;
+use App\Forum\BoardViewPermissions;
 use App\Forum\Categories;
+use App\Forum\CategoryViewPermissions;
 use Illuminate\Database\Seeder;
 
 class ForumSeeder extends Seeder
@@ -34,6 +37,13 @@ class ForumSeeder extends Seeder
         $staff_cat->need_auth = 1;
         $staff_cat->save();
 
+        foreach(['atm','datm','ta','ec','fe','wm','awm','ata','aec','ins','mtr'] as $role) {
+            CategoryViewPermissions::create([
+                'category_id' => $staff_cat->id,
+                'role' => $role
+            ]);
+        }
+
         $announcements_board = new Boards;
         $announcements_board->category_id = $water_cooler_cat->id;
         $announcements_board->name = 'Announcements';
@@ -41,12 +51,26 @@ class ForumSeeder extends Seeder
         $announcements_board->order_index = 1;
         $announcements_board->save();
 
+        foreach(['atm','datm','ta'] as $role) {
+            BoardPostPermissions::create([
+                'board_id' => $announcements_board->id,
+                'role' => $role
+            ]);
+        }
+
         $public_events_board = new Boards;
         $public_events_board->category_id = $water_cooler_cat->id;
         $public_events_board->name = 'Events';
         $public_events_board->description = 'Events Coordinator Announcements';
         $public_events_board->order_index = 2;
         $public_events_board->save();
+
+        foreach(['atm','datm','ec','aec'] as $role) {
+            BoardPostPermissions::create([
+                'board_id' => $public_events_board->id,
+                'role' => $role
+            ]);
+        }
 
         $artcc_discussion_board = new Boards;
         $artcc_discussion_board->category_id = $controllers_cat->id;
@@ -69,53 +93,109 @@ class ForumSeeder extends Seeder
         $artcc_discussion_board->order_index = 3;
         $artcc_discussion_board->save();
 
-        $training_board = new Boards;
-        $training_board->category_id = $controllers_cat->id;
-        $training_board->name = 'Web Services Department';
-        $training_board->description = 'Announcements, Support and Services Discussion';
-        $training_board->order_index = 4;
-        $training_board->save();
+        $web_services_board = new Boards;
+        $web_services_board->category_id = $controllers_cat->id;
+        $web_services_board->name = 'Web Services Department';
+        $web_services_board->description = 'Announcements, Support and Services Discussion';
+        $web_services_board->order_index = 4;
+        $web_services_board->save();
 
-        $artcc_discussion_board = new Boards;
-        $artcc_discussion_board->category_id = $controllers_cat->id;
-        $artcc_discussion_board->name = 'ARTCC Event Discussion';
-        $artcc_discussion_board->description = 'Controller Event Discussions';
-        $artcc_discussion_board->order_index = 5;
-        $artcc_discussion_board->save();
+        $artcc_event_discussion_board = new Boards;
+        $artcc_event_discussion_board->category_id = $controllers_cat->id;
+        $artcc_event_discussion_board->name = 'ARTCC Event Discussion';
+        $artcc_event_discussion_board->description = 'Controller Event Discussions';
+        $artcc_event_discussion_board->order_index = 5;
+        $artcc_event_discussion_board->save();
 
-        $training_board = new Boards;
-        $training_board->category_id = $controllers_cat->id;
-        $training_board->name = 'General Discussion';
-        $training_board->description = 'Anything and Everything Goes';
-        $training_board->order_index = 6;
-        $training_board->save();
+        $general_discussion_board = new Boards;
+        $general_discussion_board->category_id = $controllers_cat->id;
+        $general_discussion_board->name = 'General Discussion';
+        $general_discussion_board->description = 'Anything and Everything Goes';
+        $general_discussion_board->order_index = 6;
+        $general_discussion_board->save();
 
-        $training_board = new Boards;
-        $training_board->category_id = $staff_cat->id;
-        $training_board->name = 'Senior Staff';
-        $training_board->description = 'Senior Staff Discussion';
-        $training_board->order_index = 1;
-        $training_board->save();
+        $senior_staff_board = new Boards;
+        $senior_staff_board->category_id = $staff_cat->id;
+        $senior_staff_board->name = 'Senior Staff';
+        $senior_staff_board->description = 'Senior Staff Discussion';
+        $senior_staff_board->order_index = 1;
+        $senior_staff_board->save();
 
-        $training_board = new Boards;
-        $training_board->category_id = $staff_cat->id;
-        $training_board->name = 'All Staff';
-        $training_board->description = 'Staff Discussion';
-        $training_board->order_index = 2;
-        $training_board->save();
+        foreach(['atm','datm','ta'] as $role) {
+            BoardViewPermissions::create([
+                'board_id' => $senior_staff_board->id,
+                'role' => $role
+            ]);
+        }
 
-        $training_board = new Boards;
-        $training_board->category_id = $staff_cat->id;
-        $training_board->name = 'Training Staff';
-        $training_board->description = 'Training Staff Discussion';
-        $training_board->order_index = 3;
-        $training_board->save();
+        foreach(['atm','datm','ta'] as $role) {
+            BoardPostPermissions::create([
+                'board_id' => $senior_staff_board->id,
+                'role' => $role
+            ]);
+        }
 
-        $training_board = new Boards;
-        $training_board->category_id = $staff_cat->id;
-        $training_board->name = 'Events Staff';
-        $training_board->description = 'Events Staff Discussion';
-        $training_board->order_index = 4;
-        $training_board->save();
+        $all_staff_board = new Boards;
+        $all_staff_board->category_id = $staff_cat->id;
+        $all_staff_board->name = 'All Staff';
+        $all_staff_board->description = 'Staff Discussion';
+        $all_staff_board->order_index = 2;
+        $all_staff_board->save();
+
+        foreach(['atm','datm','ta','ec','fe','wm','awm','ata','aec'] as $role) {
+            BoardViewPermissions::create([
+                'board_id' => $all_staff_board->id,
+                'role' => $role
+            ]);
+        }
+
+        foreach(['atm','datm','ta','ec','fe','wm','awm','ata','aec'] as $role) {
+            BoardPostPermissions::create([
+                'board_id' => $all_staff_board->id,
+                'role' => $role
+            ]);
+        }
+
+        $training_staff_board = new Boards;
+        $training_staff_board->category_id = $staff_cat->id;
+        $training_staff_board->name = 'Training Staff';
+        $training_staff_board->description = 'Training Staff Discussion';
+        $training_staff_board->order_index = 3;
+        $training_staff_board->save();
+
+        foreach(['atm','datm','ta','ata','ins','mtr'] as $role) {
+            BoardViewPermissions::create([
+                'board_id' => $training_staff_board->id,
+                'role' => $role
+            ]);
+        }
+
+        foreach(['atm','datm','ta','ata','ins','mtr'] as $role) {
+            BoardPostPermissions::create([
+                'board_id' => $training_staff_board->id,
+                'role' => $role
+            ]);
+        }
+
+        $events_staff_board = new Boards;
+        $events_staff_board->category_id = $staff_cat->id;
+        $events_staff_board->name = 'Events Staff';
+        $events_staff_board->description = 'Events Staff Discussion';
+        $events_staff_board->order_index = 4;
+        $events_staff_board->save();
+
+        foreach(['atm','datm','ec','aec'] as $role) {
+            BoardViewPermissions::create([
+                'board_id' => $events_staff_board->id,
+                'role' => $role
+            ]);
+        }
+
+        foreach(['atm','datm','ec','aec'] as $role) {
+            BoardPostPermissions::create([
+                'board_id' => $events_staff_board->id,
+                'role' => $role
+            ]);
+        }
     }
 }

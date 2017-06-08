@@ -74,6 +74,33 @@ class CreateForumTables extends Migration
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
+
+        Schema::create('forum_category_view_permissions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('category_id')->unsigned();
+            $table->string('role');
+
+            $table->foreign('category_id')->references('id')->on('forum_categories')
+                ->onUpdate('cascade')->onDelete('cascade');
+        });
+
+        Schema::create('forum_board_view_permissions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('board_id')->unsigned();
+            $table->string('role');
+
+            $table->foreign('board_id')->references('id')->on('forum_boards')
+                ->onUpdate('cascade')->onDelete('cascade');
+        });
+
+        Schema::create('forum_board_post_permissions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('board_id')->unsigned();
+            $table->string('role');
+
+            $table->foreign('board_id')->references('id')->on('forum_boards')
+                ->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**
