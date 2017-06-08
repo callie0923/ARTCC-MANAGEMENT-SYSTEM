@@ -182,6 +182,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -236,6 +237,8 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Forum;
 use App\Forum\Boards;
 use App\Forum\Categories;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ForumController extends Controller
@@ -46,5 +47,12 @@ class ForumController extends Controller
             abort(404, 'This Board doesn\'t exist in the Category');
         }
         return view('forum.new', compact('category', 'board'));
+    }
+
+    public function saveNewPost(Request $request, Categories $category, Boards $board)
+    {
+        dd($request->all());
+        $title = $request->get('post_title');
+        $content = $request->get('content');
     }
 }
