@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class Boards extends Model
 {
     public $table = 'forum_boards';
-    public $fillable = [];
+    public $fillable = ['category_id','name','description','ordee_index'];
 
     public function allthreads() {
         return $this->hasMany(Threads::class, 'board_id', 'id');

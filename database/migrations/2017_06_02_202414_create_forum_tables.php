@@ -38,7 +38,7 @@ class CreateForumTables extends Migration
             $table->increments('id');
             $table->integer('board_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->text('name');
+            $table->text('title');
             $table->text('message');
             $table->integer('views')->default(0);
             $table->integer('locked')->default(0);

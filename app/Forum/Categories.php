@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class Categories extends Model
 {
     public $table = 'forum_categories';
-    public $fillable = [];
+    public $fillable = ['name','order_index','icon','need_auth'];
 
     public function boards() {
         return $this->hasMany(Boards::class, 'category_id', 'id');

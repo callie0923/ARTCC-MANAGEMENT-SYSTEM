@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class Threads extends Model
 {
     public $table = 'forum_threads';
-    public $fillable = [];
+    public $fillable = ['board_id','user_id','title','message','views','locked','sticky'];
 
     public function replies() {
         return $this->hasMany(Replies::class, 'thread_id', 'id');

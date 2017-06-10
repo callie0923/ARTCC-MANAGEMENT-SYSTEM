@@ -19,9 +19,22 @@ class HomeController extends Controller
 
     public function atcPanel()
     {
-//        $active = Airport::where('is_home', 1)->get();
-//        return view('_partials.home.atc', compact('active'))->render();
         return view('_partials.home.atc')->render();
+    }
+
+    public function newsPanel()
+    {
+        return view('_partials.home.news')->render();
+    }
+
+    public function newestMembersPanel()
+    {
+        return view('_partials.home.members')->render();
+    }
+
+    public function promotionsPanel()
+    {
+        return view('_partials.home.promotions')->render();
     }
 
     public function noaccess()

@@ -4,6 +4,9 @@ Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 
 Route::get('/index/weather', ['uses' => 'HomeController@weatherPanel', 'as' => 'index.weather']);
 Route::get('/index/atc', ['uses' => 'HomeController@atcPanel', 'as' => 'index.atc']);
+Route::get('/index/news', ['uses' => 'HomeController@newsPanel', 'as' => 'index.news']);
+Route::get('/index/members', ['uses' => 'HomeController@newestMembersPanel', 'as' => 'index.members']);
+Route::get('/index/promotions', ['uses' => 'HomeController@promotionsPanel', 'as' => 'index.promotions']);
 
 Route::get('/noaccess', ['uses' => 'HomeController@noaccess', 'as' => 'noaccess']);
 Route::group(['namespace' => 'Auth'], function () {

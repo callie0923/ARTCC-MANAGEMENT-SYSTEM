@@ -14,7 +14,7 @@
     <hr>
     <div class="row">
         <div class="col-sm-4">
-            <h3 style="margin:0 0 10px 0"><i class="fa fa-cloud"></i> Weather</h3>
+            <h3 style="margin:0 0 10px 0"><i class="fa fa-cloud"></i>&nbsp;&nbsp;Weather</h3>
             <table class="table table-bordered table-condensed" id="wxTable">
                 <thead>
                     <tr>
@@ -32,7 +32,7 @@
             </table>
         </div>
         <div class="col-sm-4">
-            <h3 style="margin:0 0 10px 0"><i class="fa fa-desktop"></i> Online ATC</h3>
+            <h3 style="margin:0 0 10px 0"><i class="fa fa-desktop"></i>&nbsp;&nbsp;Online ATC</h3>
             <table class="table table-bordered table-condensed" id="atcTable">
                 <thead>
                     <tr>
@@ -49,7 +49,7 @@
             </table>
         </div>
         <div class="col-sm-4">
-            <h3 style="margin:0 0 10px 0"><i class="fa fa-calendar"></i> Events</h3>
+            <h3 style="margin:0 0 10px 0"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Events</h3>
         </div>
     </div>
     <hr>
@@ -57,93 +57,42 @@
         <div class="col-sm-4">
             <div class="panel">
                 <div class="panel-heading">
-                    <span class="panel-title">News and Announcements</span>
+                    <span class="panel-title"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;News and Announcements</span>
                 </div>
-                <div class="widget-activity-item">
-                    <div class="widget-activity-text">
-                        New TA
+                <div id="newsPanel">
+                    <div class="widget-activity-item">
+                        <div class="widget-activity-text">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
                     </div>
-                    <div class="widget-activity-footer">2 hours ago</div>
-                </div>
-                <div class="widget-activity-item">
-                    <div class="widget-activity-text">
-                        New SOP In Action
-                    </div>
-                    <div class="widget-activity-footer">2 hours ago</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="panel">
                 <div class="panel-heading">
-                    <span class="panel-title">Newest Members</span>
+                    <span class="panel-title"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Newest Members</span>
                 </div>
-                <div class="widget-activity-item">
-                    <div class="widget-activity-text">
-                        Welcome person XYZ to the ARTCC
+                <div id="membersPanel">
+                    <div class="widget-activity-item">
+                        <div class="widget-activity-text">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
                     </div>
-                    <div class="widget-activity-footer">2 hours ago</div>
-                </div>
-                <div class="widget-activity-item">
-                    <div class="widget-activity-text">
-                        Welcome person XYZ to the ARTCC
-                    </div>
-                    <div class="widget-activity-footer">2 hours ago</div>
-                </div>
-                <div class="widget-activity-item">
-                    <div class="widget-activity-text">
-                        Welcome person XYZ to the ARTCC
-                    </div>
-                    <div class="widget-activity-footer">2 hours ago</div>
-                </div>
-                <div class="widget-activity-item">
-                    <div class="widget-activity-text">
-                        Welcome person XYZ to the ARTCC
-                    </div>
-                    <div class="widget-activity-footer">2 hours ago</div>
-                </div>
-                <div class="widget-activity-item">
-                    <div class="widget-activity-text">
-                        Welcome person XYZ to the ARTCC
-                    </div>
-                    <div class="widget-activity-footer">2 hours ago</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="panel">
                 <div class="panel-heading">
-                    <span class="panel-title">Recent Promotions</span>
+                    <span class="panel-title"><i class="fa fa-level-up"></i>&nbsp;&nbsp;Recent Promotions</span>
                 </div>
-                <div class="widget-activity-item">
-                    <div class="widget-activity-text">
-                        Person XYZ was promoted to S3
+                <div id="promotionsPanel">
+                    <div class="widget-activity-item">
+                        <div class="widget-activity-text">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
                     </div>
-                    <div class="widget-activity-footer">2 hours ago</div>
-                </div>
-                <div class="widget-activity-item">
-                    <div class="widget-activity-text">
-                        Person XYZ was promoted to S1
-                    </div>
-                    <div class="widget-activity-footer">2 hours ago</div>
-                </div>
-                <div class="widget-activity-item">
-                    <div class="widget-activity-text">
-                        Person XYZ was promoted to C1
-                    </div>
-                    <div class="widget-activity-footer">2 hours ago</div>
-                </div>
-                <div class="widget-activity-item">
-                    <div class="widget-activity-text">
-                        Person XYZ was promoted to I1
-                    </div>
-                    <div class="widget-activity-footer">2 hours ago</div>
-                </div>
-                <div class="widget-activity-item">
-                    <div class="widget-activity-text">
-                        Person XYZ was promoted to I3
-                    </div>
-                    <div class="widget-activity-footer">2 hours ago</div>
                 </div>
             </div>
         </div>
@@ -151,6 +100,9 @@
 
     <div style="display:none;" id="wxRoute" data-url="{{ route('index.weather') }}"></div>
     <div style="display:none;" id="atcRoute" data-url="{{ route('index.atc') }}"></div>
+    <div style="display:none;" id="newsRoute" data-url="{{ route('index.news') }}"></div>
+    <div style="display:none;" id="membersRoute" data-url="{{ route('index.members') }}"></div>
+    <div style="display:none;" id="promotionsRoute" data-url="{{ route('index.promotions') }}"></div>
     <script src="{{ asset('assets/js/home.js') }}"></script>
 
 

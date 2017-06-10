@@ -24,12 +24,11 @@
                                     @if($thread->isUnread())
                                         <i class="fa fa-power-off simple-tooltip" title="Unread" style="color:blue"></i>
                                     @endif
-                                    <a href="#" class="font-weight-semibold">{{ $thread->name }}</a>&nbsp;
+                                    <a href="{{ route('forum.thread', [$category, $board, $thread]) }}" class="font-weight-semibold">{{ $thread->title }}</a>
                                     <span class="text-muted">
                                         @if($thread->locked == 1)
                                             <i class="fa fa-lock simple-tooltip" title="Locked"></i>
                                         @endif
-                                        <i class="fa fa-dot-circle-o simple-tooltip" title="Sticky"></i>
                                     </span>
                                 </div>
                                 <div class="font-size-11 text-muted">
@@ -72,14 +71,16 @@
     @if(count($board->threads) > 0)
         <div class="row">
             <div class="col-sm-12">
-                <h6 class="font-weight-semibold m-y-3" style="margin-top: 0!important;">DISCUSSION</h6>
+                <h6 class="font-weight-semibold m-y-3" style="margin-top: 0!important;">STICKY</h6>
                 @foreach($board->threads as $thread)
                     <div class="page-forum-topics-item box panel p-y-2 p-x-3">
                         <div class="box-row">
                             <div class="box-cell col-md-7 col-lg-8 col-xl-9 p-r-4">
                                 <div class="page-forum-topics-title font-size-14">
-                                    <a href="#" class="font-weight-semibold">{{ $thread->name }}</a>
-                                    &nbsp;&nbsp;
+                                    @if($thread->isUnread())
+                                        <i class="fa fa-power-off simple-tooltip" title="Unread" style="color:blue"></i>
+                                    @endif
+                                    <a href="{{ route('forum.thread', [$category, $board, $thread]) }}" class="font-weight-semibold">{{ $thread->title }}</a>
                                     <span class="text-muted">
                                         @if($thread->locked == 1)
                                             <i class="fa fa-lock simple-tooltip" title="Locked"></i>
@@ -89,7 +90,7 @@
                                 <div class="font-size-11 text-muted">
                                     By <a href="#"><strong>{{ $thread->owner->full_name }}</strong></a> · {{ human_time($thread->created_at) }}
                                     @if(count($thread->replies) > 0)
-                                    | Last Reply By <a href="#"><strong>{{$thread->lastReplyUser()}}</strong></a> · {{ human_time($thread->lastReplyTime()) }}
+                                        | Last Reply By <a href="#"><strong>{{$thread->lastReplyUser()}}</strong></a> · {{ human_time($thread->lastReplyTime()) }}
                                     @endif
                                 </div>
                             </div>

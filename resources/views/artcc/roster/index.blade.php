@@ -52,28 +52,10 @@
                                         <th width="7%">Status</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                @forelse($homeControllers as $homeController)
-                                    @php $certs = $homeController->certs; @endphp
+                                <tbody id="homeControllersTable">
                                     <tr>
-                                        <td>{{ $homeController->backwards_name }}</td>
-                                        <td>{{ $homeController->rating->rating_short }}</td>
-                                        <td class="roster-{{$certs->rosterClass($certs->min_del)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->min_gnd)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->min_twr)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->min_app)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->maj_del)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->maj_gnd)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->maj_twr)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->maj_app)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->enroute)}}"></td>
-                                        <td>{{$homeController->status_text}}</td>
+                                        <td colspan="12"><center><i class="fa fa-refresh fa-spin"></i></center></td>
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="12">No Home Controllers</td>
-                                    </tr>
-                                @endforelse
                                 </tbody>
                             </table>
                         </div>
@@ -105,28 +87,10 @@
                                     <th width="7%">Status</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                @forelse($visitorControllers as $visitorController)
-                                    @php $certs = $visitorController->certs; @endphp
+                                <tbody id="visitControllersTable">
                                     <tr>
-                                        <td>{{ $visitorController->backwards_name }}</td>
-                                        <td>{{ $visitorController->rating->rating_short }}</td>
-                                        <td class="roster-{{$certs->rosterClass($certs->min_del)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->min_gnd)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->min_twr)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->min_app)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->maj_del)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->maj_gnd)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->maj_twr)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->maj_app)}}"></td>
-                                        <td class="roster-{{$certs->rosterClass($certs->enroute)}}"></td>
-                                        <td>{{$visitorController->status_text}}</td>
+                                        <td colspan="12"><center><i class="fa fa-refresh fa-spin"></i></center></td>
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="12">No Visiting Controllers</td>
-                                    </tr>
-                                @endforelse
                                 </tbody>
                             </table>
                         </div>
@@ -135,5 +99,9 @@
             </div>
         </div>
     </div>
+
+    <div style="display:none;" id="homeRoute" data-url="{{ route('artcc.roster.index.home') }}"></div>
+    <div style="display:none;" id="visitRoute" data-url="{{ route('artcc.roster.index.visit') }}"></div>
+    <script src="{{ asset('assets/js/artcc/roster.js') }}"></script>
 
 @endsection

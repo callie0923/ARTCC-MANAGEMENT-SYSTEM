@@ -14,4 +14,16 @@ class RosterController extends Controller
 
         return view('artcc.roster.index', compact('homeControllers','visitorControllers'));
     }
+
+    public function home()
+    {
+        $homeControllers = User::homeMembers();
+        return view('artcc.roster.home', compact('homeControllers'));
+    }
+
+    public function visit()
+    {
+        $visitorControllers = User::visitorMembers();
+        return view('artcc.roster.visit', compact('visitorControllers'));
+    }
 }
