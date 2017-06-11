@@ -20,7 +20,7 @@ class Categories extends Model
 
     public function permissions() {
         $roles = [];
-        foreach($this->viewPermissions() as $viewPermission) {
+        foreach($this->viewPermissions as $viewPermission) {
             $roles[] = $viewPermission->role;
         }
         return $roles;
