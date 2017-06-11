@@ -11,3 +11,11 @@ Breadcrumbs::register('artcc.roster.index', function($breadcrumbs) use ($setting
     $breadcrumbs->push('ARTCC', '#');
     $breadcrumbs->push('Roster', '#');
 });
+
+
+Breadcrumbs::register('artcc.roster.member', function($breadcrumbs, $user) use ($settings) {
+    $breadcrumbs->push($settings->artcc_code.' ARTCC', route('index'));
+    $breadcrumbs->push('ARTCC', '#');
+    $breadcrumbs->push('Roster', route('artcc.roster.index'));
+    $breadcrumbs->push($user->full_name, '#');
+});

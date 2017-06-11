@@ -26,4 +26,9 @@ class RosterController extends Controller
         $visitorControllers = User::visitorMembers();
         return view('artcc.roster.visit', compact('visitorControllers'));
     }
+
+    public function member(User $user)
+    {
+        return view('artcc.roster.controller', compact('user'));
+    }
 }

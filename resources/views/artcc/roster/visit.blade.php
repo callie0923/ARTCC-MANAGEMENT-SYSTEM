@@ -1,7 +1,7 @@
 @forelse($visitorControllers as $visitorController)
     @php $certs = $visitorController->certs; @endphp
     <tr>
-        <td>{{ $visitorController->backwards_name }}</td>
+        <td><a href="{{ route('artcc.roster.member', $visitorController) }}">{{ $visitorController->backwards_name }}</a></td>
         <td>{{ $visitorController->rating->rating_short }}</td>
         <td class="roster-{{$certs->rosterClass($certs->min_del)}}"></td>
         <td class="roster-{{$certs->rosterClass($certs->min_gnd)}}"></td>

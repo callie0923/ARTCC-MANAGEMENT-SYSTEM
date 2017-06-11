@@ -1,4 +1,4 @@
-@extends('layouts.master', ['pageTitle' => 'Controller Profile'])
+@extends('layouts.master', ['pageTitle' => $user->full_name])
 
 
 @section('content')

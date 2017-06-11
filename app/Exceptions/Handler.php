@@ -50,17 +50,21 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if($exception instanceof ModelNotFoundException) {
-            return redirect()->route('noaccess');
-        }
-        if (config('app.debug'))
-        {
-            return $this->renderExceptionWithWhoops($exception);
+            $errorPage = 1;
+            $message = $exception->getMessage();
+            return response()->view('errors.404', compact('message', 'errorPage'));
         }
 
         if($exception instanceof NotFoundHttpException) {
             $errorPage = 1;
             $message = $exception->getMessage();
             return response()->view('errors.404', compact('message', 'errorPage'));
+        }
+
+
+        if (config('app.debug'))
+        {
+            return $this->renderExceptionWithWhoops($exception);
         }
 
         return parent::render($request, $exception);
