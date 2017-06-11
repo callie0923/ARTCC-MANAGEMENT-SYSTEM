@@ -48,13 +48,21 @@
                     @endforeach
                 </select>
             </div>
+            {{--<div class="form-group">--}}
+                {{--<label for="uls_key">VATUSA ULS Key</label>--}}
+                {{--<input type="text" class="form-control" name="uls_key" id="uls_key" value="{{ ($settings->vatusa_uls_key) }}">--}}
+            {{--</div>--}}
+            {{--<div class="form-group">--}}
+                {{--<label for="api_key">VATUSA API Code</label>--}}
+                {{--<input type="text" class="form-control" name="api_key" id="api_key" value="{{ ($settings->vatusa_api_key) }}">--}}
+            {{--</div>--}}
             <div class="form-group">
                 <label for="uls_key">VATUSA ULS Key</label>
-                <input type="text" class="form-control" name="uls_key" id="uls_key" value="{{ ($settings->vatusa_uls_key) }}">
+                <input type="password" class="form-control" name="uls_key" id="uls_key" value="{{ encrypt($settings->vatusa_uls_key) }}">
             </div>
             <div class="form-group">
                 <label for="api_key">VATUSA API Code</label>
-                <input type="text" class="form-control" name="api_key" id="api_key" value="{{ ($settings->vatusa_api_key) }}">
+                <input type="password" class="form-control" name="api_key" id="api_key" value="{{ encrypt($settings->vatusa_api_key) }}">
             </div>
             <div class="form-group" id="ipdiv" style="display: none;">
                 <label for="ip">Update IP in VATUSA</label>
