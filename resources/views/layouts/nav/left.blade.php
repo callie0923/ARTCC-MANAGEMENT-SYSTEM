@@ -48,6 +48,9 @@
                 <li class="px-nav-item {{ active('artcc.roster.*', 'px-nav-active') }}"><a href="{{ route('artcc.roster.index') }}"><span class="px-nav-label">Roster</span></a></li>
                 <li class="px-nav-item {{ active('artcc.documents.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Documents & Files</span></a></li>
                 <li class="px-nav-item {{ active('artcc.stats', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Controller Stats</span></a></li>
+                @if(!Auth::check())
+                    <li class="px-nav-item {{ active('artcc.visit', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Visiting Application</span></a></li>
+                @endif
             </ul>
         </li>
         <li class="px-nav-item {{ active('feedback.*', 'px-nav-active') }}">
@@ -85,9 +88,9 @@
                     <a href="#"><i class="px-nav-icon fa fa-lock"></i><span class="px-nav-label">{{ $settings->artcc_code }} Administration</span></a>
                     <ul class="px-nav-dropdown-menu">
                         @if(Auth::user()->hasRole(['atm','datm','ta','wm','ins','mtr','ata']))
-                            <li class="px-nav-item {{ active('admin.roster.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Roster</span></a></li>
+                            <li class="px-nav-item {{ active('admin.roster.*', 'px-nav-active') }}"><a href="{{ route('admin.roster.index') }}"><span class="px-nav-label">Roster</span></a></li>
                         @endif
-                        @if(Auth::user()->hasRole(['atm','datm','ta','wm']))
+                        @if(Auth::user()->hasRole(['atm','datm','ta']))
                             <li class="px-nav-item {{ active('admin.staff.*', 'px-nav-active') }}"><a href="{{ route('admin.staff.index') }}"><span class="px-nav-label">Staff</span></a></li>
                         @endif
                         @if(Auth::user()->hasRole(['atm','datm','ec','aec','wm']))

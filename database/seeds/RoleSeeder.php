@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Entrust\Permission;
 use App\Models\Entrust\Role;
 use App\Models\Rating;
 use App\Models\User;
@@ -72,7 +73,7 @@ class RoleSeeder extends Seeder
         $ata->name = 'ata';
         $ata->display_name = 'Assistant Training Administrator';
         $ata->description = 'ARTCC Assistant Training Administrator';
-        $ata->role_desc = 'The Assistant Training Administrator is appointed by the Training Administrator and approved by the Air Traffic Manager. The Assistant Training Administrator assists the Training Administrator in development and execution of training programmes, selection of Instructors and Mentors and other tasks as directed.';
+        $ata->role_desc = 'The Assistant Training Administrator is appointed by the Training Administrator and approved by the ATM/DATM. The Assistant Training Administrator assists the Training Administrator in development and execution of training programmes, selection of Instructors and Mentors and other tasks as directed.';
         $ata->training_role = 0;
         $ata->active = 1;
         $ata->save();
@@ -90,7 +91,7 @@ class RoleSeeder extends Seeder
         $awm->name = 'awm';
         $awm->display_name = 'Assistant Webmaster';
         $awm->description = 'ARTCC Assistant Webmaster';
-        $awm->role_desc = 'The Assistant Webmaster is appointed by the Webmaster and approved by the Air Traffic Manager. The Assistant Webmaster assists the Webmaster in development and management of IT services.';
+        $awm->role_desc = 'The Assistant Webmaster is appointed by the Webmaster and approved by the ATM/DATM. The Assistant Webmaster assists the Webmaster in development and management of IT services.';
         $awm->training_role = 0;
         $awm->active = 1;
         $awm->save();
@@ -99,7 +100,7 @@ class RoleSeeder extends Seeder
         $ins->name = 'ins';
         $ins->display_name = 'Instructor';
         $ins->description = 'ARTCC Instructor';
-        $ins->role_desc = 'Administers and assesses position certification practical exams, rating-promotion practical exams. Assigns written tests to students.';
+        $ins->role_desc = 'Appointed by the TA, Instructors administer and assess position certification practical exams, rating-promotion practical exams. Assigns written tests to students.';
         $ins->training_role = 1;
         $ins->active = 1;
         $ins->save();
@@ -108,9 +109,97 @@ class RoleSeeder extends Seeder
         $mtr->name = 'mtr';
         $mtr->display_name = 'Mentor';
         $mtr->description = 'ARTCC Mentor';
-        $mtr->role_desc = 'Monitors, assists, and educates student controllers in air traffic control procedures and ARTCC standard operating procedures.';
+        $mtr->role_desc = 'Appointed by the TA, Mentors monitor, assist, and educate student controllers in air traffic control procedures and ARTCC standard operating procedures.';
         $mtr->training_role = 1;
         $mtr->active = 1;
         $mtr->save();
+
+
+        // snr_staff_perm
+        $snr_staff_perm = new Permission;
+        $snr_staff_perm->name = 'snr_staff';
+        $snr_staff_perm->display_name = 'Senior Staff';
+        $snr_staff_perm->display_name = 'Senior Staff Permission';
+        $snr_staff_perm->save();
+        $atm->attachPermission($snr_staff_perm);
+        $datm->attachPermission($snr_staff_perm);
+        $ta->attachPermission($snr_staff_perm);
+
+        // staff_perm
+        $staff_perm = new Permission;
+        $staff_perm->name = 'staff';
+        $staff_perm->display_name = 'Staff';
+        $staff_perm->display_name = 'Staff Permission';
+        $staff_perm->save();
+        $atm->attachPermission($staff_perm);
+        $datm->attachPermission($staff_perm);
+        $ta->attachPermission($staff_perm);
+        $ec->attachPermission($staff_perm);
+        $fe->attachPermission($staff_perm);
+        $wm->attachPermission($staff_perm);
+        $awm->attachPermission($staff_perm);
+        $ata->attachPermission($staff_perm);
+        $aec->attachPermission($staff_perm);
+
+        // roster_perm
+        $roster_perm = new Permission;
+        $roster_perm->name = 'roster';
+        $roster_perm->display_name = 'Roster Management';
+        $roster_perm->display_name = 'Roster Management Permission';
+        $roster_perm->save();
+        $atm->attachPermission($roster_perm);
+        $datm->attachPermission($roster_perm);
+        $ta->attachPermission($roster_perm);
+        $ata->attachPermission($roster_perm);
+        $ins->attachPermission($roster_perm);
+        $mtr->attachPermission($roster_perm);
+
+
+        // events_perm
+        $events_perm = new Permission;
+        $events_perm->name = 'events';
+        $events_perm->display_name = 'Events Management';
+        $events_perm->display_name = 'Events Management Permission';
+        $events_perm->save();
+        $atm->attachPermission($events_perm);
+        $datm->attachPermission($events_perm);
+        $ec->attachPermission($events_perm);
+        $aec->attachPermission($events_perm);
+
+        // documents_perm
+        $documents_perm = new Permission;
+        $documents_perm->name = 'documents';
+        $documents_perm->display_name = 'Documents Management';
+        $documents_perm->display_name = 'Documents Management Permission';
+        $documents_perm->save();
+        $atm->attachPermission($documents_perm);
+        $datm->attachPermission($documents_perm);
+        $ta->attachPermission($documents_perm);
+        $fe->attachPermission($documents_perm);
+
+        // ins_perm
+        $ins_perm = new Permission;
+        $ins_perm->name = 'instruct';
+        $ins_perm->display_name = 'Instruct';
+        $ins_perm->display_name = 'Instructor Permission';
+        $ins_perm->save();
+        $ins->attachPermission($ins_perm);
+        $ata->attachPermission($ins_perm);
+        $ta->attachPermission($ins_perm);
+        $datm->attachPermission($ins_perm);
+        $atm->attachPermission($ins_perm);
+
+        // mtr_perm
+        $mtr_perm = new Permission;
+        $mtr_perm->name = 'mentor';
+        $mtr_perm->display_name = 'Mentor';
+        $mtr_perm->display_name = 'Mentor Permission';
+        $mtr_perm->save();
+        $ins->attachPermission($mtr_perm);
+        $mtr->attachPermission($mtr_perm);
+        $ata->attachPermission($mtr_perm);
+        $ta->attachPermission($mtr_perm);
+        $datm->attachPermission($mtr_perm);
+        $atm->attachPermission($mtr_perm);
     }
 }

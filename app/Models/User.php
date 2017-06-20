@@ -41,6 +41,10 @@ class User extends Authenticatable
         })->orderBy('last_name', 'asc')->get();
     }
 
+    public static function formerMembers() {
+        return self::where('status', 1)->orderBy('last_name', 'asc')->get();
+    }
+
     public function getFullNameAttribute() {
         return $this->first_name.' '.$this->last_name;
     }
@@ -58,6 +62,16 @@ class User extends Authenticatable
                 return 'LOA';
                 break;
         }
+    }
+
+    public function canBePromoted() {
+        if($this->rating_id < 5) return true;
+        return false;
+    }
+
+    public function isOnLeave() {
+        if($this->status == 2) return true;
+        return false;
     }
 
     public function rating() {
