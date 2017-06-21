@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\ARTCC\UserCert;
 use App\Models\User;
 use App\VATSIM\VATUSARoster;
 use Illuminate\Console\Command;
@@ -57,14 +58,36 @@ class ProcessRoster extends Command
                 unset($currentRosterArray[array_search($member->cid, $currentRosterArray)]);
                 continue;
             } else {
-
                 //create a new user
-                dump($member->fname.' '.$member->lname);
-
+                if(!User::where('id', $member->cid)->first()) {
+                    User::create([
+                        'id' => $member->cid,
+                        'first_name' => $member->fname,
+                        'last_name' => $member->lname,
+                        'email' => $member->email,
+                        'rating_id' => $member->rating,
+                        'visitor' => 0,
+                        'status' => 0
+                    ]);
+                    UserCert::create([
+                        'user_id' => $member->cid
+                    ]);
+                } else {
+                    $user = User::where('id', $member->cid)->first();
+                    $user->status = 0;
+                    $user->visitor = 0;
+                    $user->rating_id = $member->rating;
+                    $user->email = $member->email;
+                    $user->save();
+                }
             }
         }
 
-        // process roster removals (generally outgoing transfers as
-        dump($currentRosterArray);
+        // process roster removals (generally outgoing transfers)
+        foreach($currentRosterArray as $localUser) {
+            $user = User::where('id', $localUser)->first();
+            $user->status = 1;
+            $user->save();
+        }
     }
 }

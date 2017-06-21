@@ -24,6 +24,11 @@ class RosterController extends Controller
         return view('admin.roster.index');
     }
 
+    public function controller(User $user)
+    {
+        return view('admin.roster.controller', compact('user'));
+    }
+
     public function loadRoster()
     {
         $controllers = User::homeMembers();

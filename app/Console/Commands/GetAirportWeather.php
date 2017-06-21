@@ -96,6 +96,8 @@ class GetAirportWeather extends Command
                 'wind' => $wind
             ]);
 
+            sleep(1);
+
         }
     }
 }

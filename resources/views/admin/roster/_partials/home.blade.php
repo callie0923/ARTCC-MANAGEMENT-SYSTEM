@@ -2,8 +2,8 @@
     <thead>
     <tr>
         <th>Name</th>
-        <th>Email</th>
-        <th>Rating</th>
+        <th class="hidden-xs hidden-sm">Email</th>
+        <th class="hidden-xs hidden-sm">Rating</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -11,12 +11,12 @@
         @forelse($controllers as $controller)
             <tr>
                 <td>{{ $controller->backwards_name }}</td>
-                <td>{{ $controller->email }}</td>
-                <td>{{ $controller->rating->rating_short }}</td>
+                <td class="hidden-xs hidden-sm">{{ $controller->email }}</td>
+                <td class="hidden-xs hidden-sm">{{ $controller->rating->rating_short }}</td>
                 <td>
-                    <button class="btn btn-xs btn-info edit" data-id="{{ $controller->id }}">EDIT</button>
+                    <a class="btn btn-xs btn-info" href="{{ route('admin.roster.controller', $controller) }}">VIEW/EDIT</a>
                     @if(Auth::user()->can('instruct') && $controller->canBePromoted())
-                        <button class="btn btn-xs btn-success promote" data-id="{{ $controller->id }}">PROMOTE</button>
+                        <button class="btn btn-xs btn-success promote" data-id="{{ $controller->id }}" data-name="{{ $controller->full_name }}" data-currentrating="{{ $controller->rating_id }}">PROMOTE</button>
                     @elseif(Auth::user()->can('instruct') && !$controller->canBePromoted())
                         <button class="btn btn-xs btn-success" disabled><span style="text-decoration: line-through;">PROMOTE</span></button>
                     @endif
@@ -26,7 +26,7 @@
                         @else
                             <button class="btn btn-xs btn-default loa" data-id="{{ $controller->id }}">MARK ON LOA</button>
                         @endif
-                        <button class="btn btn-xs btn-danger delete" data-id="{{ $controller->id }}">REMOVE</button>
+                        <button class="btn btn-xs btn-danger delete" data-id="{{ $controller->id }}" data-name="{{ $controller->full_name }}">REMOVE</button>
                     @endif
                 </td>
             </tr>

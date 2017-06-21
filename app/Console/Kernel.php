@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Console\Commands\BuildInitialRoster;
 use App\Console\Commands\GetAirportWeather;
 use App\Console\Commands\InitialSetup;
+use App\Console\Commands\ProcessRoster;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -19,6 +20,7 @@ class Kernel extends ConsoleKernel
         InitialSetup::class,
         GetAirportWeather::class,
         BuildInitialRoster::class,
+        ProcessRoster::class,
     ];
 
     /**

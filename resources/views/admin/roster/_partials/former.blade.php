@@ -2,8 +2,8 @@
     <thead>
     <tr>
         <th>Name</th>
-        <th>Email</th>
-        <th>Rating</th>
+        <th class="hidden-xs hidden-sm">Email</th>
+        <th class="hidden-xs hidden-sm">Rating</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -11,10 +11,10 @@
     @forelse($controllers as $controller)
         <tr>
             <td>{{ $controller->backwards_name }}</td>
-            <td>{{ $controller->email }}</td>
-            <td>{{ $controller->rating->rating_short }}</td>
+            <td class="hidden-xs hidden-sm">{{ $controller->email }}</td>
+            <td class="hidden-xs hidden-sm">{{ $controller->rating->rating_short }}</td>
             <td>
-                <button class="btn btn-xs btn-info edit" data-id="{{ $controller->id }}">EDIT</button>
+                <button class="btn btn-xs btn-info edit" data-id="{{ $controller->id }}">VIEW/EDIT</button>
                 <button class="btn btn-xs btn-info reactivate" data-id="{{ $controller->id }}">REACTIVATE</button>
             </td>
         </tr>
