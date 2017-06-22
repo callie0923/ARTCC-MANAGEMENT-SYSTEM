@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\VATSIM\VATUSARoster;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RosterController extends Controller
@@ -27,6 +28,15 @@ class RosterController extends Controller
     public function controller(User $user)
     {
         return view('admin.roster.controller', compact('user'));
+    }
+
+    public function updateCerts(Request $request)
+    {
+        $user = User::find($request->user_id);
+        $certs = $user->certs;
+        $certs->update($request->all());
+        $certs->save();
+        return response()->json(['success' => true]);
     }
 
     public function loadRoster()

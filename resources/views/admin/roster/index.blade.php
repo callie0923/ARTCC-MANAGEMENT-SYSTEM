@@ -84,56 +84,6 @@
         </div>
     </div>
 
-    <script>
-        $(document).on('click', '.delete', function() {
-            var btn = $(this);
-            var cid = btn.data('id');
-            var name = btn.data('name');
-            var namecid = name+' ('+cid+')';
-            var title = 'Remove '+name+'?';
-            $('#modalRemoveTitle').text(title);
-            $('#removeCid').val(cid);
-            $('#removeName').val(namecid);
-            $('#modal-remove').modal('show');
-        });
-
-        $(document).on('click', '.promote', function() {
-            var btn = $(this);
-            var cid = btn.data('id');
-            var name = btn.data('name');
-            var current = btn.data('currentrating');
-            var newRating;
-            if(current == 1) {
-                newRating = 'Confirm Promotion of '+name+' to S1';
-            } else if(current == 2) {
-                newRating = 'Confirm Promotion of '+name+' to S2';
-            }else if(current == 3) {
-                newRating = 'Confirm Promotion of '+name+' to S3';
-            } else if(current == 4) {
-                newRating = 'Confirm Promotion of '+name+' to C1';
-            }
-            var title = 'Promote '+name+'?';
-            $('#modalPromoteTitle').text(title);
-            $('#promoteCid').val(cid);
-            $('#promoteText').text(newRating);
-            $('#modal-promote').modal('show');
-        });
-
-        $(document).on('click', '.loa', function() {
-            var btn = $(this);
-            var newtext;
-            if(btn.html() == 'MARK ACTIVE') {
-                newtext = 'MARK ON LOA';
-            } else {
-                newtext = 'MARK ACTIVE';
-            }
-            btn.html('<i class="fa fa-refresh fa-spin"></i>');
-            setTimeout(function() {
-                btn.html(newtext);
-            }, 2000);
-        })
-    </script>
-
     <script src="{{asset('/assets/js/admin/roster.js')}}"></script>
     <div id="loadRosterUrl" style="display:none" data-url="{{ route('admin.roster.load') }}"></div>
 

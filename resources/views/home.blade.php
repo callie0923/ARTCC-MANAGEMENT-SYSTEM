@@ -13,7 +13,7 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <h3 style="margin:0 0 10px 0"><i class="fa fa-cloud"></i>&nbsp;&nbsp;Weather</h3>
             <table class="table table-bordered table-condensed" id="wxTable">
                 <thead>
@@ -31,7 +31,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <h3 style="margin:0 0 10px 0"><i class="fa fa-desktop"></i>&nbsp;&nbsp;Online ATC</h3>
             <table class="table table-bordered table-condensed" id="atcTable">
                 <thead>
@@ -48,13 +48,13 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <h3 style="margin:0 0 10px 0"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Events</h3>
         </div>
     </div>
     <hr>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <div class="panel">
                 <div class="panel-heading">
                     <span class="panel-title"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;News and Announcements</span>
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <div class="panel">
                 <div class="panel-heading">
                     <span class="panel-title"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Newest Members</span>
@@ -82,7 +82,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <div class="panel">
                 <div class="panel-heading">
                     <span class="panel-title"><i class="fa fa-level-up"></i>&nbsp;&nbsp;Recent Promotions</span>

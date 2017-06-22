@@ -119,7 +119,7 @@ class RoleSeeder extends Seeder
         $snr_staff_perm = new Permission;
         $snr_staff_perm->name = 'snr_staff';
         $snr_staff_perm->display_name = 'Senior Staff';
-        $snr_staff_perm->display_name = 'Senior Staff Permission';
+        $snr_staff_perm->description = 'Senior Staff Permission';
         $snr_staff_perm->save();
         $atm->attachPermission($snr_staff_perm);
         $datm->attachPermission($snr_staff_perm);
@@ -129,7 +129,7 @@ class RoleSeeder extends Seeder
         $staff_perm = new Permission;
         $staff_perm->name = 'staff';
         $staff_perm->display_name = 'Staff';
-        $staff_perm->display_name = 'Staff Permission';
+        $staff_perm->description = 'Staff Permission';
         $staff_perm->save();
         $atm->attachPermission($staff_perm);
         $datm->attachPermission($staff_perm);
@@ -145,7 +145,7 @@ class RoleSeeder extends Seeder
         $roster_perm = new Permission;
         $roster_perm->name = 'roster';
         $roster_perm->display_name = 'Roster Management';
-        $roster_perm->display_name = 'Roster Management Permission';
+        $roster_perm->description = 'Roster Management Permission';
         $roster_perm->save();
         $atm->attachPermission($roster_perm);
         $datm->attachPermission($roster_perm);
@@ -159,7 +159,7 @@ class RoleSeeder extends Seeder
         $events_perm = new Permission;
         $events_perm->name = 'events';
         $events_perm->display_name = 'Events Management';
-        $events_perm->display_name = 'Events Management Permission';
+        $events_perm->description = 'Events Management Permission';
         $events_perm->save();
         $atm->attachPermission($events_perm);
         $datm->attachPermission($events_perm);
@@ -170,7 +170,7 @@ class RoleSeeder extends Seeder
         $documents_perm = new Permission;
         $documents_perm->name = 'documents';
         $documents_perm->display_name = 'Documents Management';
-        $documents_perm->display_name = 'Documents Management Permission';
+        $documents_perm->description = 'Documents Management Permission';
         $documents_perm->save();
         $atm->attachPermission($documents_perm);
         $datm->attachPermission($documents_perm);
@@ -181,7 +181,7 @@ class RoleSeeder extends Seeder
         $ins_perm = new Permission;
         $ins_perm->name = 'instruct';
         $ins_perm->display_name = 'Instruct';
-        $ins_perm->display_name = 'Instructor Permission';
+        $ins_perm->description = 'Instructor Permission';
         $ins_perm->save();
         $ins->attachPermission($ins_perm);
         $ata->attachPermission($ins_perm);
@@ -193,7 +193,7 @@ class RoleSeeder extends Seeder
         $mtr_perm = new Permission;
         $mtr_perm->name = 'mentor';
         $mtr_perm->display_name = 'Mentor';
-        $mtr_perm->display_name = 'Mentor Permission';
+        $mtr_perm->description = 'Mentor Permission';
         $mtr_perm->save();
         $ins->attachPermission($mtr_perm);
         $mtr->attachPermission($mtr_perm);

@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-sm-4 form-group">
+        <div class="col-md-6 form-group">
             <input type="text" id="airportSearch" class="form-control" placeholder="ICAO/IATA">
         </div>
     </div>
