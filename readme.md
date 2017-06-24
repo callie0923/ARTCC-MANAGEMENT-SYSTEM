@@ -2,16 +2,16 @@
 
 This system was developed and built by Matt Bozwood-Davies.
 
-The ARTCC Management System is offered and provided to all ARTCC's of the VATUSA division. The code is provided as is, and webmasters can develop the system to their own individual needs, however requests can be made for fixes or features.
+`git clone https://github.com/mbozwood/artcc_system.git` or however you would like, as long as you link back. I prefer SSH keys myself.
+
+CD into the drive, and run the following command(s):
  
- To get started, proceed to run the following:
+`composer install`
  
- `https://github.com/mbozwood/artcc_system.git`
- 
- `composer install`
- 
- `php artisan migrate --seed`
- 
- `php artisan setup`
- 
- Follow the instructions and the system will be good to go.
+`cp .env.example .env`
+
+`php artisan key:generate`
+
+Setup the DB connection in the `.env` file.
+
+Good to go.
