@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Notifications extends Model
 {
     public $table = 'notifications';
+    public $fillable = ['class','title','message'];
 }

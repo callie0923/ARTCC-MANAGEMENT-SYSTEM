@@ -90,6 +90,9 @@
                         @if(Auth::user()->hasRole(['atm','datm','ta','wm','ins','mtr','ata']))
                             <li class="px-nav-item {{ active('admin.roster.*', 'px-nav-active') }}"><a href="{{ route('admin.roster.index') }}"><span class="px-nav-label">Roster</span></a></li>
                         @endif
+                        @if(Auth::user()->hasRole(['atm','datm']))
+                            <li class="px-nav-item {{ active('admin.transfer.*', 'px-nav-active') }}"><a href="{{ route('admin.transfer.index') }}"><span class="px-nav-label">Transfers</span></a></li>
+                        @endif
                         @if(Auth::user()->hasRole(['atm','datm','ta']))
                             <li class="px-nav-item {{ active('admin.staff.*', 'px-nav-active') }}"><a href="{{ route('admin.staff.index') }}"><span class="px-nav-label">Staff</span></a></li>
                         @endif

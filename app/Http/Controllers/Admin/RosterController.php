@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\VATSIM\VATUSARoster;
+use App\VATSIM\VATUSA;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,9 +13,9 @@ class RosterController extends Controller
     protected $vatusa;
     /**
      * RosterController constructor.
-     * @param VATUSARoster $vatusa
+     * @param VATUSA $vatusa
      */
-    public function __construct(VATUSARoster $vatusa)
+    public function __construct(VATUSA $vatusa)
     {
         $this->vatusa = $vatusa;
     }

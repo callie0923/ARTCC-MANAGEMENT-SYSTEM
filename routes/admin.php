@@ -9,12 +9,18 @@ Route::group(['namespace' => 'Admin'], function() {
             Route::post('trainingstaff', ['uses' => 'StaffController@updateTrainingRoleUser', 'as' => 'admin.staff.trainingstaff']);
         });
 
+        Route::group(['middleware' => ['role:atm|datm'], 'prefix' => 'transfers'], function() {
+            Route::get('/', ['uses' => 'TransferController@index', 'as' => 'admin.transfer.index']);
+            Route::get('load', ['uses' => 'TransferController@load', 'as' => 'admin.transfer.load']);
+            Route::post('accept', ['uses' => 'TransferController@accept', 'as' => 'admin.transfer.accept']);
+            Route::post('reject', ['uses' => 'TransferController@reject', 'as' => 'admin.transfer.reject']);
+        });
 
-        Route::group(['middleware' => ['role:atm|datm|ta|wm|ata|ins|mtr']], function() {
-            Route::get('roster', ['uses' => 'RosterController@index', 'as' => 'admin.roster.index']);
-            Route::get('/roster/load', ['uses' => 'RosterController@loadRoster', 'as' => 'admin.roster.load']);
-            Route::get('/roster/{user}/edit', ['uses' => 'RosterController@controller', 'as' => 'admin.roster.controller']);
-            Route::post('/roster/update/certs', ['uses' => 'RosterController@updateCerts', 'as' => 'admin.roster.certs']);
+        Route::group(['middleware' => ['role:atm|datm|ta|wm|ata|ins|mtr'], 'prefix' => 'roster'], function() {
+            Route::get('/', ['uses' => 'RosterController@index', 'as' => 'admin.roster.index']);
+            Route::get('load', ['uses' => 'RosterController@loadRoster', 'as' => 'admin.roster.load']);
+            Route::get('{user}/edit', ['uses' => 'RosterController@controller', 'as' => 'admin.roster.controller']);
+            Route::post('update/certs', ['uses' => 'RosterController@updateCerts', 'as' => 'admin.roster.certs']);
         });
 
     });

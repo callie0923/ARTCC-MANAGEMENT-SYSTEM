@@ -2,13 +2,13 @@
 
 namespace App\Repos;
 
-use App\Models\ZJX\UserCert;
-use App\VATSIM\VATUSARoster;
+use App\Models\ARTCC\UserCert;
+use App\VATSIM\VATUSA;
 
 class UserRepository
 {
     private $vatusa;
-    public function __construct(VATUSARoster $vatusa)
+    public function __construct(VATUSA $vatusa)
     {
         $this->vatusa = $vatusa;
     }

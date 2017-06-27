@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\ARTCC\UserCert;
 use App\Models\User;
-use App\VATSIM\VATUSARoster;
+use App\VATSIM\VATUSA;
 use Illuminate\Console\Command;
 
 class ProcessRoster extends Command
@@ -26,9 +26,9 @@ class ProcessRoster extends Command
 
     /**
      * Create a new command instance.
-     * @param VATUSARoster $VATUSARoster
+     * @param VATUSA $VATUSARoster
      */
-    public function __construct(VATUSARoster $VATUSARoster)
+    public function __construct(VATUSA $VATUSARoster)
     {
         $this->roster = $VATUSARoster;
         parent::__construct();

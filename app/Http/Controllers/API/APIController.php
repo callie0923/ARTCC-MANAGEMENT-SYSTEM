@@ -4,14 +4,14 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\VATSIM\VATSIM;
-use App\VATSIM\VATUSARoster;
+use App\VATSIM\VATUSA;
 
 class APIController extends Controller
 {
     protected $vatusa;
     protected $vatsim;
 
-    public function __construct(VATUSARoster $vatusa, VATSIM $vatsim)
+    public function __construct(VATUSA $vatusa, VATSIM $vatsim)
     {
         $this->vatusa = $vatusa;
         $this->vatsim = $vatsim;

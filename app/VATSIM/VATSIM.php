@@ -2,7 +2,7 @@
 
 namespace App\VATSIM;
 
-use App\Models\Rating;
+use App\Models\System\Rating;
 use GuzzleHttp\Client;
 use SimpleXMLElement;
 

@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\BuildInitialRoster;
 use App\Console\Commands\GetAirportWeather;
+use App\Console\Commands\GetVatsimData;
 use App\Console\Commands\InitialSetup;
 use App\Console\Commands\ProcessRoster;
 use Illuminate\Console\Scheduling\Schedule;
@@ -21,6 +22,7 @@ class Kernel extends ConsoleKernel
         GetAirportWeather::class,
         BuildInitialRoster::class,
         ProcessRoster::class,
+        GetVatsimData::class,
     ];
 
     /**
