@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\ARTCC\UserCert;
 use App\Models\User;
+use App\Repos\NotificationRepository;
 use App\VATSIM\VATUSA;
 use Illuminate\Console\Command;
 
@@ -23,14 +24,17 @@ class ProcessRoster extends Command
      */
     protected $description = 'Process Roster';
     protected $roster;
+    protected $notification;
 
     /**
      * Create a new command instance.
      * @param VATUSA $VATUSARoster
+     * @param NotificationRepository $notificationRepository
      */
-    public function __construct(VATUSA $VATUSARoster)
+    public function __construct(VATUSA $VATUSARoster, NotificationRepository $notificationRepository)
     {
         $this->roster = $VATUSARoster;
+        $this->notification = $notificationRepository;
         parent::__construct();
     }
 
@@ -59,7 +63,8 @@ class ProcessRoster extends Command
                 continue;
             } else {
                 //create a new user
-                if(!User::where('id', $member->cid)->first()) {
+                $user = User::where('id', $member->cid)->first();
+                if(!$user) {
                     User::create([
                         'id' => $member->cid,
                         'first_name' => $member->fname,
@@ -73,13 +78,15 @@ class ProcessRoster extends Command
                         'user_id' => $member->cid
                     ]);
                 } else {
-                    $user = User::where('id', $member->cid)->first();
+                    $user->first_name = $member->fname;
+                    $user->last_name = $member->lname;
                     $user->status = 0;
                     $user->visitor = 0;
                     $user->rating_id = $member->rating;
                     $user->email = $member->email;
                     $user->save();
                 }
+                $this->notification->notifyAtmDatm('warning', 'User Added', $member->fname.' '.$member->lname.'was added to the active roster');
             }
         }
 
@@ -88,6 +95,7 @@ class ProcessRoster extends Command
             $user = User::where('id', $localUser)->first();
             $user->status = 1;
             $user->save();
+            $this->notification->notifyAtmDatm('warning', 'User Removed', $user->full_name.' was removed from active roster');
         }
     }
 }

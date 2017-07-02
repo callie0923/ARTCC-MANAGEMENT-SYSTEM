@@ -12,7 +12,7 @@
             <tr>
                 <td>{{ $controller->backwards_name }}</td>
                 <td class="hidden-xs hidden-sm">{{ $controller->email }}</td>
-                <td class="hidden-xs hidden-sm">{{ $controller->rating->rating_short }}</td>
+                <td class="hidden-xs hidden-sm" id="rating-{{$controller->id}}">{{ $controller->rating->rating_short }}</td>
                 <td>
                     <a class="btn btn-xs btn-info" href="{{ route('admin.roster.controller', $controller) }}">VIEW/EDIT</a>
                     @if(Auth::user()->can('instruct') && $controller->canBePromoted())

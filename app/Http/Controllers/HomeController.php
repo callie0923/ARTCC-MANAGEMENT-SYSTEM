@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\System\Airport;
+use App\Models\System\Index\NewMembers;
+use App\Models\System\Index\RecentPromotions;
 
 class HomeController extends Controller
 {
@@ -29,12 +31,14 @@ class HomeController extends Controller
 
     public function newestMembersPanel()
     {
-        return view('_partials.home.members')->render();
+        $members = NewMembers::orderBy('id','desc')->take(5)->get();
+        return view('_partials.home.members', compact('members'))->render();
     }
 
     public function promotionsPanel()
     {
-        return view('_partials.home.promotions')->render();
+        $promotions = RecentPromotions::orderBy('id','desc')->take(5)->get();
+        return view('_partials.home.promotions', compact('promotions'))->render();
     }
 
     public function noaccess()

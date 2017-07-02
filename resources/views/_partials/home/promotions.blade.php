@@ -1,6 +1,18 @@
-<div class="widget-activity-item">
-    <div class="widget-activity-text">
-        COMING SOON
+@forelse($promotions as $promotion)
+
+    <div class="widget-activity-item">
+        <div class="widget-activity-text">
+            {{ $promotion->user->full_name }} was promoted to {{ $promotion->new_text }}
+        </div>
+        <div class="widget-activity-footer">{{ human_time($promotion->created_at) }}</div>
     </div>
-    <div class="widget-activity-footer">{{ human_time('1970-01-01 00:00:00') }}</div>
-</div>
+
+@empty
+
+    <div class="widget-activity-item">
+        <div class="widget-activity-text">
+            No Recent Promotions
+        </div>
+    </div>
+
+@endforelse

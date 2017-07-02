@@ -21,6 +21,10 @@ Route::group(['namespace' => 'Admin'], function() {
             Route::get('load', ['uses' => 'RosterController@loadRoster', 'as' => 'admin.roster.load']);
             Route::get('{user}/edit', ['uses' => 'RosterController@controller', 'as' => 'admin.roster.controller']);
             Route::post('update/certs', ['uses' => 'RosterController@updateCerts', 'as' => 'admin.roster.certs']);
+
+            Route::group(['middleware' => 'role:atm|datm|ta|wm|ata|ins'], function() {
+                Route::post('promote', ['uses' => 'RosterController@promote', 'as' => 'admin.roster.promote']);
+            });
         });
 
     });

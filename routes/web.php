@@ -20,14 +20,19 @@ require base_path('routes/forum.php');
 
 Route::group(['middleware' => ['web','ulsauth']], function () {
 
+    Route::get('profile', ['uses' => 'ProfileController@profile', 'as' => 'profile']);
+
     Route::group(['namespace' => 'Auth'], function () {
         Route::get('logout', ['uses' => 'AuthController@logout', 'as' => 'auth.logout']);
     });
 
     require base_path('routes/ids.php');
+
     require base_path('routes/notifications.php');
 
-    require base_path('routes/admin.php');
+    Route::group(['middleware' => ['web','ulsauth','role:atm|datm|ta|wm|ec|fe|ins|mtr|aec|awm|ata']], function() {
+        require base_path('routes/admin.php');
+    });
 
     Route::group(['middleware' => ['web','ulsauth','role:atm|datm']], function () {
         require base_path('routes/system.php');

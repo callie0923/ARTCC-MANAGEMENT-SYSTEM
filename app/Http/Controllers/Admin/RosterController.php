@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\System\Index\RecentPromotions;
 use App\Models\User;
 use App\VATSIM\VATUSA;
 use Illuminate\Http\Request;
@@ -36,6 +37,43 @@ class RosterController extends Controller
         $certs = $user->certs;
         $certs->update($request->all());
         $certs->save();
+        return response()->json(['success' => true]);
+    }
+
+    public function promote(Request $request)
+    {
+        $user = User::find($request->cid);
+        $old = $user->rating_id;
+
+        switch($old) {
+            case 1:
+                $new = 2;
+                $newText = 'S1';
+                break;
+            case 2:
+                $new = 3;
+                $newText = 'S2';
+                break;
+            case 3:
+                $new = 4;
+                $newText = 'S3';
+                break;
+            case 4:
+                $new = 5;
+                $newText = 'C1';
+                break;
+            default:
+                return response()->json(['success' => false]);
+        }
+
+        RecentPromotions::create([
+            'cid' => $user->id,
+            'new_text' => $newText
+        ]);
+
+        $user->rating_id = $new;
+        $user->save();
+
         return response()->json(['success' => true]);
     }
 

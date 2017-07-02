@@ -9,10 +9,7 @@ class RosterController extends Controller
 {
     public function index()
     {
-        $homeControllers = User::homeMembers();
-        $visitorControllers = User::visitorMembers();
-
-        return view('artcc.roster.index', compact('homeControllers','visitorControllers'));
+        return view('artcc.roster.index');
     }
 
     public function home()

@@ -10,7 +10,7 @@
             <li class="px-nav-box p-a-3 b-b-1" id="demo-px-nav-box">
                 <div class="font-size-16"><span class="font-weight-light">Welcome, </span><strong>{{ Auth::user()->first_name }}</strong></div>
                 <div class="btn-group" style="margin-top: 4px;">
-                    <a href="#" class="btn btn-xs btn-primary btn-outline"><i class="fa fa-user"></i></a>
+                    <a href="{{ route('profile') }}" class="btn btn-xs btn-primary btn-outline"><i class="fa fa-user"></i></a>
                     <a href="{{ route('auth.logout') }}" class="btn btn-xs btn-danger btn-outline"><i class="fa fa-power-off"></i></a>
                 </div>
                 <br>

@@ -13,6 +13,7 @@ class TransferController extends Controller
     public function __construct(VATUSA $vatusa)
     {
         $this->vatusa = $vatusa;
+        parent::__construct();
     }
 
     public function index()

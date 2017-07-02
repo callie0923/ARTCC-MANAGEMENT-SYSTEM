@@ -19,3 +19,9 @@ Breadcrumbs::register('artcc.roster.member', function($breadcrumbs, $user) use (
     $breadcrumbs->push('Roster', route('artcc.roster.index'));
     $breadcrumbs->push($user->full_name, '#');
 });
+
+Breadcrumbs::register('profile', function($breadcrumbs) use ($settings) {
+    $breadcrumbs->push($settings->artcc_code.' ARTCC', route('index'));
+    $breadcrumbs->push('Profile', '#');
+});
+

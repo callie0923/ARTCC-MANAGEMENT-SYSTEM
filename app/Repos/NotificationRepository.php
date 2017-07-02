@@ -19,6 +19,21 @@ class NotificationRepository
         return $notification->id;
     }
 
+    public function notifyAtmDatm($class, $title, $message)
+    {
+        $notification_id = $this->makeNotification($class, $title, $message);
+        $users_roles = RolesToUsers::where('role_id', 1)->orWhere('role_id', 2)->get();
+        $ids = $users_roles->pluck('user_id')->all();
+        $ids = array_unique($ids);
+        foreach($ids as $id) {
+            UserNotifications::create([
+                'user_id' => $id,
+                'notification_id' => $notification_id,
+                'read_status' => 0
+            ]);
+        }
+    }
+
     public function notifySeniorStaff($class, $title, $message)
     {
         $notification_id = $this->makeNotification($class, $title, $message);
@@ -101,5 +116,15 @@ class NotificationRepository
                 'read_status' => 0
             ]);
         }
+    }
+
+    public function notifyController($cid, $class, $title, $message)
+    {
+        $notification_id = $this->makeNotification($class, $title, $message);
+        UserNotifications::create([
+            'user_id' => $cid,
+            'notification_id' => $notification_id,
+            'read_status' => 0
+        ]);
     }
 }

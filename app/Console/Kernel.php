@@ -34,6 +34,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('artcc:weather')->everyThirtyMinutes();
+        $schedule->command('artcc:atc')->everyFiveMinutes();
     }
 
     /**

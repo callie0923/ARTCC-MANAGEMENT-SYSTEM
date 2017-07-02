@@ -74,11 +74,12 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="promoteCid">
+                    <input type="hidden" id="newRating">
                     <span id="promoteText"></span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success">Confirm</button>
+                    <button type="button" id="confirmPromotion" class="btn btn-success">Confirm</button>
                 </div>
             </div>
         </div>
@@ -86,5 +87,6 @@
 
     <script src="{{asset('/assets/js/admin/roster.js')}}"></script>
     <div id="loadRosterUrl" style="display:none" data-url="{{ route('admin.roster.load') }}"></div>
+    <div id="promoteUrl" style="display:none" data-url="{{ route('admin.roster.promote') }}"></div>
 
 @endsection

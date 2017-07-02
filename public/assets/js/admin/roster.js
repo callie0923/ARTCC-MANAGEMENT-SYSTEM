@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var getRosterUrl = $('#loadRosterUrl').data('url');
+    var promoteUrl = $('#promoteUrl').data('url');
     var homeDiv = $('#homeDiv');
     var visitingDiv = $('#visitingDiv');
     var formerDiv = $('#formerDiv');
@@ -19,7 +20,30 @@ $(document).ready(function() {
                 formerDiv.html(data.former);
             }
         }
-    })
+    });
+
+    $('#confirmPromotion').click(function() {
+        var btn = $(this);
+        var cid = $('#promoteCid').val();
+        var newRating = $('#newRating').val();
+        btn.html('<i class="fa fa-refresh fa-spin"></i>');
+        $.ajax({
+            url: promoteUrl,
+            type: 'post',
+            headers: {
+                'X-CSRF-Token' : $('meta[name=_token]').attr('content')
+            },
+            data: {cid:cid},
+            success: function(data) {
+                if(data.success == true) {
+                    btn.html('Confirm');
+                    $('#rating-'+cid).text(newRating);
+                    $('#modal-promote').modal('hide');
+                }
+            }
+        })
+    });
+
 });
 
 $(document).on('click', '.delete', function() {
@@ -39,20 +63,26 @@ $(document).on('click', '.promote', function() {
     var cid = btn.data('id');
     var name = btn.data('name');
     var current = btn.data('currentrating');
+    var newRatingText;
     var newRating;
     if(current == 1) {
-        newRating = 'Confirm Promotion of '+name+' to S1';
+        newRatingText = 'Confirm Promotion of '+name+' to S1';
+        newRating = 'S1';
     } else if(current == 2) {
-        newRating = 'Confirm Promotion of '+name+' to S2';
+        newRatingText = 'Confirm Promotion of '+name+' to S2';
+        newRating = 'S2';
     }else if(current == 3) {
-        newRating = 'Confirm Promotion of '+name+' to S3';
+        newRatingText = 'Confirm Promotion of '+name+' to S3';
+        newRating = 'S3';
     } else if(current == 4) {
-        newRating = 'Confirm Promotion of '+name+' to C1';
+        newRatingText = 'Confirm Promotion of '+name+' to C1';
+        newRating = 'C1';
     }
     var title = 'Promote '+name+'?';
     $('#modalPromoteTitle').text(title);
     $('#promoteCid').val(cid);
-    $('#promoteText').text(newRating);
+    $('#newRating').val(newRating);
+    $('#promoteText').text(newRatingText);
     $('#modal-promote').modal('show');
 });
 
