@@ -5,6 +5,13 @@ namespace App\Forum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * App\Forum\Categories
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Forum\Boards[]                  $boards
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Forum\CategoryViewPermissions[] $viewPermissions
+ * @mixin \Eloquent
+ */
 class Categories extends Model
 {
     public $table = 'forum_categories';

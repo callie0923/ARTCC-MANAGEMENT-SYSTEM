@@ -4,6 +4,11 @@ namespace App\Models\ARTCC;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\ARTCC\UserCert
+ *
+ * @mixin \Eloquent
+ */
 class UserCert extends Model
 {
     public $table = 'users_certs';

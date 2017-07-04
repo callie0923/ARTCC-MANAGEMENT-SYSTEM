@@ -4,6 +4,11 @@ namespace App\Models\ARTCC;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\ARTCC\SoloCert
+ *
+ * @mixin \Eloquent
+ */
 class SoloCert extends Model
 {
     public $table = 'user_solos';
