@@ -16,6 +16,7 @@ class ForumController extends Controller
         $this->forum = $forumRepo;
         parent::__construct();
     }
+
     public function index()
     {
         $icons = $this->forum->loadIcons();

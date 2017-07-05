@@ -21,14 +21,14 @@ Breadcrumbs::register('system.airports.index', function($breadcrumbs) use ($sett
 Breadcrumbs::register('system.forum.index', function($breadcrumbs) use ($settings) {
     $breadcrumbs->push($settings->artcc_code.' ARTCC', route('index'));
     $breadcrumbs->push('System', '#');
-    $breadcrumbs->push('Forum', '#');
+    $breadcrumbs->push('Forum Admin', '#');
 });
 
 
 Breadcrumbs::register('system.forum.category.boards', function($breadcrumbs, $category) use ($settings) {
     $breadcrumbs->push($settings->artcc_code.' ARTCC', route('index'));
     $breadcrumbs->push('System', '#');
-    $breadcrumbs->push('Forum', route('system.forum.index'));
+    $breadcrumbs->push('Forum Admin', route('system.forum.index'));
     $breadcrumbs->push($category->name, '#');
 });
 

@@ -26,6 +26,15 @@ class Categories extends Model
         return $roles;
     }
 
+    public function canView($role) {
+        $perm = CategoryViewPermissions::where('category_id', $this->id)->where('role', $role)->first();
+        if($perm) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function UserCanView() {
         if($this->need_auth == 1 && Auth::check()) {
             if(count($this->permissions()) > 0) {

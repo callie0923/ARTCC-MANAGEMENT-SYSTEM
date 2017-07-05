@@ -21,7 +21,7 @@ Route::group(['namespace' => 'System', 'prefix' => 'system'], function() {
     Route::get('dummy', ['uses' => 'ForumController@dummy', 'as' => 'system.forum.dummy']);
     Route::post('forum/sortcat', ['uses' => 'ForumController@resortCat', 'as' => 'system.forum.sortcat']);
 
-    Route::get('forum/category/{category}', ['uses' => 'Forum\CategoryController@editCategory', 'as' => 'system.forum.category.edit']);
+    Route::get('forum/category/{category}/edit', ['uses' => 'Forum\CategoryController@editCategory', 'as' => 'system.forum.category.edit']);
     Route::post('forum/category/{category}', ['uses' => 'Forum\CategoryController@updateCategory', 'as' => 'system.forum.category.update']);
     Route::post('forum/category', ['uses' => 'Forum\CategoryController@addCategory', 'as' => 'system.forum.category.add']);
     Route::post('forum/category/delete', ['uses' => 'Forum\CategoryController@deleteCategory', 'as' => 'system.forum.category.del']);

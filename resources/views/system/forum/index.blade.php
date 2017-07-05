@@ -42,13 +42,13 @@
         </div>
 
         <div class="col-sm-4">
-            <div class="row">
-                <div class="col-sm-12" id="catFormDiv">
+            <div class="row" id="catFormDiv">
+                <div class="col-sm-12">
                     @include('system.forum.partials.addcategory')
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12" id="editCatFormDiv" style="display: none">
+            <div class="row" id="editFormRow" style="display: none">
+                <div class="col-sm-12" id="editCatFormDiv">
 
                 </div>
             </div>
@@ -57,58 +57,6 @@
 
     <div id="resortCategory" data-url="{{ route('system.forum.sortcat') }}" style="display:none;"></div>
 
-    <script>
-        $('#cat_icon').change(function() {
-            var val = $(this).val();
-            $('#iconLoad').html('<i class="fa '+val+'"></i>');
-        });
-
-        $('#needAuth').change(function() {
-            if($(this).is(':checked')) {
-                $('#permissionsDiv').show();
-            } else {
-                $('#permissionsDiv').hide();
-            }
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            var fixHelper = function(e, ui) {
-                ui.children().each(function() {
-                    $(this).width($(this).width());
-                });
-                return ui;
-            };
-            $('#catPanels').sortable({
-                helper: fixHelper
-            }).disableSelection();
-            $('#catPanels').on('sortstop', function(e, ui){
-                var new_order = [];
-                $('#catPanels .sortablePanel').each(function(i, row){
-                    new_order.push({
-                        id: $(row).data('catid'),
-                        order_index: i+1
-                    });
-                });
-
-                //var data = JSON.stringify(new_order);
-
-                $.ajax({
-                    url: '/system/forum/sortcat',
-                    type: 'post',
-                    headers: {
-                        'X-CSRF-Token' : $('meta[name=_token]').attr('content')
-                    },
-                    data: {data: new_order},
-                    success: function(data) {
-                        if(data.success == true) {
-                            console.log('Categories Resorted');
-                        }
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="{{ asset('assets/js/system/forum.index.js') }}"></script>
 
 @endsection
