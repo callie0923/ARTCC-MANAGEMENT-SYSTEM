@@ -1,4 +1,5 @@
 <form action="{{ route('system.forum.category.update', $category) }}" method="post">
+    {{ csrf_field() }}
     <h5 style="margin:0 0 5px 0;padding:0">Edit Category</h5>
     <div class="form-group">
         <label for="cat_name">Category Name</label>
@@ -6,7 +7,7 @@
     </div>
     <div class="form-group">
         <label for="cat_icon_edit">Category Icon <span id="iconLoadEdit"><i class="fa fa-{{ $category->icon }}"></i></span></label>
-        <select id="cat_icon_edit" class="form-control custom-select">
+        <select id="cat_icon_edit" class="form-control custom-select" name="category_icon">
             <option value="0" selected disabled>PLEASE CHOOSE</option>
             @foreach($icons as $short => $long)
                 <option value="{{ $short }}" {{ $short == $category->icon ? 'selected' : '' }}>{{ $short }}</option>
@@ -16,11 +17,11 @@
     <div class="form-group">
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="1" id="needAuthNew" {{ $category->need_auth == 1 ? 'checked' : '' }}> Needs to be logged in to view?
+                <input type="checkbox" value="1" id="needAuthEdit" {{ $category->need_auth == 1 ? 'checked' : '' }} name="need_auth"> Needs to be logged in to view?
             </label>
         </div>
     </div>
-    <div class="form-group" id="permissionsDivNew" style="{{ $category->need_auth == 1 ? '' : 'display:none' }}">
+    <div class="form-group" id="permissionsDivEdit" style="{{ $category->need_auth == 1 ? '' : 'display:none' }}">
         <label style="margin-bottom: 0">Restrict Viewing To?</label>
         <label style="margin:0">(ALL UNCHECKED = ANYONE LOGGED IN)</label>
         <div class="checkbox" style="margin:0">

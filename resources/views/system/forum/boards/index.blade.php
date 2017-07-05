@@ -3,10 +3,9 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="col-sm-8" id="boardPanels">
-            @if(count($boards))
-
+    @if(count($boards))
+        <div class="row">
+            <div class="col-sm-8">
                 @foreach($boards as $board)
                     <div class="panel sortablePanel" id="boardPanel{{$board->id}}" data-boardid="{{$board->id}}">
                         <div class="panel-body">
@@ -25,27 +24,28 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
 
-            @else
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-12" id="boardFormDiv">
 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="editBoardFormDiv" style="display: none">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    @else
+        <div class="row">
+            <div class="col-sm-8">
                 <h3 style="margin:0">No Boards. Add one on the right.</h3>
-
-            @endif
-        </div>
-
-        <div class="col-sm-4">
-            <div class="row">
-                <div class="col-sm-12" id="catFormDiv">
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12" id="editCatFormDiv" style="display: none">
-
-                </div>
             </div>
         </div>
-    </div>
+    @endif
 
     <script>
         $(document).ready(function() {

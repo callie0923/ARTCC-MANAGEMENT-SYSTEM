@@ -1,14 +1,13 @@
 <form action="{{ route('system.forum.category.add') }}" method="post">
     {{ csrf_field() }}
-    <h5 style="margin:0 0 5px 0;padding:0">Edit Category</h5>
+    <h5 style="margin:0 0 5px 0;padding:0">Add Category</h5>
     <div class="form-group">
         <label for="cat_name">Category Name</label>
         <input type="text" id="cat_name" name="category_name" class="form-control">
     </div>
     <div class="form-group">
         <label for="cat_icon_new">Category Icon <span id="iconLoadNew"></span></label>
-        <select id="cat_icon_edit" class="form-control custom-select" name="category_icon">
-            <option value="0" selected disabled>PLEASE CHOOSE</option>
+        <select id="cat_icon_new" class="form-control custom-select" name="category_icon">
             @foreach($icons as $short => $long)
                 <option value="{{ $short }}">{{ $short }}</option>
             @endforeach
@@ -17,7 +16,7 @@
     <div class="form-group">
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="1" id="needAuthNew"> Needs to be logged in to view?
+                <input type="checkbox" value="1" id="needAuthNew" name="need_auth"> Needs to be logged in to view?
             </label>
         </div>
     </div>

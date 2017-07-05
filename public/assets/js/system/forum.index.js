@@ -1,6 +1,6 @@
 $('#cat_icon_new').change(function() {
     var val = $(this).val();
-    $('#iconLoadNew').html('<i class="fa '+val+'"></i>');
+    $('#iconLoadNew').html('<i class="fa fa-'+val+'"></i>');
 });
 
 $('#needAuthNew').change(function() {
@@ -14,6 +14,14 @@ $('#needAuthNew').change(function() {
 $(document).on('change', '#cat_icon_edit', function() {
     var val = $(this).val();
     $('#iconLoadEdit').html('<i class="fa fa-'+val+'"></i>');
+});
+
+$(document).on('change', '#needAuthEdit', function() {
+    if($(this).is(':checked')) {
+        $('#permissionsDivEdit').show();
+    } else {
+        $('#permissionsDivEdit').hide();
+    }
 });
 
 $(function() {
