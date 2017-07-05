@@ -6,6 +6,7 @@ use App\Forum\Categories;
 use App\Forum\ForumRepo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class ForumController extends Controller
 {
@@ -24,6 +25,22 @@ class ForumController extends Controller
 
     public function resortCat(Request $request)
     {
-        dd($request->all());
+        $data = $request->get('data');
+        foreach($data as $datum) {
+            Categories::where('id', $datum['id'])->update(['order_index' => $datum['order_index']]);
+        }
+        return response()->json(['success' => true]);
+    }
+
+    public function dummy()
+    {
+        if(count(Categories::all()) > 0) {
+            return redirect()->back();
+        } else {
+            Artisan::call('db:seed', [
+                '--class' => 'ForumSeeder'
+            ]);
+            return redirect()->back();
+        }
     }
 }

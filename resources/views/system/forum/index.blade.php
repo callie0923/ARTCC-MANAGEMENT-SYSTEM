@@ -16,10 +16,10 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-sm-7">
-                                    @forelse($category->boards as $board)
+                                    @forelse($category->boards->sortBy('order_index') as $board)
                                         <p style="margin:0">{{ $board->name }}</p>
                                     @empty
-
+                                        <p style="margin:0">NO BOARDS</p>
                                     @endforelse
                                 </div>
                                 <div class="col-sm-5">
@@ -36,7 +36,7 @@
 
             @else
 
-                <h3 style="margin:0">Forum Is Not Setup. Add a category, or click <a href="#">HERE</a> to fill with a dummy system!</h3>
+                <h3 style="margin:0">Forum Is Not Setup. Add a category, or click <a href="{{ route('system.forum.dummy') }}">HERE</a> to fill with a dummy system!</h3>
 
             @endif
         </div>
@@ -55,7 +55,7 @@
         </div>
     </div>
 
-    <div id="resortCategory" data-url="{{ route('system.forum.resortcat') }}" style="display:none;"></div>
+    <div id="resortCategory" data-url="{{ route('system.forum.sortcat') }}" style="display:none;"></div>
 
     <script>
         $('#cat_icon').change(function() {
@@ -92,22 +92,21 @@
                     });
                 });
 
-                var data = JSON.stringify(new_order);
+                //var data = JSON.stringify(new_order);
 
                 $.ajax({
-                    url: '/system/forum/resortcat',
+                    url: '/system/forum/sortcat',
                     type: 'post',
                     headers: {
                         'X-CSRF-Token' : $('meta[name=_token]').attr('content')
                     },
-                    data: data,
+                    data: {data: new_order},
                     success: function(data) {
                         if(data.success == true) {
                             console.log('Categories Resorted');
                         }
                     }
                 });
-
             });
         });
     </script>

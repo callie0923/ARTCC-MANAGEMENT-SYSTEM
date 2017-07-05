@@ -11,7 +11,7 @@ class Categories extends Model
     public $fillable = ['name','order_index','icon','need_auth'];
 
     public function boards() {
-        return $this->hasMany(Boards::class, 'category_id', 'id');
+        return $this->hasMany(Boards::class, 'category_id', 'id')->orderBy('order_index', 'ASC');
     }
 
     public function viewPermissions() {

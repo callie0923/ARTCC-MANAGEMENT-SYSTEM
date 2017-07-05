@@ -13,7 +13,7 @@
                             <div class="panel-heading-icon"><i class="fa fa-{{$category->icon}}"></i></div>
                         </div>
                         <div class="panel-body">
-                            @foreach($category->boards as $board)
+                            @foreach($category->boards->sortBy('order_index') as $board)
                                 @if($board->UserCanView())
                                     <div class="page-forums-list-item box panel p-y-2 p-x-3">
                                         <div class="box-row">
