@@ -6,6 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * App\Forum\Boards
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Forum\Threads[]              $allthreads
+ * @property-read \App\Forum\Categories                                                      $category
+ * @property-read mixed                                                                      $last_update
+ * @property-read mixed                                                                      $reply_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Forum\BoardPostPermissions[] $postPermissions
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Forum\Threads[]              $stickyThreads
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Forum\Threads[]              $threads
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Forum\BoardViewPermissions[] $viewPermissions
+ * @mixin \Eloquent
+ */
 class Boards extends Model
 {
     public $table = 'forum_boards';

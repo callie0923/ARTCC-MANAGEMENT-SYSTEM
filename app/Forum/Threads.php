@@ -6,6 +6,13 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * App\Forum\Threads
+ *
+ * @property-read \App\Models\User                                              $owner
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Forum\Replies[] $replies
+ * @mixin \Eloquent
+ */
 class Threads extends Model
 {
     public $table = 'forum_threads';

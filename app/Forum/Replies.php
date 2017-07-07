@@ -5,6 +5,12 @@ namespace App\Forum;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Forum\Replies
+ *
+ * @property-read \App\Models\User $owner
+ * @mixin \Eloquent
+ */
 class Replies extends Model
 {
     public $table = 'forum_thread_replies';
