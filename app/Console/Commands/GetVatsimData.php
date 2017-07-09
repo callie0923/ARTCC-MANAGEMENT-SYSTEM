@@ -8,6 +8,7 @@ use App\Models\System\OnlineATC;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class GetVatsimData extends Command
 {
@@ -33,7 +34,11 @@ class GetVatsimData extends Command
      */
     public function __construct()
     {
-        $airports = Airport::where('is_artcc', 1)->get();
+        if(Schema::hasTable('airports')) {
+            $airports = Airport::where('is_artcc', 1)->get();
+        } else {
+            $airports = collect([]);
+        }
         $iatas = $airports->pluck('iata')->all();
         foreach($iatas as $iata) {
             $this->positions[] = $iata.'_';

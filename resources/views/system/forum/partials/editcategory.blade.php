@@ -24,39 +24,11 @@
     <div class="form-group" id="permissionsDivEdit" style="{{ $category->need_auth == 1 ? '' : 'display:none' }}">
         <label style="margin-bottom: 0">Restrict Viewing To?</label>
         <label style="margin:0">(ALL UNCHECKED = ANYONE LOGGED IN)</label>
+        @foreach($roles as $role)
         <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="atm" name="viewPerms[]" {{ $category->canView('atm') ? 'checked' : '' }} id="permATM"> ATM</label>
+            <label><input type="checkbox" value="{{ $role->name }}" name="viewPerms[]" {{ $category->canView($role->name) ? 'checked' : '' }}> {{ strtoupper($role->name) }}</label>
         </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="datm" name="viewPerms[]" {{ $category->canView('datm') ? 'checked' : '' }} id="permDATM"> DATM</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="ta" name="viewPerms[]" {{ $category->canView('ta') ? 'checked' : '' }} id="permTA"> TA</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="ec" name="viewPerms[]" {{ $category->canView('ec') ? 'checked' : '' }} id="permEC"> EC</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="fe" name="viewPerms[]" {{ $category->canView('fe') ? 'checked' : '' }} id="permFE"> FE</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="wm" name="viewPerms[]" {{ $category->canView('wm') ? 'checked' : '' }} id="permWM"> WM</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="ata" name="viewPerms[]" {{ $category->canView('ata') ? 'checked' : '' }} id="permATA"> ATA</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="aec" name="viewPerms[]" {{ $category->canView('aec') ? 'checked' : '' }} id="permAEC"> AEC</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="awm" name="viewPerms[]" {{ $category->canView('awm') ? 'checked' : '' }} id="permAWM"> AWM</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="ins" name="viewPerms[]" {{ $category->canView('ins') ? 'checked' : '' }} id="permINS"> INS</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="mtr" name="viewPerms[]" {{ $category->canView('mtr') ? 'checked' : '' }} id="permMTR"> MTR</label>
-        </div>
+        @endforeach
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-success">Save Category</button>

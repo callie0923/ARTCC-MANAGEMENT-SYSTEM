@@ -76,3 +76,8 @@ $('.editCategory').click(function() {
         }
     });
 });
+
+$('#showAddCat').click(function() {
+    $('#editFormRow').hide();
+    $('#catFormDiv').show();
+});

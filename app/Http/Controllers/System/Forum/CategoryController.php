@@ -6,6 +6,7 @@ use App\Forum\Categories;
 use App\Forum\CategoryViewPermissions;
 use App\Forum\ForumRepo;
 use App\Http\Controllers\Controller;
+use App\Models\Entrust\Role;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -20,7 +21,8 @@ class CategoryController extends Controller
     public function editCategory(Categories $category)
     {
         $icons = $this->forum->loadIcons();
-        return view('system.forum.partials.editcategory', compact('category','icons'));
+        $roles = Role::all();
+        return view('system.forum.partials.editcategory', compact('category','icons', 'roles'));
     }
 
     public function addCategory(Request $request)

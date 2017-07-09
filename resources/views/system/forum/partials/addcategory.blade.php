@@ -23,39 +23,11 @@
     <div class="form-group" id="permissionsDivNew" style="display:none">
         <label style="margin-bottom: 0">Restrict Viewing To?</label>
         <label style="margin:0">(ALL UNCHECKED = ANYONE LOGGED IN)</label>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="atm" name="viewPerms[]" id="permATM"> ATM</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="datm" name="viewPerms[]" id="permDATM"> DATM</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="ta" name="viewPerms[]" id="permTA"> TA</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="ec" name="viewPerms[]" id="permEC"> EC</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="fe" name="viewPerms[]" id="permFE"> FE</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="wm" name="viewPerms[]" id="permWM"> WM</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="ata" name="viewPerms[]" id="permATA"> ATA</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="aec" name="viewPerms[]" id="permAEC"> AEC</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="awm" name="viewPerms[]" id="permAWM"> AWM</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="ins" name="viewPerms[]" id="permINS"> INS</label>
-        </div>
-        <div class="checkbox" style="margin:0">
-            <label><input type="checkbox" value="mtr" name="viewPerms[]" id="permMTR"> MTR</label>
-        </div>
+        @foreach($roles as $role)
+            <div class="checkbox" style="margin:0">
+                <label><input type="checkbox" value="{{ $role->name }}" name="viewPerms[]"> {{ strtoupper($role->name) }}</label>
+            </div>
+        @endforeach
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-success">Save Category</button>

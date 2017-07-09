@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Forum\Threads;
 use App\Models\System\Airport;
 use App\Models\System\Index\NewMembers;
 use App\Models\System\Index\RecentPromotions;
+use App\Models\System\Settings;
 
 class HomeController extends Controller
 {
@@ -26,7 +28,13 @@ class HomeController extends Controller
 
     public function newsPanel()
     {
-        return view('_partials.home.news')->render();
+        $settings = Settings::find(1);
+        if(isset($settings->announcement_board_id)) {
+            $threads = Threads::where('board_id', $settings->announcement_board_id)->orderBy('id', 'desc')->take(5)->get();
+        } else {
+            $threads = [];
+        }
+        return view('_partials.home.news', compact('threads'))->render();
     }
 
     public function newestMembersPanel()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\System;
 use App\Forum\Categories;
 use App\Forum\ForumRepo;
 use App\Http\Controllers\Controller;
+use App\Models\Entrust\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 
@@ -19,9 +20,10 @@ class ForumController extends Controller
 
     public function index()
     {
+        $roles = Role::all();
         $icons = $this->forum->loadIcons();
         $categories = Categories::orderBy('order_index', 'ASC')->get();
-        return view('system.forum.index', compact('categories', 'icons'));
+        return view('system.forum.index', compact('categories', 'icons', 'roles'));
     }
 
     public function resortCat(Request $request)

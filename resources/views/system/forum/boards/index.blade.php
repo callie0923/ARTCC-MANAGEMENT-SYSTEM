@@ -5,7 +5,7 @@
 
     @if(count($boards))
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-8" id="boardPanels">
                 @foreach($boards as $board)
                     <div class="panel sortablePanel" id="boardPanel{{$board->id}}" data-boardid="{{$board->id}}">
                         <div class="panel-body">
@@ -16,8 +16,8 @@
                                 </div>
                                 <div class="col-sm-5">
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-primary editCategory" data-url="{{ route('system.forum.category.edit', $board->id) }}">Edit</a>
-                                        <a href="#" class="btn btn-danger deleteCategory" data-url="{{ route('system.forum.category.del') }}">Delete</a>
+                                        <a href="#" class="btn btn-primary editBoard" data-url="{{ route('system.forum.category.board.edit', $board->id) }}">Edit</a>
+                                        <a href="#" class="btn btn-danger deleteBoard" data-url="{{ route('system.forum.category.board.delete', $board->id) }}">Delete</a>
                                     </div>
                                 </div>
                             </div>
@@ -29,11 +29,11 @@
             <div class="col-sm-4">
                 <div class="row">
                     <div class="col-sm-12" id="boardFormDiv">
-
+                        @include('system.forum.partials.addboard')
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12" id="editBoardFormDiv" style="display: none">
+                <div class="row" id="editFormRow" style="display: none">
+                    <div class="col-sm-12" id="editBoardFormDiv">
 
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                 });
 
                 $.ajax({
-                    url: '/system/forum/category/{{ $category_id }}/sortboards',
+                    url: '/system/forum/category/{{ $category->id }}/sortboards',
                     type: 'post',
                     headers: {
                         'X-CSRF-Token' : $('meta[name=_token]').attr('content')
@@ -80,6 +80,25 @@
                         }
                     }
                 });
+            });
+        });
+    </script>
+
+    <script>
+        $('.editBoard').click(function() {
+            var btn = $(this);
+            var url = btn.data('url');
+            $('#boardFormDiv').hide();
+            btn.html('<i class="fa fa-refresh fa-spin"></i>');
+
+            $.ajax({
+                url: url,
+                type: 'get',
+                success: function(data) {
+                    $('#editBoardFormDiv').html(data);
+                    $('#editFormRow').show();
+                    btn.html('Edit');
+                }
             });
         });
     </script>

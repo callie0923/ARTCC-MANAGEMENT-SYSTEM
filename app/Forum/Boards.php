@@ -113,4 +113,36 @@ class Boards extends Model
             return true;
         }
     }
+
+    public function canView($role) {
+        $perm = BoardViewPermissions::where('board_id', $this->id)->where('role', $role)->first();
+        if($perm) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function canPost($role) {
+        $perm = BoardPostPermissions::where('board_id', $this->id)->where('role', $role)->first();
+        if($perm) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function publiclyVisible()
+    {
+        $boards = self::all();
+        $newBoards = [];
+        foreach($boards as $board) {
+            if(count($board->permissions()) == 0 && $board->category->need_auth == 0) {
+                $newBoards[] = $board;
+            }
+        }
+        return collect($newBoards);
+    }
+
 }

@@ -42,6 +42,13 @@
         </div>
 
         <div class="col-sm-4">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="pull-right">
+                        <button class="btn btn-info" id="showAddCat">Add Category</button>
+                    </div>
+                </div>
+            </div>
             <div class="row" id="catFormDiv">
                 <div class="col-sm-12">
                     @include('system.forum.partials.addcategory')

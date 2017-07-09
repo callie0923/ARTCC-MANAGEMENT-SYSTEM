@@ -26,7 +26,7 @@ class CreateForumTables extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned();
             $table->text('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('order_index');
             $table->timestamps();
 
