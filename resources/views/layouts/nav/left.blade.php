@@ -123,7 +123,7 @@
                         <li class="px-nav-item {{ active('system.settings.*', 'px-nav-active') }}"><a href="{{ route('system.settings.index') }}"><span class="px-nav-label">Settings</span></a></li>
                         <li class="px-nav-item {{ active('system.roles.*', 'px-nav-active') }}"><a href="{{ route('system.roles.index') }}"><span class="px-nav-label">Roles</span></a></li>
                         <li class="px-nav-item {{ active('system.airports.*', 'px-nav-active') }}"><a href="{{ route('system.airports.index') }}"><span class="px-nav-label">Airports</span></a></li>
-                        <li class="px-nav-item {{ active('system.forum.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Forum Admin</span></a></li>
+                        <li class="px-nav-item {{ active('system.forum.*', 'px-nav-active') }}"><a href="{{ route('system.forum.index') }}"><span class="px-nav-label">Forum Admin</span></a></li>
                         <li class="px-nav-item {{ active('system.email.*', 'px-nav-active') }}"><a href="#"><span class="px-nav-label">Email Admin</span></a></li>
                     </ul>
                 </li>

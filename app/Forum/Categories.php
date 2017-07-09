@@ -5,20 +5,13 @@ namespace App\Forum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-/**
- * App\Forum\Categories
- *
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Forum\Boards[]                  $boards
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Forum\CategoryViewPermissions[] $viewPermissions
- * @mixin \Eloquent
- */
 class Categories extends Model
 {
     public $table = 'forum_categories';
     public $fillable = ['name','order_index','icon','need_auth'];
 
     public function boards() {
-        return $this->hasMany(Boards::class, 'category_id', 'id');
+        return $this->hasMany(Boards::class, 'category_id', 'id')->orderBy('order_index', 'ASC');
     }
 
     public function viewPermissions() {
@@ -31,6 +24,15 @@ class Categories extends Model
             $roles[] = $viewPermission->role;
         }
         return $roles;
+    }
+
+    public function canView($role) {
+        $perm = CategoryViewPermissions::where('category_id', $this->id)->where('role', $role)->first();
+        if($perm) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function UserCanView() {

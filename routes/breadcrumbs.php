@@ -8,11 +8,10 @@ if(Schema::hasTable('system_settings')) {
         $settings = Settings::find(1);
     } else {
         $settings = new Settings;
-        $settings->artcc_code = '';
         $settings->save();
     }
 } else {
-    $settings = [];
+    $settings = new StdClass;
 }
 
 

@@ -48,21 +48,13 @@
                     @endforeach
                 </select>
             </div>
-            {{--<div class="form-group">--}}
-                {{--<label for="uls_key">VATUSA ULS Key</label>--}}
-                {{--<input type="text" class="form-control" name="uls_key" id="uls_key" value="{{ ($settings->vatusa_uls_key) }}">--}}
-            {{--</div>--}}
-            {{--<div class="form-group">--}}
-                {{--<label for="api_key">VATUSA API Code</label>--}}
-                {{--<input type="text" class="form-control" name="api_key" id="api_key" value="{{ ($settings->vatusa_api_key) }}">--}}
-            {{--</div>--}}
             <div class="form-group">
                 <label for="uls_key">VATUSA ULS Key</label>
-                <input type="password" class="form-control" name="uls_key" id="uls_key" value="{{ encrypt($settings->vatusa_uls_key) }}">
+                <input type="text" class="form-control" name="uls_key" id="uls_key" value="{{ ($settings->vatusa_uls_key) }}">
             </div>
             <div class="form-group">
                 <label for="api_key">VATUSA API Code</label>
-                <input type="password" class="form-control" name="api_key" id="api_key" value="{{ encrypt($settings->vatusa_api_key) }}">
+                <input type="text" class="form-control" name="api_key" id="api_key" value="{{ ($settings->vatusa_api_key) }}">
             </div>
             <div class="form-group" id="ipdiv" style="display: none;">
                 <label for="ip">Update IP in VATUSA</label>
@@ -83,6 +75,14 @@
             <div class="form-group">
                 <label for="wx_wind_surface_data">WX Wind Surface Data</label>
                 <input type="text" class="form-control" name="wx_wind_surface_data" id="wx_wind_surface_data" value="{{ ($settings->wx_wind_surface_data) }}">
+            </div>
+            <div class="form-group">
+                <label for="home_announcements">Index Announcements (only publicly vieweable)</label>
+                <select name="home_announcements" id="home_announcements" class="form-control custom-select">
+                    @foreach($boards as $board)
+                        <option value="{{ $board->id }}" {{ $settings->announcement_board_id == $board->id ? 'selected': '' }}>{{ $board->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" id="btnSave">Save Data</button>

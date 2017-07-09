@@ -4,6 +4,7 @@ namespace App\VATSIM;
 
 use App\Models\System\Settings;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Schema;
 
 class Connection
 {
@@ -11,10 +12,23 @@ class Connection
     private $apiKey;
     private $client;
 
+    /**
+     * Connection constructor.
+     */
     public function __construct()
     {
         $this->client = new Client;
-        $this->apiKey = Settings::find(1)->vatusa_api_key;
+        if(Schema::hasTable('system_settings')) {
+            if(Settings::find(1)) {
+                $this->apiKey = Settings::find(1)->vatusa_api_key;
+            } else {
+                $settings = new Settings;
+                $settings->save();
+                $this->apiKey = '';
+            }
+        } else {
+            $this->apiKey = '';
+        }
     }
 
     /**

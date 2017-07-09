@@ -1,6 +1,14 @@
-<div class="widget-activity-item">
-    <div class="widget-activity-text">
-        COMING SOON
+@forelse($threads as $thread)
+    <div class="widget-activity-item">
+        <div class="widget-activity-text">
+            <a href="{{ route('forum.thread', [$thread->board->category, $thread->board, $thread]) }}">{{ $thread->title }}</a>
+        </div>
+        <div class="widget-activity-footer">{{ human_time($thread->created_at) }}</div>
     </div>
-    <div class="widget-activity-footer">{{ human_time('1970-01-01 00:00:00') }}</div>
-</div>
+@empty
+    <div class="widget-activity-item">
+        <div class="widget-activity-text">
+            No Announcements
+        </div>
+    </div>
+@endforelse

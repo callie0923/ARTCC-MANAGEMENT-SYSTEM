@@ -42,7 +42,7 @@
     <link href="/assets/css/master.css" rel="stylesheet" type="text/css">
 
     <script src="/assets/pace/pace.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/pixeladmin.min.js"></script>
     <script src="/assets/js/plugins/select2.full.min.js"></script>

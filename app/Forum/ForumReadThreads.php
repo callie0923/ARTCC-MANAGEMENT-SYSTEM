@@ -4,11 +4,6 @@ namespace App\Forum;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * App\Forum\ForumReadThreads
- *
- * @mixin \Eloquent
- */
 class ForumReadThreads extends Model
 {
     public $table = 'forum_read_threads';

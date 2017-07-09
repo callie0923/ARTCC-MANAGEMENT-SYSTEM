@@ -23,6 +23,7 @@ class CreateSystemSettingsTable extends Migration
             $table->text('wx_infrared_radar')->nullable();
             $table->text('wx_wind_surface_data')->nullable();
             $table->text('welcome_text')->nullable();
+            $table->integer('announcement_board_id')->nullable();
         });
     }
 

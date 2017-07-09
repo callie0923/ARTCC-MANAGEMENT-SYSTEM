@@ -34,9 +34,10 @@ $(document).ready(function() {
         var wx_vis_radar = $('#wx_vis_radar').val();
         var wx_infrared_radar = $('#wx_infrared_radar').val();
         var wx_wind_surface_data = $('#wx_wind_surface_data').val();
+        var home_announcements = $('#home_announcements').val();
 
         btn.addClass('btn-loading');
-        var data = {'artcc_code':artcc_code, 'uls_key':uls_key, 'api_key':api_key, 'wx_nex_gen_radar':wx_nex_gen_radar, 'wx_vis_radar':wx_vis_radar, 'wx_infrared_radar':wx_infrared_radar, 'wx_wind_surface_data':wx_wind_surface_data};
+        var data = {'artcc_code':artcc_code, 'uls_key':uls_key, 'api_key':api_key, 'wx_nex_gen_radar':wx_nex_gen_radar, 'wx_vis_radar':wx_vis_radar, 'wx_infrared_radar':wx_infrared_radar, 'wx_wind_surface_data':wx_wind_surface_data, 'home_announcements':home_announcements};
 
         $.ajax({
             url: postUrl,

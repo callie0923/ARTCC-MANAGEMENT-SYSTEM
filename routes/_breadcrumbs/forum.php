@@ -23,7 +23,7 @@ Breadcrumbs::register('forum.thread', function($breadcrumbs, $category, $board, 
     $breadcrumbs->push('Forum', route('forum.index'));
     $breadcrumbs->push($category->name, route('forum.category', $category));
     $breadcrumbs->push($board->name, route('forum.board', [$category, $board]));
-    $breadcrumbs->push('');
+    $breadcrumbs->push($thread->title, '#');
 });
 
 Breadcrumbs::register('forum.board.new', function($breadcrumbs, $category, $board) use ($settings) {

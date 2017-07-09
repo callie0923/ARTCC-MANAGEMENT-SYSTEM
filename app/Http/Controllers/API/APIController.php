@@ -15,6 +15,7 @@ class APIController extends Controller
     {
         $this->vatusa = $vatusa;
         $this->vatsim = $vatsim;
+        parent::__construct();
     }
 
     public function roster()

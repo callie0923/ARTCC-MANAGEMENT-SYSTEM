@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    @if(Auth::user()->hasRole(['atm','datm']))
+    @if(Auth::user()->hasRole(['atm','datm','ta','ec','fe','wm']))
     <div class="row">
         <div class="col-sm-12">
             <label class="custom-control custom-checkbox">
