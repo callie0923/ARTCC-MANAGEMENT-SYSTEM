@@ -68,4 +68,10 @@ class CategoryController extends Controller
         }
         return redirect()->back()->with('alert-success', 'Category Updated');
     }
+
+    public function deleteCategory(Categories $category)
+    {
+        Categories::where('id', $category->id)->delete();
+        return redirect()->back()->with('alert-success', 'Category Updated');
+    }
 }

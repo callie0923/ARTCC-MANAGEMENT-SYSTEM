@@ -12,75 +12,19 @@
     <div class="row">
         <div class="col-sm-6">
             <label style="margin-bottom: 0">Who Can View?</label>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="atm" name="viewPerms[]"> ATM</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="datm" name="viewPerms[]"> DATM</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="ta" name="viewPerms[]"> TA</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="ec" name="viewPerms[]"> EC</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="fe" name="viewPerms[]"> FE</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="wm" name="viewPerms[]"> WM</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="ata" name="viewPerms[]"> ATA</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="aec" name="viewPerms[]"> AEC</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="awm" name="viewPerms[]"> AWM</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="ins" name="viewPerms[]"> INS</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="mtr" name="viewPerms[]"> MTR</label>
-            </div>
+            @foreach($roles as $role)
+                <div class="checkbox" style="margin:0">
+                    <label><input type="checkbox" value="{{ $role->name }}" name="viewPerms[]"> {{ strtoupper($role->name) }}</label>
+                </div>
+            @endforeach
         </div>
         <div class="col-sm-6">
             <label style="margin-bottom: 0">Who Can Post?</label>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="atm" name="postPerms[]"> ATM</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="datm" name="postPerms[]"> DATM</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="ta" name="postPerms[]"> TA</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="ec" name="postPerms[]"> EC</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="fe" name="postPerms[]"> FE</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="wm" name="postPerms[]"> WM</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="ata" name="postPerms[]"> ATA</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="aec" name="postPerms[]"> AEC</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="awm" name="postPerms[]"> AWM</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="ins" name="postPerms[]"> INS</label>
-            </div>
-            <div class="checkbox" style="margin:0">
-                <label><input type="checkbox" value="mtr" name="postPerms[]"> MTR</label>
-            </div>
+            @foreach($roles as $role)
+                <div class="checkbox" style="margin:0">
+                    <label><input type="checkbox" value="{{ $role->name }}"  name="postPerms[]"> {{ strtoupper($role->name) }}</label>
+                </div>
+            @endforeach
         </div>
     </div>
     <br>

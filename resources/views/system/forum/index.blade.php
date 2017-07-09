@@ -26,7 +26,7 @@
                                     <div class="pull-right">
                                         <a href="#" class="btn btn-primary editCategory" data-url="{{ route('system.forum.category.edit', $category->id) }}">Edit</a>
                                         <a href="{{ route('system.forum.category.boards', $category->id) }}" class="btn btn-info">Boards</a>
-                                        <a href="#" class="btn btn-danger deleteCategory" data-url="{{ route('system.forum.category.del') }}">Delete</a>
+                                        <a href="{{ route('system.forum.category.del', $category) }}" class="btn btn-danger">Delete</a>
                                     </div>
                                 </div>
                             </div>

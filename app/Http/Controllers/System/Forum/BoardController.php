@@ -93,4 +93,10 @@ class BoardController extends Controller
 
         return redirect()->back()->with('alert-success', 'Board Updated');
     }
+
+    public function deleteBoard(Boards $board)
+    {
+        Boards::where('id', $board->id)->delete();
+        return redirect()->back()->with('alert-success', 'Board Deleted');
+    }
 }
