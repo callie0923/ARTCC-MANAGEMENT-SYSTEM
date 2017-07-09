@@ -19,6 +19,10 @@ class Threads extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
+    public function board() {
+        return $this->hasOne(Boards::class, 'id', 'board_id');
+    }
+
     public function lastReplyTime() {
         $timestamp = '';
         foreach($this->replies as $reply) {

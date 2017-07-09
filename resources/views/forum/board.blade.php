@@ -29,6 +29,9 @@
                                         @if($thread->locked == 1)
                                             <i class="fa fa-lock simple-tooltip" title="Locked"></i>
                                         @endif
+                                        @if($thread->sticky == 1)
+                                            <i class="fa fa-circle simple-tooltip" title="Sticky"></i>
+                                        @endif
                                     </span>
                                 </div>
                                 <div class="font-size-11 text-muted">
@@ -71,7 +74,6 @@
     @if(count($board->threads) > 0)
         <div class="row">
             <div class="col-sm-12">
-                <h6 class="font-weight-semibold m-y-3" style="margin-top: 0!important;">STICKY</h6>
                 @foreach($board->threads as $thread)
                     <div class="page-forum-topics-item box panel p-y-2 p-x-3">
                         <div class="box-row">

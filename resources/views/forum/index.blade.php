@@ -35,7 +35,7 @@
                                                     <div class="pull-md-right">
                                                         <div class="box-container width-md-auto valign-middle">
                                                             <div class="box-cell p-l-1 p-r-3">
-                                                                <div class="font-size-14"><strong>{{ count($board->threads) }}</strong></div>
+                                                                <div class="font-size-14"><strong>{{ count($board->allthreads) }}</strong></div>
                                                                 <div class="font-size-11 text-muted line-height-1">topics</div>
                                                             </div>
                                                             <div class="box-cell p-x-3 b-l-1">
