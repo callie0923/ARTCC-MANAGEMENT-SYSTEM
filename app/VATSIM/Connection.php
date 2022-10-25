@@ -37,7 +37,7 @@ class Connection
     public function getRoster()
     {
         $client = $this->client;
-        $url = $this->baseUrl.$this->apiKey.'roster';
+        $url = $this->baseUrl.'/roster';
         $result = $client->get($url)->getBody();
         return json_decode($result);
     }
