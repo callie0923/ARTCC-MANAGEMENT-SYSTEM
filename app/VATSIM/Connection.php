@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 
 class Connection
 {
-    private $baseUrl = 'https://api.vatusa.net/';
+    private $baseUrl = 'https://api.vatusa.net/facility/zau';
     private $apiKey;
     private $client;
 
@@ -37,7 +37,7 @@ class Connection
     public function getRoster()
     {
         $client = $this->client;
-        $url = $this->baseUrl.$this->apiKey.'/roster';
+        $url = $this->baseUrl.$this->apiKey.'roster';
         $result = $client->get($url)->getBody();
         return json_decode($result);
     }
